@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyCapsul User Guide — How Your AI Life Dashboard Works</title>
+<meta name="description" content="Learn how MyCapsul works — your AI agent, visual dashboard, seed modules, and inbox system. A friendly guide to every piece of your personal life OS.">
+<link rel="canonical" href="https://mycapsul.com/docs/user-guide.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/user-guide.html">
+<meta property="og:title" content="MyCapsul User Guide — How Your AI Life Dashboard Works">
+<meta property="og:description" content="Learn how MyCapsul works — your AI agent, visual dashboard, seed modules, and inbox system. A friendly guide to every piece of your personal life OS.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MyCapsul User Guide — How Your AI Life Dashboard Works">
+<meta name="twitter:description" content="Learn how MyCapsul works — your AI agent, visual dashboard, seed modules, and inbox system. A friendly guide to every piece of your personal life OS.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --mist: #EBF4FF;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== NAV ===== */
+.doc-nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 20px; transition: background 0.3s; }
+.doc-nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.doc-nav-brand { text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links { display: flex; align-items: center; gap: 4px; }
+.doc-nav-links a { font-size: 13px; font-weight: 500; color: var(--text-dim); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.15s; margin-left: 8px; }
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 80px 20px 64px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.hero-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: rgba(27,186,1,0.08);
+  color: var(--go);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub {
+  font-size: 17px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 20px 72px;
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.section-label.green { color: var(--go); }
+.section-label.ember { color: var(--ember); }
+.section-label.purple { color: var(--purple); }
+.section h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+.section .intro {
+  font-size: 15px;
+  color: var(--text-dim);
+  max-width: 680px;
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+.card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.card h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* ===== WHATS IN THE BOX ===== */
+.box-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.box-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.box-item .bi-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  width: 40px;
+  text-align: center;
+}
+.box-item h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.box-item p {
+  font-size: 13px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ===== STEP BLOCKS ===== */
+.step-block {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step-block:last-child { border-bottom: none; }
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.step-num.green { background: var(--go); }
+.step-num.ember { background: var(--ember); }
+.step-num.purple { background: var(--purple); }
+.step-content h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.step-content p {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* ===== CODE / FILE EXAMPLES ===== */
+.file-example {
+  background: var(--void);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.file-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.file-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.file-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: #a0a4b8;
+}
+.file-body {
+  padding: 16px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #e8e8e8;
+  overflow-x: auto;
+}
+.file-body .comment { color: #6b7280; }
+.file-body .key { color: #3B9EFF; }
+.file-body .value { color: #1BBA01; }
+.file-body .heading { color: #E67201; font-weight: 700; }
+
+/* ===== CALLOUT ===== */
+.callout {
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.callout.tip {
+  background: rgba(27,186,1,0.05);
+  border: 1px solid rgba(27,186,1,0.15);
+}
+.callout.note {
+  background: rgba(59,158,255,0.05);
+  border: 1px solid rgba(59,158,255,0.15);
+}
+.callout.heads-up {
+  background: rgba(230,114,1,0.05);
+  border: 1px solid rgba(230,114,1,0.15);
+}
+.callout .c-icon { font-size: 20px; flex-shrink: 0; }
+.callout .c-text { font-size: 14px; color: #4b5563; line-height: 1.7; }
+.callout .c-text strong { color: var(--text); }
+
+/* ===== LOOP DIAGRAM ===== */
+.loop-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.loop-step {
+  text-align: center;
+  padding: 20px 14px;
+  border-radius: 12px;
+  position: relative;
+}
+.loop-step .ls-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+.loop-step .ls-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.loop-step .ls-desc {
+  font-size: 11px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+.loop-arrow {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  font-size: 18px;
+  z-index: 1;
+}
+
+/* ===== FOLDER MAP ===== */
+.folder-map {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 2;
+  padding: 20px 24px;
+  background: var(--void);
+  border-radius: 12px;
+  color: #e8e8e8;
+  margin-bottom: 16px;
+}
+.folder-map .dir { color: #3B9EFF; font-weight: 600; }
+.folder-map .file { color: #a0a4b8; }
+.folder-map .desc { color: #6b7280; font-size: 11px; }
+
+/* ===== REFERENCE TABLE ===== */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.ref-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: rgba(59,158,255,0.05);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  border-bottom: 2px solid var(--border);
+}
+.ref-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.ref-table td:first-child {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ref-table td:last-child {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ===== DARK HERO BLOCK ===== */
+.dark-hero {
+  background: linear-gradient(135deg, var(--void) 0%, var(--deep) 100%);
+  border-radius: 16px;
+  padding: 36px 40px;
+  margin-bottom: 24px;
+  color: #e8e8e8;
+}
+.dark-hero h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+}
+.dark-hero p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #a0a4b8;
+}
+
+/* ===== DASHBOARD PREVIEWS ===== */
+.dash-preview {
+  background: var(--void);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.dash-preview-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dash-preview-header h4 {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8e8e8;
+  margin: 0;
+}
+.dash-preview-header .dp-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.dash-preview-body {
+  padding: 20px;
+}
+.dash-preview-desc {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 13px;
+  color: #a0a4b8;
+  line-height: 1.6;
+}
+
+/* Mini Ring */
+.mini-ring {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  background: conic-gradient(
+    #1E1E38 0deg,
+    #007EFF 0deg 60deg,
+    #1E1E38 60deg 90deg,
+    #E67201 90deg 135deg,
+    #1E1E38 135deg 150deg,
+    #1BBA01 150deg 195deg,
+    #1E1E38 195deg 210deg,
+    #3B9EFF 210deg 270deg,
+    #1E1E38 270deg 285deg,
+    #7c3aed 285deg 315deg,
+    #1E1E38 315deg 360deg
+  );
+}
+.mini-ring::after {
+  content: '';
+  position: absolute;
+  top: 30px; left: 30px; right: 30px; bottom: 30px;
+  border-radius: 50%;
+  background: var(--void);
+}
+.mini-ring-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+  text-align: center;
+}
+.mini-ring-center .time {
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #e8e8e8;
+}
+.mini-ring-center .date {
+  font-size: 11px;
+  color: #6b7280;
+}
+.ring-legend {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.ring-legend span {
+  font-size: 10px;
+  color: #a0a4b8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ring-legend .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Mini Focus 3 */
+.mini-focus {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mini-focus-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.mini-focus-item .mf-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 12px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.mini-focus-item .mf-text {
+  font-size: 13px;
+  color: #e8e8e8;
+  flex: 1;
+}
+.mini-focus-item .mf-tag {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* Mini Cubes */
+.mini-cubes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.mini-cube {
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.mini-cube .mc-state {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.mini-cube .mc-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8e8e8;
+  margin-bottom: 4px;
+}
+.mini-cube .mc-meta {
+  font-size: 10px;
+  color: #6b7280;
+}
+.mini-cube .mc-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 8px;
+  overflow: hidden;
+}
+.mini-cube .mc-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* Mini Budget */
+.mini-budget {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.mini-budget-card {
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.mini-budget-card .mb-label {
+  font-size: 10px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.mini-budget-card .mb-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.mini-budget-card .mb-sub {
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.mini-bills {
+  margin-top: 12px;
+}
+.mini-bill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 12px;
+}
+.mini-bill-row:last-child { border-bottom: none; }
+.mini-bill-row .bill-name { color: #a0a4b8; }
+.mini-bill-row .bill-amt { color: #e8e8e8; font-weight: 600; }
+.mini-bill-row .bill-due { color: #6b7280; font-size: 10px; }
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  text-align: center;
+  padding: 40px 20px 60px;
+  max-width: 860px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+}
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer .doc-meta { font-size: 11px; color: #9ca3af; margin-top: 8px; }
+
+/* ===== SIDEBAR TOC ===== */
+.doc-layout { display: flex; max-width: 1120px; margin: 0 auto; position: relative; }
+.doc-sidebar {
+  position: sticky;
+  top: 64px;
+  width: 200px;
+  min-width: 200px;
+  height: calc(100vh - 64px);
+  padding: 32px 0 32px 20px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.doc-sidebar::-webkit-scrollbar { width: 0; }
+.doc-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.doc-sidebar .toc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-xdim);
+  padding: 0 12px 8px;
+  margin-bottom: 4px;
+}
+.doc-sidebar a {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.doc-sidebar a:hover { color: var(--text); background: var(--bg2); }
+.doc-sidebar a.active {
+  color: var(--blue);
+  background: rgba(0,126,255,0.06);
+  border-left-color: var(--blue);
+  font-weight: 600;
+}
+.doc-main { flex: 1; min-width: 0; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .doc-sidebar { display: none; }
+  .doc-layout { display: block; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .box-grid { grid-template-columns: 1fr; }
+  .loop-row { grid-template-columns: 1fr 1fr; }
+  .loop-arrow { display: none; }
+  .step-block { flex-direction: column; gap: 12px; }
+  .mini-cubes { grid-template-columns: 1fr 1fr; }
+  .mini-budget { grid-template-columns: 1fr 1fr; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="../index.html" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Setup</a>
+      <a href="user-guide.html" class="active">Guide</a>
+      <a href="prompt-cookbook.html">Cookbook</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="../index.html" style="font-size:13px;opacity:.7;text-decoration:none;color:var(--text-dim,#6B7280);">← Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="doc-layout">
+
+<!-- ===== SIDEBAR TOC ===== -->
+<aside class="doc-sidebar">
+  <nav aria-label="Table of contents">
+    <div class="toc-label">On this page</div>
+    <a href="#what-you-got">What You Just Got</a>
+    <a href="#first-session">Your First Session</a>
+    <a href="#seed">How the Seed Works</a>
+    <a href="#talking">Talking to Your Agent</a>
+    <a href="#dashboard">The Dashboard</a>
+    <a href="#settings">Settings & Features</a>
+    <a href="#session-loop">The Session Loop</a>
+    <a href="#inbox">Using the Inbox</a>
+    <a href="#extensibility">Make It Yours</a>
+    <a href="#privacy">Where Data Lives</a>
+    <a href="#reference">Quick Reference</a>
+  </nav>
+</aside>
+
+<div class="doc-main" id="doc-content" role="main">
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-pill">User Guide</div>
+  <h1>Welcome to <span>Your Capsul</span></h1>
+  <p class="hero-sub">This is the friendly manual. It explains what you've got, how the pieces work, and how to make it yours. No jargon without explanation. No steps without context.</p>
+</div>
+
+<!-- ===== WHAT'S IN THE BOX ===== -->
+<div class="section" id="what-you-got">
+  <div class="section-label green">Getting Started</div>
+  <h2>What You Just Got</h2>
+  <p class="intro">MyCapsul has four main pieces. They all live on your machine and work together. Here's what each one does.</p>
+
+  <div class="box-grid">
+    <div class="box-item">
+      <div class="bi-icon">🤖</div>
+      <div>
+        <h4>Your Capsul Agent</h4>
+        <p>An AI partner powered by <strong>Claude</strong> (Anthropic's AI) running through <strong>Cowork</strong> (Anthropic's desktop environment). MyCapsul doesn't build its own AI — it gives Claude a framework so it can work as <em>your</em> agent, with your context, on your machine.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">🖥️</div>
+      <div>
+        <h4>The Dashboard</h4>
+        <p>A visual command center — a single HTML file that shows your schedule, budget, tasks, countdowns, and priorities. It runs in your browser, stores data locally, and your agent can update it for you.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">🌱</div>
+      <div>
+        <h4>Your Seed</h4>
+        <p>A set of local files that hold everything about your life — identity, finances, schedule, health, career, goals. These are plain text files (mostly markdown) that you and your agent both read and write. This is your personal knowledge base.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">📥</div>
+      <div>
+        <h4>The Inbox</h4>
+        <p>A drop folder called <code>_inbox/</code> inside your MyCapsul directory. Throw anything in here — a file, a bank statement, an email forward, a note to yourself. Your agent picks it up, reads it, routes it to the right Seed file, and tells you what it did.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#0f0f1a 0%,#16162a 100%);border-radius:14px;padding:32px 36px;margin-bottom:20px;">
+    <h4 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:#fff;margin-bottom:12px;">What Powers Your Agent</h4>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#7c3aed;margin-bottom:6px;">The AI</div>
+        <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#e8e8e8;">Claude</div>
+        <div style="font-size:12px;color:#a0a4b8;margin-top:4px;line-height:1.5;"><a href="https://www.anthropic.com/claude" style="color:#a0a4b8;text-decoration:underline;">Anthropic's AI model</a>. The brain that thinks, writes, plans, and reasons.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#007EFF;margin-bottom:6px;">The Environment</div>
+        <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#e8e8e8;">Cowork</div>
+        <div style="font-size:12px;color:#a0a4b8;margin-top:4px;line-height:1.5;"><a href="https://www.anthropic.com" style="color:#a0a4b8;text-decoration:underline;">Anthropic's desktop tool</a>. Gives Claude access to your files, browser, and local machine.</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#E67201;margin-bottom:6px;">The Framework</div>
+        <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#e8e8e8;">MyCapsul</div>
+        <div style="font-size:12px;color:#a0a4b8;margin-top:4px;line-height:1.5;">The structure, rules, and systems that make Claude your Capsul Agent — with your data, your priorities, your life.</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#a0a4b8;text-align:center;line-height:1.7;">MyCapsul doesn't build an AI. It turns a world-class AI into one that works for you — with your context, your files, your rules, on your machine.</p>
+  </div>
+
+  <div class="callout tip">
+    <span class="c-icon">💡</span>
+    <div class="c-text"><strong>The key idea:</strong> You never start from zero. Your agent reads your Seed files at the beginning of every session, so it already knows your schedule, your budget, your deadlines, and your priorities before you say a word.</div>
+  </div>
+</div>
+
+<!-- ===== YOUR FIRST SESSION ===== -->
+<div class="section" id="first-session">
+  <div class="section-label">First Steps</div>
+  <h2>Your First Session</h2>
+  <p class="intro">When you open MyCapsul for the first time, here's what happens — and what you should expect.</p>
+
+  <!-- ONBOARDING WIZARD -->
+  <div class="card" style="margin-bottom:28px;">
+    <h4 style="margin-bottom:4px;">The Onboarding Wizard</h4>
+    <p style="font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:16px;">The first time you open your dashboard, a setup wizard appears. It walks you through 5 steps to personalize your Capsul before your first agent session. Takes about 2 minutes — and every step is skippable.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">Step 1 — Welcome</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Introduces MyCapsul, links to docs, and explains the skip-any-step philosophy. Your agent picks up whatever you skip here.</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">Step 2 — You + Your Style</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Set your name, dashboard name, and Capsul Agent name. Choose a color palette from the 7 options. Select your weekly schedule type (same every week, variable/co-parenting, or rotating shifts).</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">Step 3 — People, Nodes & Cubes</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Add important people (family, partners, kids) so your agent knows who's who. Pick your life areas (career, health, financial, creative, etc.) — these become Nodes that organize your projects.</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;">
+        <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">Step 4 — Your Money</div>
+        <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Choose what financial areas to track (daily budget, bills, subscriptions, debt, savings). Select your income type (salaried, freelance, or hourly). Your agent fills in the actual numbers in your first session.</div>
+      </div>
+    </div>
+    <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
+      <div style="font-size:12px;font-weight:700;color:var(--go);margin-bottom:6px;">Step 5 — Your Capsul is Ready</div>
+      <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Shows a summary of everything you configured, including which tiles are active. Hit "Launch Your Capsul" and the wizard closes — your dashboard loads with your palette applied and tiles ready to go.</div>
+    </div>
+
+    <div style="font-size:13px;color:var(--text-dim);line-height:1.7;padding:12px 16px;background:rgba(0,126,255,0.04);border-radius:8px;border-left:3px solid var(--blue);">
+      <strong style="color:var(--text);">Don't stress about getting everything perfect.</strong> Every step has a skip option. Your agent will bring up anything you skipped during your first conversation — so skipping just means "I'll handle this in chat instead."
+    </div>
+  </div>
+
+  <!-- FIRST AGENT SESSION -->
+  <h4 style="margin-bottom:12px;">Your First Agent Session</h4>
+  <p style="font-size:14px;color:var(--text-dim);line-height:1.7;margin-bottom:16px;">After the wizard, start a Cowork session. Here's the flow:</p>
+
+  <div class="card" style="padding:0;">
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Your agent boots up</h4>
+        <p>It reads your Seed files, checks your inbox for anything you dropped in, pulls your schedule, and loads the session handoff from last time. On your very first session, there's no history yet — so it'll introduce itself and pick up from what you configured in the wizard.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>You tell it about your life</h4>
+        <p>This is where the Seed starts growing. Talk about your job, your family, your schedule patterns, your bills, your goals. Your agent will organize this into the right files automatically. You don't need to know the file structure — just talk.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Your dashboard comes alive</h4>
+        <p>As your agent learns about your life, it can populate your dashboard — schedule blocks for your day, countdown timers for upcoming deadlines, budget numbers, your Focus 3 priorities. The dashboard goes from blank to useful in one conversation.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Session wraps up</h4>
+        <p>At the end of your first session, your agent writes a handoff — a short summary of what it learned and what's pending. Next time you open MyCapsul, it picks up right where you left off. No re-explaining. No "let me remind you..."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HOW THE SEED WORKS ===== -->
+<div class="section" id="seed">
+  <div class="section-label green">The Foundation</div>
+  <h2>How the Seed Works</h2>
+  <p class="intro">The Seed is what makes MyCapsul actually know you. It's a folder of plain text files — organized by topic, readable by humans and AI alike. Here's what's inside.</p>
+
+  <div class="folder-map">
+    <span class="dir">📁 seed/</span><br>
+    &nbsp;&nbsp;<span class="file">index.md</span> <span class="desc">← The router. Maps topics to files.</span><br>
+    &nbsp;&nbsp;<span class="file">identity.md</span> <span class="desc">← Who you are, your family, key relationships</span><br>
+    &nbsp;&nbsp;<span class="file">finances.md</span> <span class="desc">← Budget, bills, debts, income, goals</span><br>
+    &nbsp;&nbsp;<span class="file">schedule.md</span> <span class="desc">← Events, deadlines, recurring patterns, time templates</span><br>
+    &nbsp;&nbsp;<span class="file">career.md</span> <span class="desc">← Job details, income, professional goals</span><br>
+    &nbsp;&nbsp;<span class="file">health.md</span> <span class="desc">← Medical info, wellness notes, conditions</span><br>
+    &nbsp;&nbsp;<span class="file">changelog.md</span> <span class="desc">← Running log of every update, timestamped</span><br>
+    &nbsp;&nbsp;<span class="desc">...and more as your life grows</span>
+  </div>
+
+  <div class="file-example">
+    <div class="file-header">
+      <div class="file-dot" style="background:#ef4444;"></div>
+      <div class="file-dot" style="background:#eab308;"></div>
+      <div class="file-dot" style="background:#22c55e;"></div>
+      <span class="file-name">schedule.md</span>
+    </div>
+    <div class="file-body">
+<span class="heading"># Schedule</span>
+
+<span class="comment">## Recurring Patterns</span>
+<span class="key">- Weekdays:</span> <span class="value">Work 9am-5pm, gym 6:30am (M/W/F)</span>
+<span class="key">- Fridays:</span> <span class="value">Game night when available</span>
+
+<span class="comment">## Upcoming</span>
+<span class="key">- Mar 14:</span> <span class="value">Dentist appointment, 2:30pm</span>
+<span class="key">- Mar 21:</span> <span class="value">Quarterly review at work</span>
+<span class="key">- Apr 1:</span> <span class="value">Rent due</span>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="c-icon">📝</span>
+    <div class="c-text"><strong>You can edit these files yourself.</strong> They're just markdown — open them in any text editor. But you don't have to. Most of the time, your agent handles updates through conversation. Mention a new deadline and it writes it to schedule.md. Mention a doctor visit and it logs it in health.md.</div>
+  </div>
+
+  <div class="card">
+    <h4>The Router (index.md)</h4>
+    <p>Your agent doesn't read every Seed file every time. The router tells it which file to open based on the topic at hand. When you mention money, it opens finances.md. When you mention a date, it opens schedule.md. This keeps things fast and focused.</p>
+  </div>
+
+  <div class="card">
+    <h4>The Changelog</h4>
+    <p>Every time your agent updates a Seed file, it logs the change — what changed, when, and why. This creates a running history of your life data. You can always look back and see exactly what was updated and when.</p>
+  </div>
+</div>
+
+<!-- ===== TALKING TO YOUR AGENT ===== -->
+<div class="section" id="talking">
+  <div class="section-label purple">Working Together</div>
+  <h2>Talking to Your Agent</h2>
+  <p class="intro">Your Capsul Agent is Claude — running through Cowork, guided by your MyCapsul framework. It's not a search engine. It's not Siri. It's more like a chief of staff who's been briefed on your entire life. Here's how to get the most out of it.</p>
+
+  <div class="card" style="border-left:4px solid var(--blue);">
+    <h4>Just talk normally</h4>
+    <p>You don't need special commands or prompts. Say "I have a dentist appointment next Tuesday at 2:30" and your agent will update your schedule, check for conflicts, and note it in the changelog. Say "how much do I owe on my credit card?" and it'll pull from finances.md.</p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--go);">
+    <h4>It updates things in real time</h4>
+    <p>When you share new information mid-conversation — a new bill, a schedule change, a health update — your agent writes it to the correct Seed file immediately. It doesn't batch things up and maybe forget later. It files it right now.</p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--ember);">
+    <h4>It'll ask before it acts</h4>
+    <p>Your agent presents options — it doesn't make decisions for you. If there's a budget call, a scheduling conflict, or anything involving money or family, it'll flag it and ask. You decide. It executes.</p>
+  </div>
+
+  <div class="card" style="border-left:4px solid var(--purple);">
+    <h4>It flags things before you ask</h4>
+    <p>Upcoming deadlines, bills due, schedule conflicts, things that need attention — your agent surfaces these proactively. Part of the boot process is scanning for what matters today. You don't have to remember to check. It checks for you.</p>
+  </div>
+
+  <div class="callout heads-up">
+    <span class="c-icon">⚡</span>
+    <div class="c-text"><strong>Good to know:</strong> Your agent can't send emails, make purchases, or contact anyone on your behalf without explicit permission. It can draft, prepare, and recommend — but you always pull the trigger on external actions.</div>
+  </div>
+</div>
+
+<!-- ===== THE DASHBOARD ===== -->
+<div class="section" id="dashboard">
+  <div class="section-label ember">Your View</div>
+  <h2>The Dashboard</h2>
+  <p class="intro">The dashboard is your visual layer — everything your Seed knows, made visible. It's a single HTML file that runs in your browser. No login. No account. Just open it. Here's what's on it.</p>
+
+  <p style="font-size:13px;color:var(--text-dim);line-height:1.6;padding:10px 16px;background:rgba(0,126,255,0.04);border-radius:8px;border-left:3px solid var(--blue);margin-bottom:24px;">The examples below may look different from yours — that's because you can always ask your agent to customize your dashboard's look and feel.</p>
+
+  <!-- Ring Preview -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+    <div class="dash-preview">
+      <div class="dash-preview-header">
+        <h4>The Ring</h4>
+        <div class="dp-badge" style="background:rgba(230,114,1,0.15);color:#E67201;">Schedule</div>
+      </div>
+      <div class="dash-preview-body" style="text-align:center;">
+        <div class="mini-ring">
+          <div class="mini-ring-center">
+            <div class="time">9:41</div>
+            <div class="date">Mon, Mar 9</div>
+          </div>
+        </div>
+        <div class="ring-legend">
+          <span><span class="dot" style="background:#007EFF;"></span> Work</span>
+          <span><span class="dot" style="background:#E67201;"></span> Focus</span>
+          <span><span class="dot" style="background:#1BBA01;"></span> Personal</span>
+          <span><span class="dot" style="background:#3B9EFF;"></span> Flex</span>
+          <span><span class="dot" style="background:#7c3aed;"></span> Evening</span>
+        </div>
+      </div>
+      <div class="dash-preview-desc">Your day as a 24-hour circular clock. Colored arcs represent time blocks — work, focus, personal, meals. Your agent generates this from your schedule and preferences.</div>
+    </div>
+
+    <!-- Focus 3 Preview -->
+    <div class="dash-preview">
+      <div class="dash-preview-header">
+        <h4>Focus 3</h4>
+        <div class="dp-badge" style="background:rgba(230,114,1,0.15);color:#E67201;">Priorities</div>
+      </div>
+      <div class="dash-preview-body">
+        <div class="mini-focus">
+          <div class="mini-focus-item">
+            <div class="mf-num" style="background:#E67201;">1</div>
+            <div class="mf-text">Finalize quarterly report</div>
+            <div class="mf-tag" style="background:rgba(239,68,68,0.15);color:#ef4444;">Now</div>
+          </div>
+          <div class="mini-focus-item">
+            <div class="mf-num" style="background:#007EFF;">2</div>
+            <div class="mf-text">Schedule dentist appointment</div>
+            <div class="mf-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">Soon</div>
+          </div>
+          <div class="mini-focus-item">
+            <div class="mf-num" style="background:#1BBA01;">3</div>
+            <div class="mf-text">Review insurance renewal</div>
+            <div class="mf-tag" style="background:rgba(234,179,8,0.15);color:#eab308;">Soon</div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-preview-desc">The 3 things that matter most today. Agent-recommended based on urgency, energy, and deadlines — but you always have the final call.</div>
+    </div>
+  </div>
+
+  <!-- Cubes Preview -->
+  <div class="dash-preview">
+    <div class="dash-preview-header">
+      <h4>Cubes</h4>
+      <div class="dp-badge" style="background:rgba(59,158,255,0.15);color:#007EFF;">Tasks</div>
+    </div>
+    <div class="dash-preview-body">
+      <div class="mini-cubes">
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#E67201;">🎯 Focus</div>
+          <div class="mc-name">Brand Foundation</div>
+          <div class="mc-meta">Creative · High Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:72%;background:#E67201;"></div></div>
+        </div>
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#007EFF;">▶ Active</div>
+          <div class="mc-name">Budget Tracker</div>
+          <div class="mc-meta">Financial · Med Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:45%;background:#007EFF;"></div></div>
+        </div>
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#007EFF;">▶ Active</div>
+          <div class="mc-name">Meal Planning</div>
+          <div class="mc-meta">Home · Low Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:20%;background:#007EFF;"></div></div>
+        </div>
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#7c3aed;">✨ Spark</div>
+          <div class="mc-name">Side Project</div>
+          <div class="mc-meta">Creative · High Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:5%;background:#7c3aed;"></div></div>
+        </div>
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#6b7280;">⏸ Parked</div>
+          <div class="mc-name">Garage Cleanup</div>
+          <div class="mc-meta">Home · Med Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:10%;background:#6b7280;"></div></div>
+        </div>
+        <div class="mini-cube">
+          <div class="mc-state" style="color:#16a34a;">✅ Done</div>
+          <div class="mc-name">Tax Filing</div>
+          <div class="mc-meta">Financial · High Energy</div>
+          <div class="mc-bar"><div class="mc-bar-fill" style="width:100%;background:#1BBA01;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-preview-desc">Your tasks, visualized. Each Cube has a state (Spark → Parked → Active → Focus → Done), an energy level, urgency, and a progress log. Cubes live inside Nodes — your life categories.</div>
+  </div>
+
+  <!-- Budget Preview -->
+  <div class="dash-preview">
+    <div class="dash-preview-header">
+      <h4>Budget & Bills</h4>
+      <div class="dp-badge" style="background:rgba(27,186,1,0.15);color:#1BBA01;">Money</div>
+    </div>
+    <div class="dash-preview-body">
+      <div class="mini-budget">
+        <div class="mini-budget-card">
+          <div class="mb-label">Checking</div>
+          <div class="mb-value" style="color:#1BBA01;">$1,847</div>
+          <div class="mb-sub">as of Mar 8</div>
+        </div>
+        <div class="mini-budget-card">
+          <div class="mb-label">Daily Budget</div>
+          <div class="mb-value" style="color:#E67201;">$25</div>
+          <div class="mb-sub">until next payday</div>
+        </div>
+        <div class="mini-budget-card">
+          <div class="mb-label">Spent Today</div>
+          <div class="mb-value" style="color:#e8e8e8;">$12.40</div>
+          <div class="mb-sub">$12.60 remaining</div>
+        </div>
+        <div class="mini-budget-card">
+          <div class="mb-label">Next Bill</div>
+          <div class="mb-value" style="color:#ef4444;">$156</div>
+          <div class="mb-sub">Electric · Mar 15</div>
+        </div>
+      </div>
+      <div class="mini-bills">
+        <div style="font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-bottom:6px;padding-top:8px;">Upcoming Bills</div>
+        <div class="mini-bill-row">
+          <span class="bill-name">Electric</span>
+          <span class="bill-due">Mar 15</span>
+          <span class="bill-amt">$156</span>
+        </div>
+        <div class="mini-bill-row">
+          <span class="bill-name">Internet</span>
+          <span class="bill-due">Mar 18</span>
+          <span class="bill-amt">$65</span>
+        </div>
+        <div class="mini-bill-row">
+          <span class="bill-name">Car Insurance</span>
+          <span class="bill-due">Mar 22</span>
+          <span class="bill-amt">$198</span>
+        </div>
+      </div>
+    </div>
+    <div class="dash-preview-desc">Your financial snapshot — checking balance, daily budget, spending patterns, and upcoming bills. Numbers pulled from your Seed and kept in sync by your agent.</div>
+  </div>
+
+  <div class="callout tip">
+    <span class="c-icon">💡</span>
+    <div class="c-text"><strong>Dashboard data is stored in your browser's localStorage</strong> — it never leaves your machine. Your agent can also export and import dashboard state through the Seed system, keeping everything in sync.</div>
+  </div>
+
+  <div class="card">
+    <h4>Customizing Your Dashboard</h4>
+    <p>Want to change something? Just tell your agent. "Add a countdown for March 28th." "Change my schedule template for off-weeks." "Show me this week's spending breakdown." Conversation is the settings panel. No menus to dig through.</p>
+  </div>
+</div>
+
+<!-- ===== SETTINGS & FEATURES ===== -->
+<div class="section" id="settings">
+  <div class="section-label" style="color:var(--ember);">Controls</div>
+  <h2>Settings & Features</h2>
+  <p class="intro">Your dashboard has more built-in features than you might notice at first. Here's what's available from the header and tiles.</p>
+
+  <div class="card" style="padding:0;">
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--ember);">⚙️</div>
+      <div class="step-content">
+        <h4>Settings Drawer</h4>
+        <p>Click the gear icon in the header. This opens the Settings drawer where you can change your color palette (7 options: MyCapsul brand default, Ocean, Sunset, Forest, Lavender, Amber, Slate), show/hide tiles, drag tiles to reorder them, and manage your agent sync connection.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--go);">📐</div>
+      <div class="step-content">
+        <h4>Tile Resize & Reorder</h4>
+        <p>Each tile has a resize button (in the tile header) that lets you pick from compact, standard, wide, or full-width sizes. You can also drag tiles to reorder them from the Settings drawer, or just tell your agent: <span style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg2);padding:2px 8px;border-radius:4px;">"Move the budget tile above the calendar."</span></p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--sky);">ℹ️</div>
+      <div class="step-content">
+        <h4>Tile Info</h4>
+        <p>Every tile has an ℹ️ button that opens a quick overview — what the tile does, how to use it, and suggestions for things to tell your agent. Great for learning the system without reading the full docs.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--purple);">🕐</div>
+      <div class="step-content">
+        <h4>Ring Clock Editing</h4>
+        <p>Click on the Ring Planner to edit your schedule blocks for any day. Each block has a category (work, build, family, admin, personal, break) that determines its color. Your agent generates these from your schedule each session, but you can also edit them manually.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--ember);">📅</div>
+      <div class="step-content">
+        <h4>Calendar Popover</h4>
+        <p>Click any day on the Calendar tile to see a popover with that day's events and a mini Ring preview. Click the pin icon to keep the popover open while you navigate. If you're in co-parent mode, custody weeks are highlighted with a subtle background tint. US holidays appear automatically.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--go);">🔮</div>
+      <div class="step-content">
+        <h4>TimeCapsul (Year-in-Review)</h4>
+        <p>At the end of the year (or anytime you want), open your TimeCapsul from the Timeline tile. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and cube completions. Your agent contributes milestone data throughout the year so the review is rich and personal.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--sky);">❓</div>
+      <div class="step-content">
+        <h4>"How it works" Overview</h4>
+        <p>Click the "How it works" button in the header to see a visual tour of all core features. Hover over any tile preview to see it animate. The overview also has a docs bar linking to these support documents.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="c-icon">🧪</span>
+    <div class="c-text"><strong>Want to explore without setting up?</strong> Open the included <a href="../mycapsul-demo.html" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg2);padding:2px 6px;border-radius:4px;color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">mycapsul-demo.html</a> to see a pre-populated demo. You'll see what a fully set-up Capsul looks like with sample data for a fictional user named Brodie.</div>
+  </div>
+</div>
+
+<!-- ===== THE SESSION LOOP ===== -->
+<div class="section" id="session-loop">
+  <div class="section-label">How It Compounds</div>
+  <h2>The Session Loop</h2>
+  <p class="intro">MyCapsul gets smarter because every session follows the same loop. Your agent boots, works, wraps, and hands off — so the next session always picks up where you left off.</p>
+
+  <div class="loop-row">
+    <div class="loop-step" style="background:rgba(59,158,255,0.05);border:1px solid rgba(59,158,255,0.15);">
+      <span class="ls-icon">🔄</span>
+      <span class="ls-label" style="color:var(--blue);">Boot</span>
+      <span class="ls-desc">Agent reads your Seed, checks inbox, loads the last session handoff, surfaces what matters today</span>
+      <span class="loop-arrow">→</span>
+    </div>
+    <div class="loop-step" style="background:rgba(27,186,1,0.05);border:1px solid rgba(27,186,1,0.15);">
+      <span class="ls-icon">⚡</span>
+      <span class="ls-label" style="color:var(--go);">Work</span>
+      <span class="ls-desc">You and your agent collaborate. New info gets filed to Seed in real time. Dashboard gets updated.</span>
+      <span class="loop-arrow">→</span>
+    </div>
+    <div class="loop-step" style="background:rgba(230,114,1,0.05);border:1px solid rgba(230,114,1,0.15);">
+      <span class="ls-icon">📝</span>
+      <span class="ls-label" style="color:var(--ember);">Wrap</span>
+      <span class="ls-desc">Agent updates Seed modules, syncs dashboard, logs all changes to the changelog</span>
+      <span class="loop-arrow">→</span>
+    </div>
+    <div class="loop-step" style="background:rgba(139,92,246,0.05);border:1px solid rgba(139,92,246,0.15);">
+      <span class="ls-icon">📋</span>
+      <span class="ls-label" style="color:var(--purple);">Handoff</span>
+      <span class="ls-desc">Agent writes a short summary for the next session — what happened, what's pending, what to pick up</span>
+    </div>
+  </div>
+
+  <div class="dark-hero">
+    <h3>This is how MyCapsul learns without a database.</h3>
+    <p>There's no machine learning model being trained on you. No neural network remembering your patterns. It's simpler and more transparent than that — your agent reads files, updates files, and writes a handoff. The next agent reads the handoff and picks up where the last one stopped. Cumulative knowledge through structured text. You can read every word of it.</p>
+  </div>
+</div>
+
+<!-- ===== THE INBOX ===== -->
+<div class="section" id="inbox">
+  <div class="section-label green">Zero Friction</div>
+  <h2>Using the Inbox</h2>
+  <p class="intro">The inbox is the simplest part of MyCapsul. It's a folder called <code>_inbox/</code> inside your <code>MyCapsul/</code> directory — created automatically during setup. Drop things in it. Your agent handles the rest.</p>
+
+  <div class="card" style="padding:0;">
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num green">1</div>
+      <div class="step-content">
+        <h4>Drop a file in the <code>_inbox/</code> folder</h4>
+        <p>A bank statement CSV, a school calendar PDF, a note you wrote on your phone, an email you forwarded — anything. Just put it in the <code>MyCapsul/_inbox/</code> folder on your machine.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num green">2</div>
+      <div class="step-content">
+        <h4>Your agent picks it up</h4>
+        <p>At the start of every session (or when you say "check the inbox"), your agent reads everything new. It figures out what the file is and where the information belongs.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num green">3</div>
+      <div class="step-content">
+        <h4>It routes and reports</h4>
+        <p>New bill? Goes to finances.md. School event? Goes to schedule.md. Bank statement? Gets processed and spending data extracted. Your agent tells you exactly what it did with each file.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="c-icon">💡</span>
+    <div class="c-text"><strong>You can also message your agent through the inbox.</strong> The dashboard has a "Send to Agent" feature that drops a message into the inbox as a JSON file. Next session, your agent reads it and acts on it — like leaving a note for a coworker who's not at their desk yet.</div>
+  </div>
+</div>
+
+<!-- ===== MAKE IT YOURS ===== -->
+<div class="section" id="extensibility">
+  <div class="section-label" style="color:var(--purple);">Extensibility</div>
+  <h2>Make It Yours</h2>
+  <p class="intro">MyCapsul is a framework, not a cage. Everything is built on open formats you already know — markdown, JSON, HTML. There's no plugin system to learn, no app store to browse, no proprietary format locking you in. The architecture <em>is</em> the extensibility.</p>
+
+  <div class="dark-hero">
+    <h3>Your Capsul grows the way your life does.</h3>
+    <p>MyCapsul doesn't decide what domains of your life to support. The Seed pattern works for anything — add a new markdown file, tell your agent about it, and that part of your life is now inside the system. The same structure that tracks your finances can track your fitness, your creative projects, your side business, or your kid's soccer schedule.</p>
+  </div>
+
+  <!-- Customization tiers -->
+  <div class="card" style="padding:0;">
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--purple);">1</div>
+      <div class="step-content">
+        <h4>Add new Seed modules</h4>
+        <p>Want to track something new? Just say so. <span style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:13px;background:#f3f4f6;padding:2px 8px;border-radius:4px;">"Start tracking my photography gear and shoots."</span> Your agent creates a new markdown file, adds it to the router, and it's part of your Capsul from that point forward. No setup wizard. No configuration screen.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--purple);">2</div>
+      <div class="step-content">
+        <h4>Reshape the dashboard</h4>
+        <p>The dashboard is a single HTML file. Want a new card? A different layout? A tracker for something specific to your life? Tell your agent. It reads the dashboard, understands the structure, and writes the changes. You can also open it in any code editor — it's just HTML, CSS, and JavaScript.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--purple);">3</div>
+      <div class="step-content">
+        <h4>Define your own protocols</h4>
+        <p>MyCapsul's operating manual is a markdown file your agent reads every session. Want it to check a specific inbox every morning? Remind you about a weekly commitment? Follow a particular workflow when you say a trigger phrase? Add it to the protocols. Your agent follows your rules — literally.</p>
+      </div>
+    </div>
+    <div class="step-block" style="padding:24px 28px;">
+      <div class="step-num" style="background:var(--purple);">4</div>
+      <div class="step-content">
+        <h4>Build entirely new systems</h4>
+        <p>Power users can build complete subsystems on top of the MyCapsul framework. A music producer could add a Seed module for project tracking, a dashboard tab for session logs, and protocols for how the agent handles mix notes. A freelancer could build invoicing, client management, and project timelines — all using the same patterns that already run the core system.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The open format callout -->
+  <div style="background:linear-gradient(135deg,#0f0f1a 0%,#16162a 100%);border-radius:14px;padding:28px 32px;margin-top:20px;">
+    <p style="font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:12px;">Open by Design</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:16px 20px;">
+        <p style="font-size:14px;font-weight:600;color:#e8e8e8;margin-bottom:6px;">Your data files</p>
+        <p style="font-size:13px;color:#9ca3af;line-height:1.6;">Markdown and JSON. Open them in any text editor. Read them, edit them, delete them. They're yours.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:16px 20px;">
+        <p style="font-size:14px;font-weight:600;color:#e8e8e8;margin-bottom:6px;">Your dashboard</p>
+        <p style="font-size:13px;color:#9ca3af;line-height:1.6;">Single HTML file. Works in any browser. Modify it yourself or ask your agent. No build tools needed.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:16px 20px;">
+        <p style="font-size:14px;font-weight:600;color:#e8e8e8;margin-bottom:6px;">Your operating manual</p>
+        <p style="font-size:13px;color:#9ca3af;line-height:1.6;">A markdown file that defines how your agent behaves. Change the rules anytime — it reads them fresh every session.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border-radius:10px;padding:16px 20px;">
+        <p style="font-size:14px;font-weight:600;color:#e8e8e8;margin-bottom:6px;">Your session history</p>
+        <p style="font-size:13px;color:#9ca3af;line-height:1.6;">Handoff files and changelogs. Plain text records of every session — portable, searchable, human-readable.</p>
+      </div>
+    </div>
+    <p style="font-size:14px;color:#9ca3af;margin-top:16px;text-align:center;line-height:1.6;">No proprietary formats. No vendor lock-in. No export needed — it's already in formats you can use anywhere.</p>
+  </div>
+
+  <div class="callout tip">
+    <span class="c-icon">💡</span>
+    <div class="c-text"><strong>You don't need to be technical.</strong> Most customization happens through conversation — just tell your agent what you want. But if you <em>are</em> technical, everything is accessible. The files are files. The code is code. Nothing is hidden or compiled.</div>
+  </div>
+</div>
+
+<!-- ===== PRIVACY REMINDER ===== -->
+<div class="section" id="privacy">
+  <div class="section-label">Your Data</div>
+  <h2>Where Your Data Actually Lives</h2>
+
+  <div class="dark-hero">
+    <h3>Everything is on your machine.</h3>
+    <p style="margin-bottom:16px;">When you start your first Cowork session, you select a folder on your computer — this is where MyCapsul lives. Your agent creates a <strong style="color:#3B9EFF;">MyCapsul/</strong> directory inside that folder, and everything goes in there: your dashboard, your Seed, your inbox, your widgets, your agent config. One folder, fully self-contained.</p>
+    <p style="margin-bottom:16px;color:#e8e8e8;font-size:15px;font-weight:500;">MyCapsul is the framework — the rules, the guidance, the process and systems to make Claude your Capsul Agent.</p>
+    <p>When your agent needs to think, it sends only the context for the current task through Anthropic's encrypted API connection. Your full dataset never leaves your machine. The AI processes your request and writes the result back to your local files. That's the complete data flow — your machine to encrypted API and back. Nothing stored in the cloud.</p>
+  </div>
+
+  <div class="box-grid">
+    <div class="box-item">
+      <div class="bi-icon">📁</div>
+      <div>
+        <h4>You choose where it lives</h4>
+        <p>You select the parent folder during setup — could be your Documents folder, Desktop, or anywhere you want. MyCapsul creates a <code>MyCapsul/</code> directory inside it with all the scaffolding: <code>seed/</code> for your knowledge base, <code>_inbox/</code> for file drops, <code>widgets/</code> for custom tiles, and your dashboard HTML file.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">📂</div>
+      <div>
+        <h4>Your files are plain text</h4>
+        <p>Markdown, JSON, HTML. Open them in any editor. Read them, change them, delete them. There's no proprietary format keeping you locked in.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">🔒</div>
+      <div>
+        <h4>Sensitive data stays local</h4>
+        <p>Account numbers, passwords, and sensitive identifiers are stored in protected local files. Your agent can reference them when needed but never sends them through the AI connection.</p>
+      </div>
+    </div>
+    <div class="box-item">
+      <div class="bi-icon">💾</div>
+      <div>
+        <h4>Back up by copying</h4>
+        <p>Want a backup? Copy the <code>MyCapsul/</code> folder. That's it. Everything is files — dashboard, Seed, widgets, agent config. Stick it on a USB drive, external disk, or anywhere you keep important stuff.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== QUICK REFERENCE ===== -->
+<div class="section" id="reference">
+  <div class="section-label">Reference</div>
+  <h2>Quick Reference</h2>
+  <p class="intro">The terms, the states, the concepts — all in one place.</p>
+
+  <table class="ref-table">
+    <tr>
+      <th>Term</th>
+      <th>What It Is</th>
+    </tr>
+    <tr>
+      <td>MyCapsul</td>
+      <td>The product — a personal life operating system. Framework + AI + dashboard.</td>
+    </tr>
+    <tr>
+      <td>Your Capsul</td>
+      <td>Your personal instance — your data, your agent, your dashboard, your preferences.</td>
+    </tr>
+    <tr>
+      <td>Capsul Agent</td>
+      <td>Your AI — powered by Claude, running through Cowork, guided by MyCapsul's framework. Reads your Seed, learns through conversation, gets better over time.</td>
+    </tr>
+    <tr>
+      <td>Seed</td>
+      <td>Your local knowledge base — modular markdown files organized by life topic.</td>
+    </tr>
+    <tr>
+      <td>Nodes</td>
+      <td>Life categories: Financial, Career, Health, Home, Creative, etc. Cubes belong to Nodes.</td>
+    </tr>
+    <tr>
+      <td>Cubes</td>
+      <td>Things to get done. Each has a state, energy level, urgency, and progress log.</td>
+    </tr>
+    <tr>
+      <td>Ring</td>
+      <td>Your 24-hour circular clock. Shows your day as colored time blocks.</td>
+    </tr>
+    <tr>
+      <td>Blocks</td>
+      <td>Time chunks on the Ring — each has a category, label, and color.</td>
+    </tr>
+    <tr>
+      <td>Focus 3</td>
+      <td>Your top 3 priorities for today. Agent-recommended, you-approved.</td>
+    </tr>
+    <tr>
+      <td>Energy Level</td>
+      <td>Low / Med / High — how much a task takes out of you, not just how long it takes.</td>
+    </tr>
+    <tr>
+      <td>Inbox</td>
+      <td>Drop folder for files. Agent reads, routes, and reports. Zero-friction input.</td>
+    </tr>
+    <tr>
+      <td>Handoff</td>
+      <td>Short summary written at session end so the next session picks up seamlessly.</td>
+    </tr>
+    <tr>
+      <td>Changelog</td>
+      <td>Timestamped log of every Seed update. Full audit trail of your data.</td>
+    </tr>
+    <tr>
+      <td>Router</td>
+      <td>The index file that maps topics to Seed modules. Add a new module, add it to the router.</td>
+    </tr>
+    <tr>
+      <td>Operating Manual</td>
+      <td>Markdown file (CLAUDE.md) that defines your agent's behavior, protocols, and rules.</td>
+    </tr>
+  </table>
+
+  <h4 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;margin:24px 0 12px;">Cube States</h4>
+  <table class="ref-table">
+    <tr>
+      <th>State</th>
+      <th>Meaning</th>
+    </tr>
+    <tr><td>✨ Spark</td><td>Just an idea. Captured before it disappears.</td></tr>
+    <tr><td>⏸ Parked</td><td>On hold. You care, but it's not moving right now.</td></tr>
+    <tr><td>▶ Active</td><td>In rotation. You're working on it when you can.</td></tr>
+    <tr><td>🎯 Focus</td><td>Front and center. Your current sprint.</td></tr>
+    <tr><td>✅ Done</td><td>Completed. Archived with a full progress log.</td></tr>
+  </table>
+</div>
+
+</div><!-- /doc-main -->
+</div><!-- /doc-layout -->
+
+<!-- ===== FOOTER ===== -->
+<div class="doc-footer">
+  <p>MyCapsul — Your life has a system now.</p>
+  <div style="display:flex;gap:16px;justify-content:center;margin:12px 0;">
+    <a href="get-started.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">Get Started</a>
+    <a href="prompt-cookbook.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">Prompt Cookbook</a>
+    <a href="faq.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">FAQ</a>
+    <a href="about.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">About</a>
+  </div>
+  <div class="doc-meta">User Guide v1.0 — March 2026</div>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// Scroll-spy for sidebar TOC
+(function() {
+  const links = document.querySelectorAll('.doc-sidebar a[href^="#"]');
+  if (!links.length) return;
+  const sections = Array.from(links).map(function(a) {
+    return { link: a, target: document.querySelector(a.getAttribute('href')) };
+  }).filter(function(s) { return s.target; });
+  function update() {
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].target.offsetTop <= scrollY) current = i;
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current !== null) sections[current].link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  // Smooth scroll
+  links.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

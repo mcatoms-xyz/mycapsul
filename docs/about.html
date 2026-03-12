@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About MyCapsul — Built by One Person, for Real Life</title>
+<meta name="description" content="MyCapsul was built by a single dad with ADHD who needed a better system. Meet Adam McCrimmon — the builder behind the AI-powered life dashboard.">
+<link rel="canonical" href="https://mycapsul.com/docs/about.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/about.html">
+<meta property="og:title" content="About MyCapsul — Built by One Person, for Real Life">
+<meta property="og:description" content="MyCapsul was built by a single dad with ADHD who needed a better system. Meet Adam McCrimmon — the builder behind the AI-powered life dashboard.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About MyCapsul — Built by One Person, for Real Life">
+<meta name="twitter:description" content="MyCapsul was built by a single dad with ADHD who needed a better system. Meet Adam McCrimmon — the builder behind the AI-powered life dashboard.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== NAV ===== */
+.doc-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  transition: background 0.3s;
+}
+.doc-nav-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.doc-nav-brand {
+  text-decoration: none; display: flex; align-items: center; gap: 8px;
+}
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links { display: flex; align-items: center; gap: 4px; }
+.doc-nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text-dim); text-decoration: none;
+  padding: 6px 12px; border-radius: 8px; transition: all 0.15s;
+}
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; transition: all 0.15s; margin-left: 8px;
+}
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* ===== LAYOUT ===== */
+.doc-body { max-width: 660px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ===== HERO ===== */
+.hero { text-align: center; padding: 64px 20px 48px; }
+.hero-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 14px;
+  border-radius: 100px; background: rgba(230,114,1,0.08); color: var(--ember);
+  letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif; font-size: 38px; font-weight: 700;
+  letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;
+}
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub {
+  font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 520px; margin: 0 auto;
+}
+
+/* ===== BUILDER CARD ===== */
+.builder-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  padding: 36px 40px; margin-bottom: 40px; text-align: center;
+}
+.builder-avatar {
+  width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--border);
+  margin: 0 auto 20px; display: block;
+}
+.builder-name {
+  font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700;
+  margin-bottom: 4px;
+}
+.builder-handle {
+  font-size: 14px; color: var(--text-dim); margin-bottom: 20px;
+}
+.builder-handle a { color: var(--blue); text-decoration: none; }
+.builder-handle a:hover { text-decoration: underline; }
+.builder-bio {
+  font-size: 15px; color: var(--text-dim); line-height: 1.8; text-align: left;
+  max-width: 540px; margin: 0 auto;
+}
+.builder-bio p { margin-bottom: 16px; }
+.builder-bio strong { color: var(--text); }
+
+/* ===== STORY SECTION ===== */
+.story-section {
+  margin-bottom: 40px;
+}
+.story-section h2 {
+  font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 700;
+  margin-bottom: 12px; letter-spacing: -0.3px;
+}
+.story-section p {
+  font-size: 15px; color: var(--text-dim); line-height: 1.8; margin-bottom: 14px;
+}
+.story-section p strong { color: var(--text); }
+
+/* ===== PRINCIPLES ===== */
+.principles-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0 40px;
+}
+.principle-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px 22px;
+}
+.principle-card .p-icon { font-size: 22px; margin-bottom: 10px; }
+.principle-card h4 {
+  font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 6px;
+}
+.principle-card p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  text-align: center; padding: 40px; border-radius: 16px;
+  background: var(--card); border: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.cta-section h2 {
+  font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700;
+  margin-bottom: 10px;
+}
+.cta-section p {
+  font-size: 15px; color: var(--text-dim); line-height: 1.7; margin-bottom: 24px;
+  max-width: 440px; margin-left: auto; margin-right: auto;
+}
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: all 0.2s; font-family: 'Sora', sans-serif;
+}
+.cta-btn.primary {
+  background: var(--ember); color: #fff;
+}
+.cta-btn.primary:hover { opacity: 0.9; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(230,114,1,0.3); }
+.cta-btn.secondary {
+  background: var(--bg2); color: var(--text); border: 1px solid var(--border);
+}
+.cta-btn.secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ===== COLOPHON ===== */
+.colophon {
+  border-top: 1px solid var(--border-light); padding-top: 32px; margin-bottom: 40px;
+}
+.colophon h3 {
+  font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px; color: var(--text-xdim);
+  margin-bottom: 14px;
+}
+.colophon-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.colophon-item {
+  font-size: 13px; color: var(--text-dim); line-height: 1.6;
+  padding: 8px 0;
+}
+.colophon-item strong { color: var(--text); font-weight: 600; display: block; font-size: 12px; margin-bottom: 2px; }
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  text-align: center; padding: 40px 20px 20px; border-top: 1px solid var(--border);
+  max-width: 960px; margin: 0 auto;
+}
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer a { color: var(--blue); text-decoration: none; }
+.doc-footer a:hover { text-decoration: underline; }
+.doc-footer .footer-nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; }
+.doc-footer .footer-nav a { font-size: 13px; font-weight: 500; color: var(--text-dim); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .builder-card { padding: 28px 24px; }
+  .principles-grid { grid-template-columns: 1fr; }
+  .colophon-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="../index.html" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Setup</a>
+      <a href="user-guide.html">Guide</a>
+      <a href="prompt-cookbook.html">Cookbook</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html" class="active">About</a>
+      <a href="../index.html" style="font-size:13px;opacity:.7;text-decoration:none;color:var(--text-dim,#6B7280);">← Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">The human behind the machine</div>
+  <h1>Built by <span>one person</span>,<br>for real life.</h1>
+  <p class="hero-sub">MyCapsul wasn't born in a boardroom. It was built late at night by a dad who needed a better system to keep it all together.</p>
+</div>
+
+<div class="doc-body">
+
+<!-- BUILDER CARD -->
+<div class="builder-card">
+  <img class="builder-avatar" src="assets/adam.jpg" alt="Adam McCrimmon">
+  <div class="builder-name">Adam McCrimmon</div>
+  <div class="builder-handle"><a href="https://mcatoms.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=about" target="_blank">mcatoms.com</a></div>
+  <div class="builder-bio">
+    <p><strong>Builder. Designer. Maker.</strong> I've been a VP of Digital Strategy &amp; UX, a Director at a global agency, a Client Principal at a custom dev shop, and now run product &amp; marketing at a healthcare tech startup. I've shipped work for United Healthcare, Amtrak, Kawasaki, Roche, the Chicago Blackhawks, and a bunch of scrappy startups in between. I've had to stay on the edge of what tech can do the whole time and still preferred a pen &amp; paper notebook to track my thoughts, ideas, dreams, goals, and todos. Mostly because every system was just too much of an actual pain to use day to day.</p>
+    <p>MyCapsul started as a personal dashboard I built to manage my own life — budget, schedule, custody calendar, goals, all of it. I was tired of scattered apps (and scraps of paper) that didn't talk to each other and didn't understand <strong>my</strong> context. So I built something that did.</p>
+    <p>When Anthropic released <a href="https://claude.ai/download?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=about" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude Desktop</a>, specifically <a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=about" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a> — the ability to give an AI agent access to local files — everything clicked. Suddenly, a local HTML file could become a dashboard &amp; operating system for my life, powered by an agent that actually knows me.</p>
+  </div>
+</div>
+
+<!-- WHY -->
+<div class="story-section">
+  <h2>Why I built this</h2>
+  <p>I have ADHD. I'm a single dad. I run a tight budget. I have a hundred things competing for my attention at any given moment — and I don't have a personal assistant, an executive coach, or a team to fall back on.</p>
+  <p>What I do have is a system that works. MyCapsul is that system, packaged up so anyone can use it. It's not a productivity app that guilts you into streaks. It's not a task manager that assumes you have unlimited time. It's a <strong>life dashboard</strong> that meets you where you are — and an AI agent that learns how your life actually works.</p>
+  <p>Every feature exists because I needed it. The budget tracker, the custody-aware scheduling, the journal, the project system — all of it came from real problems I was solving for myself.</p>
+</div>
+
+<!-- PRINCIPLES -->
+<div class="story-section">
+  <h2>What I believe</h2>
+</div>
+<div class="principles-grid">
+  <div class="principle-card">
+    <div class="p-icon">🎯</div>
+    <h4>Realistic over aspirational</h4>
+    <p>A plan you won't follow is worse than no plan. MyCapsul is built for how life actually works.</p>
+  </div>
+  <div class="principle-card">
+    <div class="p-icon">🔒</div>
+    <h4>Your data stays yours</h4>
+    <p>No cloud. No tracking. Your data is yours. Everything lives on your computer in plain text files you can read.</p>
+  </div>
+  <div class="principle-card">
+    <div class="p-icon">⚙️</div>
+    <h4>Systems over willpower</h4>
+    <p>Good design reduces friction. Automate the boring stuff so you can focus on what matters.</p>
+  </div>
+  <div class="principle-card">
+    <div class="p-icon">🔄</div>
+    <h4>It adapts to you</h4>
+    <p>MyCapsul doesn't force a workflow. Your agent learns your life, your language, your priorities — and shapes itself around how you actually operate.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Like what you see?</h2>
+  <p>MyCapsul is free to use. If it's made your life a little more organized, a coffee goes a long way.</p>
+  <div class="cta-buttons">
+    <a href="https://buymeacoffee.com/mcatoms?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=about" target="_blank" rel="noopener" class="cta-btn primary">☕ Buy me a coffee</a>
+    <a href="https://mcatoms.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=about" target="_blank" rel="noopener" class="cta-btn secondary">Visit mcatoms.com</a>
+  </div>
+</div>
+
+<!-- COLOPHON -->
+<div class="colophon">
+  <h3>Built with</h3>
+  <div class="colophon-grid">
+    <div class="colophon-item"><strong>AI</strong>Claude by Anthropic</div>
+    <div class="colophon-item"><strong>Platform</strong>Claude Desktop (Cowork)</div>
+    <div class="colophon-item"><strong>Stack</strong>Vanilla HTML, CSS, JS</div>
+    <div class="colophon-item"><strong>Dependencies</strong>Zero</div>
+    <div class="colophon-item"><strong>Fonts</strong>Sora, JetBrains Mono</div>
+    <div class="colophon-item"><strong>Design</strong>McAtoms</div>
+  </div>
+</div>
+
+</div><!-- /doc-body -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Getting Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompt Cookbook</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+  </div>
+  <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+</script>
+
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

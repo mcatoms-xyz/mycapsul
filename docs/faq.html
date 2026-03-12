@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyCapsul FAQ — Questions & Answers</title>
+<meta name="description" content="Common questions about MyCapsul — how it works, where your data lives, privacy, customization, and troubleshooting. Everything you need to know.">
+<link rel="canonical" href="https://mycapsul.com/docs/faq.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/faq.html">
+<meta property="og:title" content="MyCapsul FAQ — Questions & Answers">
+<meta property="og:description" content="Common questions about MyCapsul — how it works, where your data lives, privacy, customization, and troubleshooting. Everything you need to know.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MyCapsul FAQ — Questions & Answers">
+<meta name="twitter:description" content="Common questions about MyCapsul — how it works, where your data lives, privacy, customization, and troubleshooting. Everything you need to know.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.7;
+  -webkit-font-smoothing: antialiased; transition: background 0.3s, color 0.3s;
+}
+
+/* NAV */
+.doc-nav { position: sticky; top: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 20px; transition: background 0.3s; }
+.doc-nav-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+.doc-nav-brand { text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links { display: flex; align-items: center; gap: 4px; }
+.doc-nav-links a { font-size: 13px; font-weight: 500; color: var(--text-dim); text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.15s; margin-left: 8px; }
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* LAYOUT */
+.doc-body { max-width: 1020px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* SIDEBAR TOC */
+.doc-layout { display: flex; position: relative; }
+.doc-sidebar {
+  position: sticky;
+  top: 64px;
+  width: 200px;
+  min-width: 200px;
+  height: calc(100vh - 64px);
+  padding: 32px 0 32px 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.doc-sidebar::-webkit-scrollbar { width: 0; }
+.doc-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.doc-sidebar .toc-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-xdim);
+  padding: 0 12px 8px; margin-bottom: 4px;
+}
+.doc-sidebar a {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s; line-height: 1.4;
+}
+.doc-sidebar a:hover { color: var(--text); background: var(--bg2); }
+.doc-sidebar a.active {
+  color: var(--blue); background: rgba(0,126,255,0.06);
+  border-left-color: var(--blue); font-weight: 600;
+}
+.doc-main { flex: 1; min-width: 0; max-width: 760px; }
+
+/* HERO */
+.hero { text-align: center; padding: 64px 20px 56px; }
+.hero-pill { display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 100px; background: rgba(230,114,1,0.08); color: var(--ember); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+.hero h1 { font-family: 'Sora', sans-serif; font-size: 38px; font-weight: 700; letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px; }
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub { font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+/* CATEGORY NAV */
+.cat-nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; padding: 0 20px 48px; }
+.cat-nav a { font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--border); color: var(--text-dim); text-decoration: none; transition: all 0.15s; background: var(--card); }
+.cat-nav a:hover { border-color: var(--blue); color: var(--blue); }
+
+/* SECTION HEADERS */
+.section-break { margin: 48px 0 20px; }
+.section-break .label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+.section-break .label.blue { color: var(--blue); }
+.section-break .label.go { color: var(--go); }
+.section-break .label.ember { color: var(--ember); }
+.section-break .label.purple { color: var(--purple); }
+.section-break h2 { font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.3px; }
+
+/* FAQ ITEMS */
+.faq-item {
+  border-bottom: 1px solid var(--border-light);
+  padding: 20px 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.faq-q .q-icon {
+  color: var(--blue);
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform 0.2s;
+}
+.faq-q.open .q-icon { transform: rotate(90deg); }
+.faq-a {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  padding-left: 24px;
+  max-width: 680px;
+}
+.faq-a strong { color: var(--text); }
+.faq-a a { color: var(--blue); text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+.faq-a code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  background: var(--bg2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+/* FOOTER */
+.doc-footer { text-align: center; padding: 40px 20px 20px; border-top: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer a { color: var(--blue); text-decoration: none; }
+.doc-footer a:hover { text-decoration: underline; }
+.doc-footer .footer-nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; }
+.doc-footer .footer-nav a { font-size: 13px; font-weight: 500; color: var(--text-dim); }
+
+@media (max-width: 900px) {
+  .doc-sidebar { display: none; }
+  .doc-layout { display: block; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="../index.html" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Setup</a>
+      <a href="user-guide.html">Guide</a>
+      <a href="prompt-cookbook.html">Cookbook</a>
+      <a href="faq.html" class="active">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="../index.html" style="font-size:13px;opacity:.7;text-decoration:none;color:var(--text-dim,#6B7280);">← Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">FAQ</div>
+  <h1>Questions & <span>Answers</span></h1>
+  <p class="hero-sub">Common questions about how MyCapsul works, what to do when things don't, and everything in between.</p>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <a href="#basics">Basics</a>
+  <a href="#sessions">Sessions</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#data">Data & Security</a>
+  <a href="#troubleshooting">Troubleshooting</a>
+  <a href="#advanced">Advanced</a>
+</div>
+
+<div class="doc-body">
+<div class="doc-layout">
+<aside class="doc-sidebar">
+  <nav aria-label="Table of contents">
+    <div class="toc-label">On this page</div>
+    <a href="#basics">The Fundamentals</a>
+    <a href="#sessions">Working With Agent</a>
+    <a href="#dashboard">The Dashboard</a>
+    <a href="#data">Data & Privacy</a>
+    <a href="#troubleshooting">Troubleshooting</a>
+    <a href="#advanced">Going Deeper</a>
+  </nav>
+</aside>
+<div class="doc-main" id="doc-content" role="main">
+
+<!-- ═══════ BASICS ═══════ -->
+<div class="section-break" id="basics">
+  <div class="label blue">Basics</div>
+  <h2>The Fundamentals</h2>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What is MyCapsul?</div>
+  <div class="faq-a">MyCapsul is a personal life dashboard that your AI maintains through conversation. You talk about your life — schedule, money, health, projects — and the dashboard stays current. It's a single HTML file that runs in your browser, powered by a knowledge system of local files that your AI reads and writes.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Is MyCapsul an app I need to install?</div>
+  <div class="faq-a">Not in the traditional sense. MyCapsul is a <strong><a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a> plugin</strong> — it installs into <a href="https://claude.ai/download?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude Desktop</a> and teaches Claude how to manage your dashboard. The dashboard itself is just an HTML file you open in your browser. No app store, no installer, no account creation.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Do I need to know how to code?</div>
+  <div class="faq-a"><strong>No.</strong> MyCapsul is designed for people who don't code. You interact with your agent in plain language — "add a bill for $85 on the 15th" — and your agent handles the technical side. If you want to get deeper into customization, your agent can build custom features for you just by describing what you want.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What AI does MyCapsul use?</div>
+  <div class="faq-a">MyCapsul currently runs on <strong><a href="https://www.anthropic.com/claude?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude</a></strong> (by <a href="https://www.anthropic.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Anthropic</a>) through <strong><a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a></strong> (Anthropic's desktop environment). MyCapsul works with both the current <strong>Sonnet</strong> and <strong>Opus</strong> models. MyCapsul doesn't build its own AI — it gives Claude a framework and knowledge system so it can act as your personal life assistant.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How much does it cost?</div>
+  <div class="faq-a">MyCapsul is available at <a href="https://mycapsul.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">mycapsul.com</a>. You'll also need a <a href="https://claude.ai/download?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude Desktop</a> subscription from Anthropic, which is what powers the AI. MyCapsul has no recurring fees or subscriptions of its own.</div>
+</div>
+
+<!-- ═══════ SESSIONS ═══════ -->
+<div class="section-break" id="sessions">
+  <div class="label go">Sessions</div>
+  <h2>Working With Your Agent</h2>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How does my agent remember things between sessions?</div>
+  <div class="faq-a">Your agent uses a <strong>seed module system</strong> — a set of plain-text files in your folder that contain everything about your life (schedule, finances, health, etc.). When a new session starts, your agent reads these files and picks up where it left off. A <strong>session handoff</strong> file provides a quick briefing on what happened last time.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Do I need to start a new session every time?</div>
+  <div class="faq-a">Yes — each Cowork session is a new conversation. But your agent reads the handoff file and seed modules to restore context, so it feels continuous. Think of it like shift changes: each shift starts with a briefing from the last one.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What if I forget to mention something during a session?</div>
+  <div class="faq-a">Just mention it in your next session. Say "I forgot to tell you — I paid the electric bill last Tuesday" and your agent will update the records retroactively. There's no penalty for delayed information.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I have multiple sessions per day?</div>
+  <div class="faq-a">Absolutely. Your agent detects how long it's been since the last session and adjusts its boot process. Same-day sessions do a <strong>Quick Resume</strong> (fast, minimal review). Sessions after a gap do a <strong>Full Boot</strong> (comprehensive review of all modules and data).</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What happens at the end of a session?</div>
+  <div class="faq-a">Your agent runs an end-of-session protocol: updates all seed modules with anything new learned during the conversation, syncs changes to the dashboard, and writes a handoff file for the next session. This is automatic — you don't need to ask for it.</div>
+</div>
+
+<!-- ═══════ DASHBOARD ═══════ -->
+<div class="section-break" id="dashboard">
+  <div class="label ember">Dashboard</div>
+  <h2>The Dashboard</h2>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How do I get changes from my agent to show up on the dashboard?</div>
+  <div class="faq-a">Your agent writes changes to a <strong>push file</strong> (<code>capsul-agent-push.json</code>). When you open or refresh your dashboard, it reads this file and applies the updates. If changes aren't showing up, try refreshing the page.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I edit things directly on the dashboard?</div>
+  <div class="faq-a"><strong>Yes.</strong> Many tiles have interactive elements — you can check off Focus 3 items, mark bills as paid, toggle hobbies, edit journal entries, and more. Changes you make in the dashboard are saved to localStorage. Click the <strong>Sync</strong> button to export your dashboard state so your agent can pick up those changes next session.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are the different palettes?</div>
+  <div class="faq-a">MyCapsul ships with seven color palettes: <strong>MyCapsul</strong> (brand blue, default), <strong>Ocean</strong> (teal), <strong>Sunset</strong> (warm orange), <strong>Forest</strong> (green), <strong>Lavender</strong> (purple), <strong>Amber</strong> (gold), and <strong>Slate</strong> (blue-gray). The MyCapsul brand palette is the default — it uses the Clear Sky color foundation. Tell your agent "switch to sunset" to change palettes. You can also change palettes from the dashboard settings.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I rearrange or hide tiles?</div>
+  <div class="faq-a">Yes. Tell your agent "hide the news tile" or "move budget to the top." Your agent adjusts the tile layout and sizing. You can also toggle visibility from the dashboard's tile manager. There are 17 built-in tiles, and you can add custom widgets on top of those.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What is the ring clock?</div>
+  <div class="faq-a">The <strong>Ring</strong> is a 24-hour circular schedule planner. It shows your day as colored arcs — work blocks, personal time, appointments, sleep. Your agent generates it each session based on your schedule module. Click the Ring to edit blocks for any day. Each block has a category (work, build, family, admin, personal, break) that determines its color.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What is TimeCapsul?</div>
+  <div class="faq-a"><strong>TimeCapsul</strong> is a year-in-review feature. Access it from the "View TimeCapsul" button on the Timeline tile. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and project completions. Your agent contributes milestone data throughout the year, so the more you use MyCapsul, the richer your TimeCapsul becomes.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are the sync files and how do they work?</div>
+  <div class="faq-a">Two JSON files handle communication between your dashboard and your agent. <strong>capsul-sync.json</strong> (dashboard → agent) exports all your dashboard data so your agent can read it. <strong>capsul-agent-push.json</strong> (agent → dashboard) carries commands from your agent — new messages, schedule updates, data changes. Both live in the <code>_inbox/</code> folder. The sync flow: you click "Sync to Agent" in Settings to export, and your agent writes push commands that the dashboard loads on refresh.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What do the ℹ️ buttons on tiles do?</div>
+  <div class="faq-a">Each tile has an info button that opens a quick overview — what the tile does, how to use it, and suggestions for things to tell your agent. It's a built-in mini-guide for every feature.</div>
+</div>
+
+<!-- ═══════ DATA, PRIVACY & SECURITY ═══════ -->
+<div class="section-break" id="data">
+  <div class="label purple">Data, Privacy & Security</div>
+  <h2>Your Data Is Yours</h2>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Where is my data stored?</div>
+  <div class="faq-a"><strong>Everything stays on your computer.</strong> During setup, you select a folder in Cowork — MyCapsul creates a <code>MyCapsul/</code> directory inside it. That's home base. Your seed modules are plain-text Markdown files in <code>MyCapsul/seed/</code>. There's a <code>MyCapsul/_inbox/</code> folder where you can drop files for your agent to process. Your dashboard stores tile data in your browser's localStorage. Sync files are JSON files in the inbox folder. Nothing is uploaded to any server. There's no cloud, no account, no database.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> My files are plain text — is that a security risk?</div>
+  <div class="faq-a"><strong>Not by itself.</strong> Plain-text local files are the standard for local-first tools like Obsidian, Logseq, and even password managers (which store encrypted vault files locally). If someone has access to your files, they already have access to your browser passwords, email, photos, and everything else on your machine. The real protection layer is your <strong>operating system</strong> — your computer's login password and disk encryption (FileVault on Mac, BitLocker on Windows) are what keep your files safe from unauthorized access. MyCapsul doesn't add a second lock because it would add complexity without meaningful security gain — and it would break the ability for you and your agent to read and edit your own files freely.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can anyone else see my data?</div>
+  <div class="faq-a">Only if they have access to your computer and your MyCapsul folder. There's no sharing feature, no cloud sync, no remote access. Your data is as private as any other file on your machine. If you share your computer with others, make sure your user account is password-protected.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Should I keep my folder in iCloud / Google Drive / Dropbox?</div>
+  <div class="faq-a">
+    <p><strong>Be careful with this.</strong> If your MyCapsul folder lives inside a cloud-synced directory, your seed modules (which may contain financial info, health data, schedule details) are being uploaded to that provider's servers. This is the most common way local data accidentally becomes cloud data.</p>
+    <p style="font-size:13px;color:var(--text);line-height:1.7;padding:14px 18px;background:rgba(124,58,237,0.05);border-radius:10px;border-left:3px solid var(--purple);margin-top:12px;"><strong>If privacy is a priority</strong>, keep your MyCapsul folder in a non-synced location on your machine — like your home directory or a dedicated local folder outside your cloud-synced areas. If you do use cloud sync for backup, make sure you trust the provider and understand their privacy terms.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Does my AI send my data to Anthropic?</div>
+  <div class="faq-a">Your <strong>conversations</strong> with Claude go through Anthropic's servers — that's how the AI works. During a session, your agent reads files from your folder to understand your context. The file contents that get read become part of the conversation. However, your <strong>local files themselves are not uploaded</strong> outside of what's read during a session. When the session ends, the conversation data is handled per Anthropic's privacy policy. Review <a href="https://www.anthropic.com/privacy?utm_source=mycapsul&utm_medium=docs&utm_campaign=faq" style="color:var(--blue);">Anthropic's privacy policy</a> for details on retention and handling.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What about the dashboard's localStorage?</div>
+  <div class="faq-a">The dashboard stores tile data in your browser's localStorage, which is tied to the file path of the HTML file. Anyone who opens that same file in the same browser profile on your computer can see the dashboard data. This is standard browser behavior — not unique to MyCapsul. If you share your browser profile, be aware of this. Clearing browser data will erase dashboard state, but your <strong>seed modules are unaffected</strong> — your agent can repopulate the dashboard from them.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How do I back up my Capsul?</div>
+  <div class="faq-a">Copy your entire MyCapsul folder. That's it. Everything is files. Back up to a USB drive, an encrypted external disk, or wherever you keep important files. The dashboard, seed modules, widgets, and agent configs are all portable. For extra safety, export a sync before major changes.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What if I want to share my setup without sharing my personal data?</div>
+  <div class="faq-a">
+    <p>The easiest way? <strong>Send them to <a href="https://mycapsul.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">mycapsul.com</a></strong> to download the most recent release. That way they get a clean, up-to-date version with no risk of your personal data tagging along.</p>
+    <p>If you want to share your specific setup, share the <strong>structure</strong>, not the content. The files safe to share: <code>mycapsul.html</code> (the dashboard), <code>SKILL.md</code> (the agent manual), and any custom widget files. The files you should <strong>not share</strong>: anything in the <code>seed/</code> folder (your personal knowledge base), <code>capsul-sync.json</code> or <code>capsul-agent-push.json</code> (dashboard state snapshots), <code>CLAUDE.md</code> (may contain personal preferences and protocols), and <code>session-handoff.md</code> (session context). Think of it like sharing a blank journal vs. a filled-in one.</p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How do I secure my computer to protect my Capsul data?</div>
+  <div class="faq-a">Three things that matter most: <strong>(1) Use a strong login password</strong> on your computer account. <strong>(2) Enable disk encryption</strong> — FileVault on Mac (System Settings → Privacy & Security → FileVault), BitLocker on Windows (Settings → Privacy & Security → Device encryption). This encrypts your entire drive so data can't be read even if the physical disk is removed. <strong>(3) Lock your screen</strong> when you walk away. These protections cover all your files, not just MyCapsul.</div>
+</div>
+
+<!-- ═══════ TROUBLESHOOTING ═══════ -->
+<div class="section-break" id="troubleshooting">
+  <div class="label ember">Troubleshooting</div>
+  <h2>When Things Go Wrong</h2>
+</div>
+
+<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;">
+  <span style="font-size:20px;flex-shrink:0;">🛠</span>
+  <div style="font-size:14px;color:var(--text-dim);line-height:1.7;">
+    <strong style="color:var(--text);">Your Capsul agent is your first line of support.</strong> Before diving into the troubleshooting steps below, try asking your agent — it can diagnose and fix most issues on its own. Just describe what's wrong in plain language. For best results, make sure you're using at least the <strong style="color:var(--text);">Opus</strong> model or its current equivalent.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> My agent doesn't seem to know what happened last session</div>
+  <div class="faq-a">Check that the <strong>session-handoff.md</strong> file exists in your folder and has recent content. This is what your agent reads for context. If it's missing or empty, your agent is starting from scratch. You can tell your agent "read my seed modules and get caught up" to restore context from the knowledge base.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Changes from my agent aren't showing on the dashboard</div>
+  <div class="faq-a">Three things to check: (1) <strong>Refresh the dashboard page</strong> — it reads the push file on load. (2) Check that <code>capsul-agent-push.json</code> exists in your <code>_inbox/</code> folder — this is how the agent sends data to the dashboard. (3) Open browser dev tools (F12) and check the console for errors.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> My dashboard looks empty after opening in a new browser</div>
+  <div class="faq-a">Dashboard UI data lives in <strong>localStorage</strong>, which is browser-specific. If you open the file in a different browser (or after clearing data), the tiles will be empty. To fix this: open a Cowork session, tell your agent to "sync from the dashboard" (if you have a recent <code>capsul-sync.json</code>), or ask your agent to repopulate from seed modules.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> I messed up my dashboard — can I undo?</div>
+  <div class="faq-a">Ask your agent. If the change was made via an agent push, your agent can write a new push to revert it. If you edited something in the UI, you may need to manually fix it or ask your agent to reset that tile's data. For big changes, your agent should be making backup copies before editing — check for a <code>mycapsul-template-backup-*.html</code> file.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> The sync button isn't working</div>
+  <div class="faq-a">The Sync button exports your dashboard's localStorage to <code>capsul-sync.json</code> in your <code>_inbox/</code> folder. If it's not working: (1) Make sure you opened the HTML file from your MyCapsul folder (not a copy elsewhere). (2) Some browsers restrict file system access from local HTML files — try Chrome, which is most permissive. (3) Check that the <code>_inbox/</code> folder exists.</div>
+</div>
+
+<!-- ═══════ ADVANCED ═══════ -->
+<div class="section-break" id="advanced">
+  <div class="label blue">Advanced</div>
+  <h2>Going Deeper</h2>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I use MyCapsul with a different AI?</div>
+  <div class="faq-a">The architecture is <strong>AI-agnostic by design</strong>. Everything is local files — plain markdown and JSON. Any AI that can read and write local files could theoretically run MyCapsul. The SKILL.md and CLAUDE.md files would need to be adapted for the target AI's conventions, but the knowledge system and dashboard work the same regardless. Today, MyCapsul is optimized for <a href="https://www.anthropic.com/claude?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude</a> via <a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a>.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are widgets?</div>
+  <div class="faq-a"><strong>Widgets are custom tiles</strong> that extend your dashboard. They're saved as <code>.capsul-widget</code> files and can be installed by dropping them in the <code>widgets/</code> folder and telling your agent to install them. You can also ask your agent to build completely new widgets from scratch — just describe what you want.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I connect email, calendar, or other services?</div>
+  <div class="faq-a">If your Cowork session has connectors enabled (Gmail, Google Calendar, Google Drive, Slack, etc.), your agent can read from those services and route information into your seed modules. This is optional — MyCapsul works without any external connections. The connectors just add more awareness.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I edit the seed files directly?</div>
+  <div class="faq-a">Yes. Seed files are plain markdown — open them in any text editor. If you make changes, your agent will see them on the next session. Just keep the structure intact (headings, formatting) so your agent can parse them correctly.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How do I change my agent's personality?</div>
+  <div class="faq-a">Edit your <strong>CLAUDE.md</strong> file, or tell your agent directly: "Be more casual," "Don't ask me so many questions," or "Change your name to Jarvis." Your agent writes these preferences to CLAUDE.md, which it reads at the start of every session. CLAUDE.md is your agent's operating manual — it defines personality, tone, protocols, and standing orders.</div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What's the demo file for?</div>
+  <div class="faq-a"><strong>mycapsul-demo.html</strong> is a pre-populated version of the dashboard loaded with sample data from a fictional user named "Brodie." It shows you what a fully set up Capsul looks like — complete with budget, schedule, projects, goals, and journal entries. Great for exploring features before committing to setup. Just open <a href="../mycapsul-demo.html" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);"><code>mycapsul-demo.html</code></a> directly — it's a separate file included alongside your main <code>mycapsul.html</code> dashboard.</div>
+</div>
+
+</div><!-- /doc-main -->
+</div><!-- /doc-layout -->
+</div><!-- /doc-body -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Getting Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompt Cookbook</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+  </div>
+  <p>Still stuck? <a href="https://buymeacoffee.com/mcatoms?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq">Reach out on Buy Me a Coffee</a> — or just ask your agent. It probably knows.</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// Scroll-spy for sidebar TOC
+(function() {
+  var links = document.querySelectorAll('.doc-sidebar a[href^="#"]');
+  if (!links.length) return;
+  var sections = Array.from(links).map(function(a) {
+    return { link: a, target: document.querySelector(a.getAttribute('href')) };
+  }).filter(function(s) { return s.target; });
+  function update() {
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].target.offsetTop <= scrollY) current = i;
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current !== null) sections[current].link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  links.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

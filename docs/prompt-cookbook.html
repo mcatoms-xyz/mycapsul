@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyCapsul Prompt Cookbook — What to Say to Your AI Agent</title>
+<meta name="description" content="Real examples of things you can say to your MyCapsul agent. Manage your schedule, budget, health, goals, and projects through natural conversation.">
+<link rel="canonical" href="https://mycapsul.com/docs/prompt-cookbook.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/prompt-cookbook.html">
+<meta property="og:title" content="MyCapsul Prompt Cookbook — What to Say to Your AI Agent">
+<meta property="og:description" content="Real examples of things you can say to your MyCapsul agent. Manage your schedule, budget, health, goals, and projects through natural conversation.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MyCapsul Prompt Cookbook — What to Say to Your AI Agent">
+<meta name="twitter:description" content="Real examples of things you can say to your MyCapsul agent. Manage your schedule, budget, health, goals, and projects through natural conversation.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --red: #ef4444;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== NAV ===== */
+.doc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  transition: background 0.3s;
+}
+.doc-nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+.doc-nav-brand {
+  text-decoration: none; display: flex; align-items: center; gap: 8px;
+}
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.doc-nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.15s;
+  margin-left: 8px;
+}
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* ===== LAYOUT ===== */
+.doc-body {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ===== SIDEBAR TOC ===== */
+.doc-layout { display: flex; position: relative; }
+.doc-sidebar {
+  position: sticky;
+  top: 64px;
+  width: 200px;
+  min-width: 200px;
+  height: calc(100vh - 64px);
+  padding: 32px 0 32px 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.doc-sidebar::-webkit-scrollbar { width: 0; }
+.doc-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.doc-sidebar .toc-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--text-xdim);
+  padding: 0 12px 8px; margin-bottom: 4px;
+}
+.doc-sidebar a {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s; line-height: 1.4;
+}
+.doc-sidebar a:hover { color: var(--text); background: var(--bg2); }
+.doc-sidebar a.active {
+  color: var(--blue); background: rgba(0,126,255,0.06);
+  border-left-color: var(--blue); font-weight: 600;
+}
+.doc-main { flex: 1; min-width: 0; }
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 64px 20px 56px;
+}
+.hero-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: rgba(0,126,255,0.08);
+  color: var(--blue);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub {
+  font-size: 16px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ===== CATEGORY NAV ===== */
+.cat-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 20px 48px;
+}
+.cat-nav a {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: all 0.15s;
+  background: var(--card);
+}
+.cat-nav a:hover { border-color: var(--blue); color: var(--blue); }
+.cat-nav a .cat-emoji { margin-right: 4px; }
+
+/* ===== SECTIONS ===== */
+.section {
+  margin-bottom: 56px;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.section-icon.blue { background: rgba(0,126,255,0.1); }
+.section-icon.ember { background: rgba(230,114,1,0.1); }
+.section-icon.go { background: rgba(27,186,1,0.1); }
+.section-icon.purple { background: rgba(124,58,237,0.1); }
+.section-icon.sky { background: rgba(59,158,255,0.1); }
+.section-icon.red { background: rgba(239,68,68,0.1); }
+.section h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.section .section-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* ===== PROMPT CARDS ===== */
+.prompt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.prompt-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 22px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.prompt-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(0,126,255,0.2);
+}
+.prompt-card .prompt-say {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--blue);
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  background: rgba(0,126,255,0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(0,126,255,0.08);
+}
+[data-theme="dark"] .prompt-card .prompt-say {
+  background: rgba(0,126,255,0.08);
+  border-color: rgba(0,126,255,0.15);
+}
+.prompt-card .prompt-result {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.prompt-card .prompt-result strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.prompt-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.prompt-tag.schedule { background: rgba(0,126,255,0.1); color: var(--blue); }
+.prompt-tag.money { background: rgba(27,186,1,0.1); color: var(--go); }
+.prompt-tag.health { background: rgba(124,58,237,0.1); color: var(--purple); }
+.prompt-tag.projects { background: rgba(230,114,1,0.1); color: var(--ember); }
+.prompt-tag.custom { background: rgba(59,158,255,0.1); color: var(--sky); }
+.prompt-tag.general { background: rgba(107,114,128,0.1); color: var(--text-dim); }
+
+/* ===== CALLOUT ===== */
+.callout {
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 24px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.callout.tip {
+  background: rgba(27,186,1,0.05);
+  border: 1px solid rgba(27,186,1,0.15);
+}
+.callout.note {
+  background: rgba(0,126,255,0.05);
+  border: 1px solid rgba(0,126,255,0.15);
+}
+.callout .c-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.callout .c-text { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+.callout .c-text strong { color: var(--text); }
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  border-top: 1px solid var(--border);
+  max-width: 960px;
+  margin: 0 auto;
+}
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer a { color: var(--blue); text-decoration: none; }
+.doc-footer a:hover { text-decoration: underline; }
+.doc-footer .footer-nav {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.doc-footer .footer-nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .doc-sidebar { display: none; }
+  .doc-layout { display: block; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .prompt-grid { grid-template-columns: 1fr; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="../index.html" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Setup</a>
+      <a href="user-guide.html">Guide</a>
+      <a href="prompt-cookbook.html" class="active">Cookbook</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="../index.html" style="font-size:13px;opacity:.7;text-decoration:none;color:var(--text-dim,#6B7280);">← Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">Prompt Cookbook</div>
+  <h1>Things You Can <span>Say</span></h1>
+  <p class="hero-sub">Your Capsul agent understands natural language. Here are real examples of things you can ask, organized by what you're trying to do. Mix, adapt, and make them your own.</p>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav">
+  <a href="#schedule"><span class="cat-emoji">🕐</span> Schedule</a>
+  <a href="#money"><span class="cat-emoji">💰</span> Money</a>
+  <a href="#health"><span class="cat-emoji">💪</span> Health</a>
+  <a href="#projects"><span class="cat-emoji">📦</span> Projects</a>
+  <a href="#goals"><span class="cat-emoji">🎯</span> Goals</a>
+  <a href="#journal"><span class="cat-emoji">📝</span> Journal</a>
+  <a href="#customize"><span class="cat-emoji">🎨</span> Customize</a>
+  <a href="#agent"><span class="cat-emoji">🤖</span> Agent</a>
+</div>
+
+<div class="doc-body">
+<div class="doc-layout">
+<aside class="doc-sidebar">
+  <nav aria-label="Table of contents">
+    <div class="toc-label">On this page</div>
+    <a href="#schedule">Schedule & Time</a>
+    <a href="#money">Money & Budget</a>
+    <a href="#health">Health & Wellness</a>
+    <a href="#projects">Projects & Cubes</a>
+    <a href="#goals">Goals & Progress</a>
+    <a href="#journal">Journal & Reflection</a>
+    <a href="#customize">Customize Dashboard</a>
+    <a href="#agent">Working With Agent</a>
+    <a href="#power">Power Moves</a>
+  </nav>
+</aside>
+<div class="doc-main" id="doc-content" role="main">
+
+<!-- ═══════════ SCHEDULE ═══════════ -->
+<div class="section" id="schedule">
+  <div class="section-header">
+    <div class="section-icon blue">🕐</div>
+    <h2>Schedule & Time</h2>
+  </div>
+  <p class="section-desc">Manage your calendar, daily plan, and the ring clock. Your agent reads your schedule module and can generate clock blocks, add events, and track what's coming up.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Daily Planning</div>
+      <div class="prompt-say">"What does my day look like?"</div>
+      <div class="prompt-result"><strong>Agent reads your schedule</strong> and gives you a rundown of today's events, deadlines, and blocks. If a clock schedule has been generated, it'll reference that too.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Daily Planning</div>
+      <div class="prompt-say">"Build my schedule for today"</div>
+      <div class="prompt-result"><strong>Generates clock blocks</strong> for the ring planner based on your schedule module — accounts for custody, recurring events, work patterns, and known deadlines.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Events</div>
+      <div class="prompt-say">"I have a dentist appointment Thursday at 2pm"</div>
+      <div class="prompt-result"><strong>Adds the event</strong> to your schedule module and pushes it to your calendar tile. Immediately — no waiting for session end.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Events</div>
+      <div class="prompt-say">"Remind me that rent is due on the 1st every month"</div>
+      <div class="prompt-result"><strong>Adds a recurring item</strong> to your schedule module. Your agent will surface it proactively in future sessions when the date approaches.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Custody</div>
+      <div class="prompt-say">"Do I have the kids this weekend?"</div>
+      <div class="prompt-result"><strong>Checks the custody calculation</strong> based on your pattern and anchor date, and tells you which days you have the kids.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag schedule">Countdowns</div>
+      <div class="prompt-say">"Add a countdown for Mom's birthday on June 12"</div>
+      <div class="prompt-result"><strong>Creates a countdown</strong> in your Countdowns tile with the date and a day count. Shows up on your dashboard immediately after sync.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MONEY ═══════════ -->
+<div class="section" id="money">
+  <div class="section-header">
+    <div class="section-icon go">💰</div>
+    <h2>Money & Budget</h2>
+  </div>
+  <p class="section-desc">Track spending, manage bills, update your balance, and keep your financial picture honest. Your agent can calculate daily budgets, flag upcoming bills, and log transactions.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag money">Balance</div>
+      <div class="prompt-say">"My checking balance is $2,340 as of today"</div>
+      <div class="prompt-result"><strong>Updates your budget</strong> with the new balance and recalculates your daily spending target based on income minus obligations through end of month.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Spending</div>
+      <div class="prompt-say">"I spent $47 on groceries and $12 at the gas station"</div>
+      <div class="prompt-result"><strong>Logs both transactions</strong> with today's date and categories. Updates your daily remaining budget on the dashboard.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Bills</div>
+      <div class="prompt-say">"Add my electric bill — $85, due on the 15th"</div>
+      <div class="prompt-result"><strong>Adds the bill</strong> to your bills list with amount, due day, and category. It'll factor into your FRC (Financial Reality Check) tile automatically.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Bills</div>
+      <div class="prompt-say">"I paid the water bill"</div>
+      <div class="prompt-result"><strong>Marks the bill as paid</strong> for this cycle. The dashboard shows it with a green checkmark instead of pending status.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Subscriptions</div>
+      <div class="prompt-say">"I cancelled my Hulu subscription"</div>
+      <div class="prompt-result"><strong>Marks the subscription as inactive.</strong> Removes it from your monthly obligations. Updates your finances module and FRC calculations.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Overview</div>
+      <div class="prompt-say">"How am I doing on money this month?"</div>
+      <div class="prompt-result"><strong>Pulls your budget data</strong> — current balance, daily target, days left in month, bills upcoming, total obligations — and gives you the honest picture.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ HEALTH ═══════════ -->
+<div class="section" id="health">
+  <div class="section-header">
+    <div class="section-icon purple">💪</div>
+    <h2>Health & Wellness</h2>
+  </div>
+  <p class="section-desc">Log health notes, track conditions and medications, and check in on energy and mood. Your agent keeps a running health record and can spot patterns over time.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag health">Logging</div>
+      <div class="prompt-say">"I slept terribly last night, maybe 4 hours"</div>
+      <div class="prompt-result"><strong>Logs a health entry</strong> with the sleep note and today's date. Updates your health module. Your agent may reference this when planning your day.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag health">Logging</div>
+      <div class="prompt-say">"Went for a 3-mile run this morning"</div>
+      <div class="prompt-result"><strong>Logs the activity</strong> in your health log. If you have a running tracker widget installed, it updates that too with mileage and date.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag health">Check-in</div>
+      <div class="prompt-say">"Let's do a check-in"</div>
+      <div class="prompt-result"><strong>Walks you through a daily check-in</strong> — mood (1-10), energy (1-10), wins, struggles, and what you want to focus on tomorrow. Saves to your check-in tile.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag health">Medications</div>
+      <div class="prompt-say">"I started taking magnesium 400mg at night"</div>
+      <div class="prompt-result"><strong>Updates your health baseline</strong> — adds the medication to your conditions/meds list so your agent always knows your current regimen.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag health">Status</div>
+      <div class="prompt-say">"I've had a headache since yesterday"</div>
+      <div class="prompt-result"><strong>Logs the symptom</strong> and updates your current health status. Your agent may adjust schedule recommendations based on how you're feeling.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag health">Patterns</div>
+      <div class="prompt-say">"How has my energy been this week?"</div>
+      <div class="prompt-result"><strong>Reviews your check-in data</strong> and health logs to show energy trends. If there's a pattern (e.g., always low on Mondays), your agent will flag it.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<div class="section" id="projects">
+  <div class="section-header">
+    <div class="section-icon ember">📦</div>
+    <h2>Projects & Cubes</h2>
+  </div>
+  <p class="section-desc">Cubes are your project containers — each one has tasks, a log, and a lifecycle (spark → active → complete → archived). Use them for anything from home improvement to career goals.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Create</div>
+      <div class="prompt-say">"I want to start a project for learning Spanish"</div>
+      <div class="prompt-result"><strong>Creates a new cube</strong> called "Learn Spanish" in spark state, linked to the Learning life area. Asks if you want to add initial tasks.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Tasks</div>
+      <div class="prompt-say">"Add 'research language apps' to my Spanish cube"</div>
+      <div class="prompt-result"><strong>Adds the task</strong> as pending in the specified cube. Task shows up in the cube's task list on the dashboard.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Progress</div>
+      <div class="prompt-say">"I finished the Duolingo setup"</div>
+      <div class="prompt-result"><strong>Marks the task as done</strong> in the matching cube. Adds a log entry with the date. If the cube is linked to a goal, the goal progress updates too.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Status</div>
+      <div class="prompt-say">"What's the status on my active projects?"</div>
+      <div class="prompt-result"><strong>Lists all active cubes</strong> with their task counts (done/total), last log entry, and next pending task. Good for a quick project review.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Lifecycle</div>
+      <div class="prompt-say">"Move my home renovation cube to active"</div>
+      <div class="prompt-result"><strong>Changes the cube state</strong> from spark to active. Active cubes are displayed more prominently on the dashboard.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Focus</div>
+      <div class="prompt-say">"Set my Focus 3 from my active cubes"</div>
+      <div class="prompt-result"><strong>Picks the top 3 pending tasks</strong> across your active cubes and sets them as today's Focus 3 priorities on the dashboard.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ GOALS ═══════════ -->
+<div class="section" id="goals">
+  <div class="section-header">
+    <div class="section-icon blue">🎯</div>
+    <h2>Goals & Progress</h2>
+  </div>
+  <p class="section-desc">Set and track yearly goals with four types: time-based (deadline), manual (percentage), financial (dollar target), or cube-linked (auto-tracks from project progress).</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag general">Create</div>
+      <div class="prompt-say">"I want to save $5,000 by December"</div>
+      <div class="prompt-result"><strong>Creates a financial goal</strong> with a $5,000 target and December deadline. Shows up in your Goals tile with a progress bar based on current amount saved.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Update</div>
+      <div class="prompt-say">"I've saved $1,200 toward my emergency fund"</div>
+      <div class="prompt-result"><strong>Updates the financial goal's</strong> current amount. Progress bar recalculates. If the goal has a countdown, that updates too.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Create</div>
+      <div class="prompt-say">"Add a goal to read 24 books this year — manual tracking"</div>
+      <div class="prompt-result"><strong>Creates a manual goal.</strong> You (or your agent) update the percentage as you make progress. Flexible for anything that doesn't fit other types.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Link</div>
+      <div class="prompt-say">"Link my Spanish goal to my Learn Spanish cube"</div>
+      <div class="prompt-result"><strong>Creates a cube-linked goal.</strong> Progress automatically tracks from the cube's task completion percentage — no manual updates needed.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ JOURNAL ═══════════ -->
+<div class="section" id="journal">
+  <div class="section-header">
+    <div class="section-icon sky">📝</div>
+    <h2>Journal & Reflection</h2>
+  </div>
+  <p class="section-desc">Write journal entries, tag them by theme, and build a personal record over time. Your agent stores these in your seed and can reference them in future conversations.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag general">Entry</div>
+      <div class="prompt-say">"Journal entry: Had a really productive morning. Got the budget sorted and went for a walk. Feeling good about the week."</div>
+      <div class="prompt-result"><strong>Saves a journal entry</strong> with today's date. Auto-tags with relevant themes. Shows up in your Journal tile on the dashboard.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Review</div>
+      <div class="prompt-say">"What have I journaled about this week?"</div>
+      <div class="prompt-result"><strong>Pulls recent journal entries</strong> and summarizes themes. Useful for weekly reflection or spotting patterns in how you're feeling.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Hobbies</div>
+      <div class="prompt-say">"I played guitar for an hour today"</div>
+      <div class="prompt-result"><strong>Logs a hobby entry.</strong> If guitar is in your hobbies list, updates the streak counter. If not, asks if you'd like to add it as a tracked hobby.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Hobbies</div>
+      <div class="prompt-say">"How's my reading streak?"</div>
+      <div class="prompt-result"><strong>Checks your hobby tracker</strong> for the reading entry — shows current streak, last logged date, and whether you're on track.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ CUSTOMIZE ═══════════ -->
+<div class="section" id="customize">
+  <div class="section-header">
+    <div class="section-icon sky">🎨</div>
+    <h2>Customize Your Dashboard</h2>
+  </div>
+  <p class="section-desc">Change how your dashboard looks, rearrange tiles, hide what you don't need, and even ask your agent to build entirely new features for you.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Palette</div>
+      <div class="prompt-say">"Switch my palette to sunset"</div>
+      <div class="prompt-result"><strong>Changes the color palette</strong> across your entire dashboard. Options: mycapsul (brand default), ocean, sunset, forest, lavender, amber, slate.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Layout</div>
+      <div class="prompt-say">"Hide the news tile and make the budget tile full-width"</div>
+      <div class="prompt-result"><strong>Updates tile visibility and sizing.</strong> News disappears, budget stretches across the full width. You can always unhide tiles later.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Layout</div>
+      <div class="prompt-say">"Move my Focus 3 to the top of the dashboard"</div>
+      <div class="prompt-result"><strong>Reorders your tile layout</strong> so Focus 3 appears first. Your agent adjusts the tile order array in localStorage.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Widgets</div>
+      <div class="prompt-say">"I wish I had a tile that tracks my water intake"</div>
+      <div class="prompt-result"><strong>Your agent can build a custom widget</strong> — a new tile with its own data storage, rendering, and interaction. This is the co-builder magic: you describe what you want, your agent writes the code.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Widgets</div>
+      <div class="prompt-say">"Install the running tracker widget"</div>
+      <div class="prompt-result"><strong>Loads a pre-built widget</strong> from the widgets folder. It registers in your dashboard, gets its own tile, and starts tracking immediately.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Agent</div>
+      <div class="prompt-say">"Change your name to Jarvis"</div>
+      <div class="prompt-result"><strong>Updates the agent name</strong> in your CLAUDE.md and dashboard config. From now on, your agent responds as Jarvis and the dashboard reflects the new name.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Widgets</div>
+      <div class="prompt-say">"Export my running tracker widget so I can share it"</div>
+      <div class="prompt-result"><strong>Packages your widget</strong> as a .capsul-widget file that others can install. Includes the render function, data schema, and sample data.</div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <div class="c-icon">💡</div>
+    <div class="c-text"><strong>The co-builder principle:</strong> You don't need to know how to code. Describe what you want in plain language — "I want a tile that shows how many days until summer" — and your agent will build it, explain what it did, and install it on your dashboard. If something breaks, it can roll it back.</div>
+  </div>
+</div>
+
+<!-- ═══════════ AGENT ═══════════ -->
+<div class="section" id="agent">
+  <div class="section-header">
+    <div class="section-icon red">🤖</div>
+    <h2>Working With Your Agent</h2>
+  </div>
+  <p class="section-desc">Meta-prompts for managing how your agent works, what it knows, and how sessions flow. These are about the system itself, not any specific life area.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag general">Session</div>
+      <div class="prompt-say">"What did we do last session?"</div>
+      <div class="prompt-result"><strong>Reads the session handoff</strong> and gives you a summary of what happened, what's in progress, and what was flagged as urgent.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Session</div>
+      <div class="prompt-say">"Sync from the dashboard"</div>
+      <div class="prompt-result"><strong>Reads your capsul-sync.json</strong> — the export of all your dashboard data — so your agent has the latest state of everything.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Knowledge</div>
+      <div class="prompt-say">"What do you know about my finances?"</div>
+      <div class="prompt-result"><strong>Reads your finances module</strong> and gives you a summary. Great for checking what your agent has on file and whether anything needs updating.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Knowledge</div>
+      <div class="prompt-say">"I got a new job at Acme Corp, starting April 1st, salary is $95k"</div>
+      <div class="prompt-result"><strong>Updates multiple modules immediately</strong> — career.md (new job), finances.md (new income), schedule.md (start date). This is the real-time knowledge capture in action.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Inbox</div>
+      <div class="prompt-say">"Check the inbox"</div>
+      <div class="prompt-result"><strong>Scans your _inbox/ folder</strong> for new files — dropped documents, sync exports, notes. Processes them, routes info to the right modules, tells you what it found.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Standing Orders</div>
+      <div class="prompt-say">"Always remind me about bills 3 days before they're due"</div>
+      <div class="prompt-result"><strong>Adds a standing order</strong> to your CLAUDE.md. Your agent will follow this rule every session going forward — it becomes part of who your agent is.</div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <div class="c-icon">📌</div>
+    <div class="c-text"><strong>Your agent remembers between sessions.</strong> Everything you tell your agent gets saved to your seed modules. When a new session starts, your agent reads those files and picks up right where you left off. The more you use it, the more it knows. The more it knows, the more useful it gets.</div>
+  </div>
+</div>
+
+<!-- ═══════════ POWER MOVES ═══════════ -->
+<div class="section" id="power">
+  <div class="section-header">
+    <div class="section-icon ember">⚡</div>
+    <h2>Power Moves</h2>
+  </div>
+  <p class="section-desc">Compound prompts that combine multiple features at once. These show the real potential of having an AI that knows your whole life context.</p>
+
+  <div class="prompt-grid">
+    <div class="prompt-card">
+      <div class="prompt-tag projects">Compound</div>
+      <div class="prompt-say">"Build my day — check what's on the calendar, set my Focus 3 from active cubes, and tell me if any bills are due this week"</div>
+      <div class="prompt-result"><strong>Multi-step morning briefing.</strong> Your agent cross-references schedule, projects, and finances to give you a complete picture and a ready-to-go daily plan.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag money">Compound</div>
+      <div class="prompt-say">"I got paid today. Balance is $3,200. Mark rent and electric as paid."</div>
+      <div class="prompt-result"><strong>Batch financial update.</strong> Updates balance, marks two bills as paid, recalculates daily budget, logs everything. Three actions in one sentence.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag custom">Compound</div>
+      <div class="prompt-say">"Create a meal planning widget that tracks what I'm eating this week with a simple list and a grocery counter"</div>
+      <div class="prompt-result"><strong>Custom widget build.</strong> Your agent designs, codes, and installs a brand new tile on your dashboard — purpose-built for exactly what you described.</div>
+    </div>
+    <div class="prompt-card">
+      <div class="prompt-tag general">Compound</div>
+      <div class="prompt-say">"End-of-week review — how did I do on my Focus 3 this week, what's my spending total, and what should I carry forward?"</div>
+      <div class="prompt-result"><strong>Weekly retrospective.</strong> Pulls focus history, transaction totals, and project progress to give you an honest review and next-week priorities.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /doc-main -->
+</div><!-- /doc-layout -->
+</div><!-- /doc-body -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Getting Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompt Cookbook</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+  </div>
+  <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+
+// Restore saved theme
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// Scroll-spy for sidebar TOC
+(function() {
+  var links = document.querySelectorAll('.doc-sidebar a[href^="#"]');
+  if (!links.length) return;
+  var sections = Array.from(links).map(function(a) {
+    return { link: a, target: document.querySelector(a.getAttribute('href')) };
+  }).filter(function(s) { return s.target; });
+  function update() {
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].target.offsetTop <= scrollY) current = i;
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current !== null) sections[current].link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  links.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

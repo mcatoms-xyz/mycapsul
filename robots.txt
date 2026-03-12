@@ -1,0 +1,8 @@
+# MyCapsul — mycapsul.com
+User-agent: *
+Allow: /
+
+Sitemap: https://mycapsul.com/sitemap.xml
+
+# Block form confirmation page
+Disallow: /thanks.html

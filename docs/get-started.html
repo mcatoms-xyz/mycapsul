@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started with MyCapsul — Setup Guide</title>
+<meta name="description" content="Set up your AI-powered personal dashboard in 10 minutes. Install the MyCapsul plugin for Claude Desktop, create your Capsul, and start chatting with your own AI life assistant.">
+<link rel="canonical" href="https://mycapsul.com/docs/get-started.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/get-started.html">
+<meta property="og:title" content="Getting Started with MyCapsul — Setup Guide">
+<meta property="og:description" content="Set up your AI-powered personal dashboard in 10 minutes. Install the MyCapsul plugin for Claude Desktop, create your Capsul, and start chatting with your own AI life assistant.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Getting Started with MyCapsul — Setup Guide">
+<meta name="twitter:description" content="Set up your AI-powered personal dashboard in 10 minutes. Install the MyCapsul plugin for Claude Desktop, create your Capsul, and start chatting with your own AI life assistant.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== NAV ===== */
+.doc-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  transition: background 0.3s;
+}
+.doc-nav-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.doc-nav-brand {
+  text-decoration: none; display: flex; align-items: center; gap: 8px;
+}
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links { display: flex; align-items: center; gap: 4px; }
+.doc-nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text-dim); text-decoration: none;
+  padding: 6px 12px; border-radius: 8px; transition: all 0.15s;
+}
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; transition: all 0.15s; margin-left: 8px;
+}
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* ===== LAYOUT ===== */
+.doc-body { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ===== HERO ===== */
+.hero { text-align: center; padding: 64px 20px 56px; }
+.hero-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 14px;
+  border-radius: 100px; background: rgba(27,186,1,0.08); color: var(--go);
+  letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif; font-size: 38px; font-weight: 700;
+  letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;
+}
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub {
+  font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 560px; margin: 0 auto;
+}
+
+/* ===== REQUIREMENTS BOX ===== */
+.req-box {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 28px 32px; margin-bottom: 40px;
+}
+.req-box h3 {
+  font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700;
+  margin-bottom: 16px;
+}
+.req-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.req-item {
+  padding: 16px; border-radius: 10px; background: var(--bg2); text-align: center;
+}
+.req-item .req-icon { font-size: 28px; display: block; margin-bottom: 8px; }
+.req-item .req-name {
+  font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 4px;
+}
+.req-item .req-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+/* ===== STEPS ===== */
+.step {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 32px 0; border-bottom: 1px solid var(--border-light);
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  min-width: 44px; height: 44px; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-weight: 800;
+  font-size: 18px; color: #fff; flex-shrink: 0;
+  font-family: 'Sora', sans-serif;
+}
+.step-num.blue { background: var(--blue); }
+.step-num.go { background: var(--go); }
+.step-num.ember { background: var(--ember); }
+.step-num.purple { background: var(--purple); }
+.step-num.sky { background: var(--sky); }
+.step-content h3 {
+  font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.step-content p {
+  font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px;
+}
+.step-content p strong { color: var(--text); }
+
+/* ===== CODE BLOCK ===== */
+.code-block {
+  background: var(--void); border-radius: 10px; overflow: hidden; margin: 12px 0;
+}
+.code-header {
+  display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+  background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.code-dot { width: 8px; height: 8px; border-radius: 50%; }
+.code-dot.r { background: #ff5f57; }
+.code-dot.y { background: #febc2e; }
+.code-dot.g { background: #28c840; }
+.code-name {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #a0a4b8; margin-left: 4px;
+}
+.code-body {
+  padding: 16px 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  line-height: 1.8; color: #e8e8e8; overflow-x: auto;
+}
+.code-body .dir { color: var(--sky); font-weight: 600; }
+.code-body .file { color: #a0a4b8; }
+.code-body .desc { color: #6b7280; font-size: 11px; }
+.code-body .comment { color: #6b7280; }
+.code-body .cmd { color: var(--go); }
+.code-body .highlight { color: var(--ember); font-weight: 600; }
+
+/* ===== CALLOUT ===== */
+.callout {
+  border-radius: 12px; padding: 18px 22px; margin: 20px 0;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.callout.tip { background: rgba(27,186,1,0.05); border: 1px solid rgba(27,186,1,0.15); }
+.callout.note { background: rgba(0,126,255,0.05); border: 1px solid rgba(0,126,255,0.15); }
+.callout.warn { background: rgba(230,114,1,0.05); border: 1px solid rgba(230,114,1,0.15); }
+.callout .c-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.callout .c-text { font-size: 14px; color: var(--text-dim); line-height: 1.7; }
+.callout .c-text strong { color: var(--text); }
+
+/* ===== SECTION HEADERS ===== */
+.section-break {
+  margin: 48px 0 24px;
+}
+.section-break .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.section-break .label.blue { color: var(--blue); }
+.section-break .label.go { color: var(--go); }
+.section-break .label.ember { color: var(--ember); }
+.section-break .label.purple { color: var(--purple); }
+.section-break h2 {
+  font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 700;
+  letter-spacing: -0.3px; margin-bottom: 8px;
+}
+.section-break p {
+  font-size: 14px; color: var(--text-dim); line-height: 1.7; max-width: 640px;
+}
+
+/* ===== NEXT STEPS ===== */
+.next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.next-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px 22px; text-decoration: none; color: var(--text);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.next-card:hover { box-shadow: var(--shadow-hover); border-color: rgba(0,126,255,0.2); }
+.next-card .nc-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-xdim); margin-bottom: 6px; }
+.next-card h4 { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.next-card p { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  text-align: center; padding: 40px 20px 20px; border-top: 1px solid var(--border);
+  max-width: 960px; margin: 0 auto;
+}
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer a { color: var(--blue); text-decoration: none; }
+.doc-footer a:hover { text-decoration: underline; }
+.doc-footer .footer-nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; }
+.doc-footer .footer-nav a { font-size: 13px; font-weight: 500; color: var(--text-dim); }
+
+/* ===== SIDEBAR TOC ===== */
+.doc-layout { display: flex; max-width: 1120px; margin: 0 auto; position: relative; }
+.doc-sidebar {
+  position: sticky;
+  top: 64px;
+  width: 200px;
+  min-width: 200px;
+  height: calc(100vh - 64px);
+  padding: 32px 0 32px 20px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.doc-sidebar::-webkit-scrollbar { width: 0; }
+.doc-sidebar nav { display: flex; flex-direction: column; gap: 2px; }
+.doc-sidebar .toc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-xdim);
+  padding: 0 12px 8px;
+  margin-bottom: 4px;
+}
+.doc-sidebar a {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border-left: 2px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.doc-sidebar a:hover { color: var(--text); background: var(--bg2); }
+.doc-sidebar a.active {
+  color: var(--blue);
+  background: rgba(0,126,255,0.06);
+  border-left-color: var(--blue);
+  font-weight: 600;
+}
+.doc-main { flex: 1; min-width: 0; }
+
+@media (max-width: 900px) {
+  .doc-sidebar { display: none; }
+  .doc-layout { display: block; }
+}
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .req-grid { grid-template-columns: 1fr; }
+  .step { flex-direction: column; gap: 12px; }
+  .next-grid { grid-template-columns: 1fr; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="../index.html" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html" class="active">Setup</a>
+      <a href="user-guide.html">Guide</a>
+      <a href="prompt-cookbook.html">Cookbook</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="../index.html" style="font-size:13px;opacity:.7;text-decoration:none;color:var(--text-dim,#6B7280);">← Home</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="doc-layout">
+
+<!-- ===== SIDEBAR TOC ===== -->
+<aside class="doc-sidebar">
+  <nav aria-label="Table of contents">
+    <div class="toc-label">On this page</div>
+    <a href="#requirements">What You Need</a>
+    <a href="#install">Install the Plugin</a>
+    <a href="#create">Create Your Capsul</a>
+    <a href="#first-session">Your First Session</a>
+    <a href="#whats-next">What's Next</a>
+  </nav>
+</aside>
+
+<div class="doc-main" id="doc-content" role="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">Getting Started</div>
+  <h1>Set Up Your <span>Capsul</span></h1>
+  <p class="hero-sub">From zero to a working personal dashboard in about 10 minutes. Here's everything you need and every step to get there.</p>
+</div>
+
+<div class="doc-body">
+
+<!-- REQUIREMENTS -->
+<div class="req-box" id="requirements">
+  <h3>What You Need</h3>
+  <div class="req-grid">
+    <div class="req-item">
+      <div class="req-icon">💻</div>
+      <div class="req-name"><a href="https://claude.ai/download?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=get_started" target="_blank" style="color:inherit;text-decoration:none;">Claude Desktop</a></div>
+      <div class="req-desc"><a href="https://www.anthropic.com/claude?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=get_started" target="_blank" style="color:inherit;text-decoration:underline;text-decoration-color:var(--text-xdim);">Anthropic's</a> desktop app with <a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=get_started" target="_blank" style="color:inherit;text-decoration:underline;text-decoration-color:var(--text-xdim);">Cowork</a> mode. Free to download.</div>
+    </div>
+    <div class="req-item">
+      <div class="req-icon">📁</div>
+      <div class="req-name">A Folder on Your Computer</div>
+      <div class="req-desc">Pick any folder — Documents, Desktop, wherever you want. MyCapsul will create a <code style="font-size:11px;background:var(--bg2);padding:1px 5px;border-radius:3px;">MyCapsul/</code> directory inside it.</div>
+    </div>
+    <div class="req-item">
+      <div class="req-icon">🌐</div>
+      <div class="req-name">A Web Browser</div>
+      <div class="req-desc">Chrome, Firefox, Safari, Edge — anything modern. For viewing your dashboard.</div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL STEPS -->
+<div class="section-break" id="install">
+  <div class="label blue">Installation</div>
+  <h2>Install the Plugin</h2>
+  <p>MyCapsul ships as a Cowork plugin — a small package that teaches Claude how to be your personal life assistant.</p>
+</div>
+
+<div class="step">
+  <div class="step-num blue">1</div>
+  <div class="step-content">
+    <h3>Download the Plugin</h3>
+    <p>Get the <strong>mycapsul.plugin</strong> file from <a href="https://mycapsul.com" style="color:var(--blue);">MyCapsul.com</a>. It's a single file — no unzipping, no installers.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num blue">2</div>
+  <div class="step-content">
+    <h3>Install It</h3>
+    <p><strong>Double-click the .plugin file.</strong> Claude Desktop will open and ask you to confirm the installation. Click Install. That's it — the plugin is now part of your Claude setup.</p>
+    <div class="callout note">
+      <div class="c-icon">📌</div>
+      <div class="c-text">If double-clicking doesn't work, you can drag the file into the Claude Desktop window, or install it manually through Settings → Plugins.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SETUP STEPS -->
+<div class="section-break" id="create">
+  <div class="label go">Setup</div>
+  <h2>Create Your Capsul</h2>
+  <p>With the plugin installed, you're one conversation away from a working dashboard.</p>
+</div>
+
+<div class="step">
+  <div class="step-num go">3</div>
+  <div class="step-content">
+    <h3>Open Cowork and Select Your Folder</h3>
+    <p>Open a <strong>new Cowork session</strong> in Claude Desktop. When prompted, select a folder on your computer — this is where MyCapsul will live. Your agent creates a <code>MyCapsul/</code> directory inside it with everything: your dashboard, Seed files, <code>_inbox/</code> drop folder, and agent config.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num go">4</div>
+  <div class="step-content">
+    <h3>Run Setup</h3>
+    <p>Type <strong>/setup-capsul</strong> or just say <strong>"set up my Capsul"</strong>. Your agent will scaffold the workspace and start the onboarding conversation.</p>
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dot r"></div><div class="code-dot y"></div><div class="code-dot g"></div>
+        <span class="code-name">cowork session</span>
+      </div>
+      <div class="code-body">
+        <span class="cmd">&gt;</span> <span class="highlight">/setup-capsul</span><br>
+        <br>
+        <span class="comment">or just say:</span><br>
+        <span class="cmd">&gt;</span> Set up my Capsul
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num go">5</div>
+  <div class="step-content">
+    <h3>Walk Through the Onboarding Wizard</h3>
+    <p>When your dashboard opens for the first time, a <strong>5-step setup wizard</strong> appears. It walks you through your name, color palette, schedule type, key people, life areas, and financial tracking preferences. <strong>Takes about 2 minutes.</strong> Every step is skippable — your agent picks up anything you skip in your first conversation.</p>
+    <div class="callout tip">
+      <div class="c-icon">💡</div>
+      <div class="c-text"><strong>Don't stress about getting it perfect.</strong> The wizard is just the starting point. Your agent learns more about you with every conversation. Miss something? Just tell your agent later — "Hey, I forgot to mention I have a car payment of $340 on the 5th."</div>
+    </div>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num go">6</div>
+  <div class="step-content">
+    <h3>Open Your Dashboard</h3>
+    <p>After setup, you'll have a file called <strong>mycapsul.html</strong> in your folder. Open it in any web browser. That's your dashboard — your personal command center, running entirely on your machine.</p>
+    <div class="callout note">
+      <div class="c-icon">📌</div>
+      <div class="c-text"><strong>Bookmark your dashboard.</strong> You'll be opening it daily, so bookmark the file in your browser for easy access. You can also ask your Capsul agent "give me the link to my dashboard" at any time — it knows where your files live.</div>
+    </div>
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dot r"></div><div class="code-dot y"></div><div class="code-dot g"></div>
+        <span class="code-name">your folder</span>
+      </div>
+      <div class="code-body">
+        <span class="dir">MyCapsul/</span><br>
+        ├── <span class="file">mycapsul.html</span> <span class="desc">← open this in your browser</span><br>
+        ├── <span class="file">SKILL.md</span> <span class="desc">← your agent's operating manual</span><br>
+        ├── <span class="file">CLAUDE.md</span> <span class="desc">← your agent's personality &amp; protocols</span><br>
+        ├── <span class="dir">seed/</span> <span class="desc">← your personal knowledge base</span><br>
+        │   ├── <span class="file">identity.md</span><br>
+        │   ├── <span class="file">schedule.md</span><br>
+        │   ├── <span class="file">finances.md</span><br>
+        │   ├── <span class="file">health.md</span><br>
+        │   └── <span class="file">...</span><br>
+        ├── <span class="dir">_inbox/</span> <span class="desc">← drop files here for your agent</span><br>
+        └── <span class="dir">widgets/</span> <span class="desc">← custom widget files</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FIRST SESSION -->
+<div class="section-break" id="first-session">
+  <div class="label ember">First Steps</div>
+  <h2>Your First Real Session</h2>
+  <p>Setup is done. Now what? Here's how a normal session with your Capsul agent works.</p>
+</div>
+
+<div class="step">
+  <div class="step-num ember">7</div>
+  <div class="step-content">
+    <h3>Start a Cowork Session</h3>
+    <p>Each time you want to work with your Capsul, open a Cowork session and select your MyCapsul folder. Your agent reads the handoff from your last session and picks up right where you left off.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num ember">8</div>
+  <div class="step-content">
+    <h3>Talk About Your Life</h3>
+    <p>That's it. Tell your agent what's going on. "I spent $30 on lunch." "I have a meeting Thursday at 3." "My energy is low today." Your agent updates your knowledge base and dashboard in real time.</p>
+    <p>Not sure what to say? Check out the <a href="prompt-cookbook.html" style="color:var(--blue);">Prompt Cookbook</a> for dozens of real examples organized by category.</p>
+  </div>
+</div>
+
+<div class="step">
+  <div class="step-num ember">9</div>
+  <div class="step-content">
+    <h3>Sync Your Dashboard</h3>
+    <p>When your agent makes changes, they get pushed to a sync file. <strong>Open your dashboard</strong> and it will pull in the latest data automatically. You'll see updates reflected in your tiles, calendar, budget, and everywhere else.</p>
+    <div class="callout note">
+      <div class="c-icon">📌</div>
+      <div class="c-text"><strong>Two-way sync:</strong> Your dashboard also exports data back to your agent via a sync file. Click the Sync button in your dashboard to export, then tell your agent to "sync from the dashboard" to pull in any changes you made directly in the UI.</div>
+    </div>
+  </div>
+</div>
+
+<div class="callout tip">
+  <div class="c-icon">🧪</div>
+  <div class="c-text"><strong>Want to explore first?</strong> Open the included <a href="../mycapsul-demo.html" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);"><code>mycapsul-demo.html</code></a> to see a pre-populated demo with sample data for a fictional user named Brodie. When you're ready, open the clean <code>mycapsul.html</code> to start your own setup.</div>
+</div>
+
+<!-- WHAT'S NEXT -->
+<div class="section-break" id="whats-next">
+  <div class="label purple">Keep Going</div>
+  <h2>What's Next</h2>
+</div>
+
+<div class="next-grid">
+  <a href="user-guide.html" class="next-card">
+    <div class="nc-label">Read next</div>
+    <h4>User Guide →</h4>
+    <p>Learn what every tile does, how the seed system works, and how your agent maintains your dashboard.</p>
+  </a>
+  <a href="prompt-cookbook.html" class="next-card">
+    <div class="nc-label">Explore</div>
+    <h4>Prompt Cookbook →</h4>
+    <p>Real examples of things you can say to your agent — organized by schedule, money, health, projects, and more.</p>
+  </a>
+  <a href="faq.html" class="next-card">
+    <div class="nc-label">Troubleshoot</div>
+    <h4>FAQ →</h4>
+    <p>Common questions, troubleshooting tips, and answers about how MyCapsul works under the hood.</p>
+  </a>
+  <a href="https://buymeacoffee.com/mcatoms" class="next-card" target="_blank">
+    <div class="nc-label">Support</div>
+    <h4>Buy Me a Coffee ☕</h4>
+    <p>MyCapsul is built by one person. If it's useful to you, a coffee goes a long way.</p>
+  </a>
+</div>
+
+</div><!-- /doc-body -->
+
+</div><!-- /doc-main -->
+</div><!-- /doc-layout -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Getting Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompt Cookbook</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+  </div>
+  <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// Scroll-spy for sidebar TOC
+(function() {
+  const links = document.querySelectorAll('.doc-sidebar a[href^="#"]');
+  if (!links.length) return;
+  const sections = Array.from(links).map(function(a) {
+    return { link: a, target: document.querySelector(a.getAttribute('href')) };
+  }).filter(function(s) { return s.target; });
+  function update() {
+    var current = null;
+    var scrollY = window.scrollY + 80;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].target.offsetTop <= scrollY) current = i;
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current !== null) sections[current].link.classList.add('active');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+  links.forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>MyCapsul — Your AI-Powered Life OS</title>
+<meta name="description" content="MyCapsul is a personal life dashboard powered by an AI that actually knows your world. You chat, it learns, it acts. Stop managing. Start living.">
+<link rel="canonical" href="https://mycapsul.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mycapsul.com/">
+<meta property="og:title" content="MyCapsul — Your AI-Powered Life OS">
+<meta property="og:description" content="A personal life dashboard powered by an AI that actually knows your world. Budget, schedule, goals, health — all in one place. You chat, it learns, it acts.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MyCapsul — Your AI-Powered Life OS">
+<meta name="twitter:description" content="A personal life dashboard powered by an AI that actually knows your world. You chat, it learns, it acts. Stop managing. Start living.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<!-- Additional SEO -->
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#007EFF">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MyCapsul",
+  "url": "https://mycapsul.com",
+  "description": "AI-powered personal life dashboard. An agent that knows your schedule, budget, goals, and health — paired with a visual command center. Built for ADHD brains, single parents, and anyone drowning in life admin.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "macOS, Windows",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Adam McCrimmon",
+    "url": "https://mcatoms.com"
+  },
+  "keywords": "AI life management, personal dashboard, ADHD organization, AI assistant, life OS, personal command center, budget tracker, schedule planner, AI chief of staff"
+}
+</script>
+
+<link rel="stylesheet" href="https://use.typekit.net/djs8wnd.css">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #F7F8FC; --bg2: #EFF1F7; --surface: #FFFFFF;
+  --card: #FFFFFF; --card-border: rgba(0,0,0,0.06);
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+  --card-shadow-hover: 0 2px 8px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.05);
+  --text: #111827; --text-body: #374151; --text-dim: #6B7280; --text-muted: #9CA3AF;
+  --blue: #007EFF; --sky: #3B9EFF; --ember: #E67201; --go: #1BBA01; --purple: #7c3aed;
+  --hero-gradient-start: #EDF2FF; --hero-gradient-end: #F7F8FC;
+  --nav-bg: rgba(255,255,255,0.92); --nav-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  --divider: rgba(0,0,0,0.06);
+  --badge-bg: rgba(0,126,255,0.07); --badge-text: #007EFF;
+  --tagline-color: #6B7280; --footer-bg: #111827;
+  --how-bg: #F0F2F8; --step-number-bg: rgba(0,126,255,0.08);
+  --placeholder-bg: #E8EBF2; --placeholder-border: rgba(0,126,255,0.15);
+  --cta-card-bg: linear-gradient(135deg, #FFFFFF 0%, #EDF2FF 100%);
+}
+[data-theme="dark"] {
+  --bg: #0A0A14; --bg2: #0F0F1A; --surface: #12121F;
+  --card: #16162A; --card-border: rgba(255,255,255,0.06);
+  --card-shadow: none; --card-shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+  --text: #FFFFFF; --text-body: #C4C4C4; --text-dim: #6B7280; --text-muted: #4B5563;
+  --hero-gradient-start: #0A0A14; --hero-gradient-end: #0F1628;
+  --nav-bg: rgba(10,10,20,0.85); --nav-shadow: none;
+  --divider: rgba(255,255,255,0.06);
+  --badge-bg: rgba(0,126,255,0.12); --badge-text: var(--sky);
+  --tagline-color: #9CA3AF; --footer-bg: #08080F;
+  --how-bg: var(--surface); --step-number-bg: rgba(0,126,255,0.12);
+  --placeholder-bg: #1A1A2E; --placeholder-border: rgba(0,126,255,0.2);
+  --cta-card-bg: linear-gradient(135deg, var(--card) 0%, rgba(0,126,255,0.06) 100%);
+}
+body { font-family:'Sora',sans-serif; background:var(--bg); color:var(--text-body); line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .4s,color .4s; }
+
+/* ═══ NAV ═══ */
+nav { position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--card-border);box-shadow:var(--nav-shadow);padding:0 48px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .3s; }
+.nav-logo { font-size:24px;line-height:1;text-decoration:none; }
+.nav-logo img { height:28px;vertical-align:middle; }
+.nav-logo .logo-light { display:inline; } .nav-logo .logo-dark { display:none; }
+[data-theme="dark"] .nav-logo .logo-light { display:none; } [data-theme="dark"] .nav-logo .logo-dark { display:inline; }
+.nav-right { display:flex;align-items:center;gap:28px;list-style:none; }
+.nav-right a { font-size:13px;font-weight:500;color:var(--text-dim);text-decoration:none;transition:color .2s; }
+.nav-right a:hover { color:var(--text); }
+.nav-cta { background:var(--blue)!important;color:#fff!important;padding:8px 20px;border-radius:8px;font-weight:600!important;font-size:13px!important;transition:opacity .2s; }
+.nav-cta:hover { opacity:.9; }
+.nav-toggle { width:36px;height:36px;border-radius:8px;border:1px solid var(--card-border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .15s; }
+.nav-toggle:hover { border-color:var(--blue); }
+
+/* ═══ HERO ═══ */
+.hero-wrap { position:relative;min-height:100vh;overflow:hidden;background:linear-gradient(180deg,var(--hero-gradient-start),var(--hero-gradient-end)); }
+#heroCanvas { position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none; }
+.hero { position:relative;z-index:2;min-height:100vh;display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center;padding:120px 64px 80px;max-width:1280px;margin:0 auto; }
+.hero-left { position:relative;z-index:1; }
+.hero-badge { display:inline-flex;align-items:center;gap:8px;background:var(--badge-bg);color:var(--badge-text);font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:28px;letter-spacing:.5px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 0 20px var(--bg),0 0 40px var(--bg); }
+.hero-badge a { color:var(--badge-text);text-decoration:underline;text-underline-offset:2px; }
+.hero-badge a:hover { color:var(--blue); }
+.hero-badge-dot { width:6px;height:6px;background:var(--go);border-radius:50%; }
+.hero-wordmark { font-size:clamp(72px,9vw,110px);line-height:.92;margin-bottom:16px; }
+.hero-wordmark .my { font-family:'neighbor',sans-serif;font-weight:700;font-style:italic;color:var(--blue);letter-spacing:-.12em; }
+.hero-wordmark .capsul { font-family:'neighbor',sans-serif;font-weight:700;color:var(--text);margin-left:-.02em; }
+.hero-tagline { font-family:'widescreen',sans-serif;font-weight:400;font-size:clamp(10px,1.2vw,14px);letter-spacing:3px;text-transform:uppercase;color:var(--tagline-color);margin-bottom:32px; }
+.hero-body { font-size:17px;color:var(--text);max-width:520px;line-height:1.75;margin-bottom:28px;text-shadow:0 0 20px var(--bg),0 0 40px var(--bg); }
+[data-theme="dark"] .hero-body { text-shadow:0 0 24px rgba(0,0,0,.8),0 0 48px rgba(0,0,0,.6); }
+.hero-learn-more a { font-size:14px;font-weight:500;color:var(--text-dim);text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:6px; }
+.hero-learn-more a:hover { color:var(--blue); }
+.hero-learn-more a .arrow { display:inline-block;transition:transform .2s; }
+.hero-learn-more a:hover .arrow { transform:translateY(2px); }
+
+/* Hero CTA float */
+.hero-right { position:relative;z-index:1; }
+.hero-cta-float { background:var(--card);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06),0 16px 56px rgba(0,0,0,.05);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);width:100%; }
+[data-theme="dark"] .hero-cta-float { background:rgba(22,22,42,.8);border-color:rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.3),0 16px 56px rgba(0,0,0,.25); }
+.cta-top { padding:32px 32px 24px; }
+.cta-top .cta-version { display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.5px;margin-bottom:12px; }
+.cta-top .ver-dot { width:5px;height:5px;border-radius:50%;background:var(--go); }
+.cta-top .cta-label { font-size:18px;font-weight:700;color:var(--text);margin-bottom:6px; }
+.cta-top .cta-sublabel { font-size:13px;color:var(--text-dim);margin-bottom:20px;line-height:1.5; }
+.btn-download { display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-family:'Sora',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none; }
+.btn-download:hover { transform:translateY(-1px);box-shadow:0 8px 28px rgba(0,126,255,.35); }
+.btn-download svg { flex-shrink:0; }
+.cta-top .cta-fine { font-size:11px;color:var(--text-muted);text-align:center;line-height:1.5;margin-top:10px; }
+.cta-top .cta-fine a { color:var(--text-dim);text-decoration:underline; }
+.cta-top .cta-fine a:hover { color:var(--blue); }
+.cta-bottom { background:var(--blue);padding:24px 32px;color:#fff; }
+.cta-bottom .mail-label { font-size:14px;font-weight:700;margin-bottom:4px; }
+.cta-bottom .mail-sub { font-size:12px;opacity:.8;margin-bottom:14px;line-height:1.5; }
+.cta-bottom .mail-form { display:flex;gap:8px; }
+.cta-bottom .mail-form input { flex:1;padding:11px 14px;border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;background:#fff;color:#1e293b;outline:none;transition:box-shadow .2s; }
+.cta-bottom .mail-form input::placeholder { color:#94a3b8; }
+.cta-bottom .mail-form input:focus { box-shadow:0 0 0 3px rgba(255,255,255,0.3); }
+.cta-bottom .mail-form button { padding:11px 18px;background:#fff;color:var(--blue);border:none;border-radius:8px;font-family:'Sora',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap; }
+.cta-bottom .mail-form button:hover { transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15); }
+.cta-bottom .mail-note { font-size:10px;opacity:.6;margin-top:8px;line-height:1.4; }
+
+/* ═══ SHARED SECTIONS ═══ */
+section { padding:100px 24px; }
+.section-inner { max-width:1080px;margin:0 auto; }
+.section-label { font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:8px;text-align:center; }
+.section-title { font-size:36px;font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:16px;text-align:center;color:var(--text); }
+.section-sub { font-size:16px;color:var(--text-dim);max-width:680px;margin:0 auto 56px;text-align:center;line-height:1.7; }
+.section-cta { display:inline-block;font-size:14px;font-weight:600;color:var(--blue);text-decoration:none;padding:8px 24px;border:2px solid var(--blue);border-radius:10px;transition:all .2s;letter-spacing:.3px; }
+.section-cta:hover { background:var(--blue);color:#fff;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,126,255,.25); }
+
+/* ═══ SVG ICONS ═══ */
+.icon-box { width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px; }
+.icon-box svg { width:24px;height:24px; }
+.icon-box.blue { background:rgba(0,126,255,.08); } .icon-box.blue svg { stroke:var(--blue); }
+.icon-box.ember { background:rgba(230,114,1,.08); } .icon-box.ember svg { stroke:var(--ember); }
+.icon-box.go { background:rgba(27,186,1,.08); } .icon-box.go svg { stroke:var(--go); }
+
+/* ═══ WHAT IT IS ═══ */
+#what .section-title { font-size:clamp(36px,4.5vw,52px); }
+.loop-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+.loop-card { background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:36px 28px;box-shadow:var(--card-shadow);transition:box-shadow .3s,transform .3s;position:relative;overflow:hidden; }
+.loop-card:hover,.loop-card.cycle-active { box-shadow:var(--card-shadow-hover);transform:translateY(-3px); }
+.loop-num { font-size:72px;font-weight:800;color:var(--blue);opacity:.12;position:absolute;top:12px;right:16px;line-height:1;transition:all .3s; }
+.loop-card:hover .loop-num,.loop-card.cycle-active .loop-num { color:#1e293b;opacity:.85; }
+.loop-card h3 { font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text); }
+.loop-card p { font-size:14px;line-height:1.7;color:var(--text-dim); }
+.loop-card .icon-box { transition:all .3s; }
+/* Icon box inversion: bg becomes stroke color, stroke becomes white */
+.loop-card:hover .icon-box.blue,.loop-card.cycle-active .icon-box.blue { background:var(--blue); }
+.loop-card:hover .icon-box.blue svg,.loop-card.cycle-active .icon-box.blue svg { stroke:#fff; }
+.loop-card:hover .icon-box.ember,.loop-card.cycle-active .icon-box.ember { background:var(--ember); }
+.loop-card:hover .icon-box.ember svg,.loop-card.cycle-active .icon-box.ember svg { stroke:#fff; }
+.loop-card:hover .icon-box.go,.loop-card.cycle-active .icon-box.go { background:var(--go); }
+.loop-card:hover .icon-box.go svg,.loop-card.cycle-active .icon-box.go svg { stroke:#fff; }
+
+/* ═══ FEATURES (dark section, light-mode product cards) ═══ */
+#features { background:#0F0F1A;padding:100px 24px;position:relative;overflow:hidden; }
+#features::before { content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(0,126,255,0.06) 0%,transparent 70%);pointer-events:none; }
+#features .section-label { color:var(--sky); }
+#features .section-title { color:#fff;font-size:clamp(32px,4vw,48px); }
+#features .section-sub { color:#9CA3AF; }
+/* Masonry feature grid */
+.feature-grid { display:grid;grid-template-columns:repeat(12,1fr);gap:14px;max-width:1080px;margin:0 auto;position:relative;z-index:1; }
+.feature-grid .f-card { background:#fff;border:1px solid #d1d5db;border-radius:14px;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s;display:flex;flex-direction:column; }
+.feature-grid .f-card:hover { transform:translateY(-2px); }
+/* Hover border + glow matches accent bar color */
+.f-dash:hover { border-color:#007EFF;box-shadow:0 8px 32px rgba(0,126,255,.15); }
+.f-combo:hover { border-color:#E67201;box-shadow:0 8px 32px rgba(230,114,1,.15); }
+.f-cubes:hover { border-color:#1BBA01;box-shadow:0 8px 32px rgba(27,186,1,.15); }
+.f-frc:hover { border-color:#007EFF;box-shadow:0 8px 32px rgba(0,126,255,.15); }
+.f-cal:hover { border-color:#E67201;box-shadow:0 8px 32px rgba(230,114,1,.15); }
+.f-timeline:hover { border-color:#1BBA01;box-shadow:0 8px 32px rgba(27,186,1,.15); }
+.f-capsul:hover { border-color:#007EFF;box-shadow:0 8px 32px rgba(0,126,255,.15); }
+.f-sm:nth-of-type(3n+1):hover { border-color:#E67201;box-shadow:0 8px 32px rgba(230,114,1,.15); }
+.f-sm:nth-of-type(3n+2):hover { border-color:#1BBA01;box-shadow:0 8px 32px rgba(27,186,1,.15); }
+.f-sm:nth-of-type(3n):hover { border-color:#007EFF;box-shadow:0 8px 32px rgba(0,126,255,.15); }
+/* Text on top — visual below */
+.f-card .f-body { order:-1; }
+.f-card .mockup { order:1;flex:1;min-height:0; }
+.f-card .combo-stack { order:1;flex:1;min-height:0; }
+/* Row 1: Dashboard full width */
+.f-card.f-dash { grid-column:1 / -1; }
+/* Row 2: Ring+Focus3 combo (5col) + Cubes (7col) */
+.f-card.f-combo { grid-column:span 5; }
+.f-combo .combo-stack { display:flex;flex-direction:column; }
+.f-combo .combo-stack .mockup + .mockup { border-top:1px solid #e2e8f0; }
+.f-card.f-cubes { grid-column:span 7; }
+/* Row 3: FRC + Calendar + Timeline (4 each) */
+.f-card.f-frc { grid-column:span 4; }
+.f-card.f-cal { grid-column:span 4; }
+.f-card.f-timeline { grid-column:span 4; }
+/* Row 4: Time Capsuls (5col tall) + 3 stacked cards (7col) */
+.f-card.f-capsul { grid-column:span 5;grid-row:span 3;display:flex;flex-direction:column; }
+.f-card.f-sm { grid-column:span 7; }
+/* Card text — on top, prominent */
+.f-card .f-body { padding:16px 20px;border-bottom:3px solid #007EFF; }
+/* Accent border colors — cycle Blue / Ember / Go */
+.f-dash .f-body { border-bottom-color:#007EFF; }
+.f-combo .f-body { border-bottom-color:#E67201; }
+.f-cubes .f-body { border-bottom-color:#1BBA01; }
+.f-frc .f-body { border-bottom-color:#007EFF; }
+.f-cal .f-body { border-bottom-color:#E67201; }
+.f-timeline .f-body { border-bottom-color:#1BBA01; }
+.f-capsul .f-body { border-bottom-color:#007EFF; }
+.f-sm:nth-of-type(3n+1) .f-body { border-bottom-color:#E67201; }
+.f-sm:nth-of-type(3n+2) .f-body { border-bottom-color:#1BBA01; }
+.f-sm:nth-of-type(3n) .f-body { border-bottom-color:#007EFF; }
+.f-card h3 { font-size:16px;font-weight:700;margin-bottom:4px;color:#1e293b; }
+.f-card p { font-size:13px;line-height:1.6;color:#475569;margin:0; }
+
+/* Feature mockups — light mode (matching product default skin) */
+.mockup { padding:12px;background:#f1f5f9;border-bottom:none; }
+.mockup img { width:100%;height:auto;display:block;border-radius:4px; }
+
+/* ── Dashboard-accurate: Focus 3 (light mode) ── */
+.db-focus3 { display:flex;flex-direction:column;gap:4px; }
+.db-fi { display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#1e293b;transition:.15s; }
+.db-fi:hover { background:#f8fafc; }
+.db-fi input[type="checkbox"] { width:16px;height:16px;accent-color:#007EFF;flex-shrink:0; }
+.db-fi .fn { font-size:10px;font-weight:700;color:#94a3b8;min-width:14px; }
+.db-fi.done { color:#94a3b8;text-decoration:line-through; }
+
+/* ── Dashboard-accurate: Budget Tile (light mode) ── */
+.db-budget { color:#1e293b; }
+.db-budget-hdr { display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px; }
+.db-budget-bal { font-size:22px;font-weight:700;color:#1e293b;line-height:1; }
+.db-budget-lbl { font-size:10px;color:#64748b;margin-top:2px; }
+.db-budget-daily { text-align:right; }
+.db-budget-today { font-size:18px;font-weight:700;line-height:1; }
+.db-budget-today.ok { color:#16a34a; }
+.db-budget-today.over { color:#dc2626; }
+.db-budget-today-lbl { font-size:10px;color:#64748b;margin-top:2px; }
+.db-budget-bars { display:flex;gap:3px;height:52px;align-items:flex-end;margin-bottom:6px; }
+.db-budget-col { flex:1;display:flex;flex-direction:column;align-items:center;height:100%; }
+.db-budget-bar-bg { flex:1;width:100%;background:#f1f5f9;border-radius:3px 3px 0 0;display:flex;align-items:flex-end;overflow:hidden; }
+.db-budget-bar-fill { width:100%;background:#007EFF;border-radius:3px 3px 0 0;transition:height 0.3s; }
+.db-budget-bar-fill.over { background:#dc2626; }
+.db-budget-dow { font-size:9px;color:#64748b;margin-top:2px;font-weight:600; }
+
+/* ── Dashboard-accurate: FRC Tile (light mode) ── */
+.db-frc { color:#1e293b; }
+.db-frc-summary { display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px; }
+.db-frc-num { font-size:18px;font-weight:700;line-height:1; }
+.db-frc-lbl { font-size:10px;color:#64748b;margin-top:2px; }
+.db-frc-gap { text-align:right; }
+.db-frc-gap-num { font-size:18px;font-weight:700;line-height:1; }
+.db-frc-gap-lbl { font-size:10px;color:#64748b;margin-top:2px; }
+.db-frc-cats { display:flex;flex-direction:column;gap:4px; }
+.db-frc-cat { display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;font-size:12px; }
+.db-frc-cat-name { display:flex;align-items:center;gap:6px;font-weight:500; }
+.db-frc-cat-amt { font-weight:700; }
+
+/* ── ACTUAL Calendar Widget (light mode) ── */
+.mcw { color:#1e293b; }
+.mcw-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:10px; }
+.mcw-title { font-size:15px;font-weight:600;letter-spacing:.5px; }
+.mcw-custody { display:flex;border-radius:6px;overflow:hidden;border:1px solid #e2e8f0;font-size:10px;font-weight:600;letter-spacing:.3px;text-transform:uppercase; }
+.mcw-seg { padding:3px 10px; }
+.mcw-seg.solo { background:rgba(27,186,1,0.06);color:#16a34a; }
+.mcw-seg.kids { background:rgba(0,126,255,0.06);color:#007EFF; }
+.mcw-seg.active.solo { background:rgba(27,186,1,0.15); }
+.mcw-seg.active.kids { background:rgba(0,126,255,0.15); }
+.mcw-nav { display:flex;gap:4px; }
+.mcw-nav-btn { background:#f1f5f9;border:1px solid #e2e8f0;border-radius:5px;color:#64748b;font-size:12px;padding:3px 10px;font-family:inherit;cursor:default; }
+.mcw-dow { display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:4px; }
+.mcw-dow span { font-size:9px;color:#94a3b8;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 0; }
+.mcw-grid { display:grid;grid-template-columns:repeat(7,1fr);gap:1px; }
+.mcw-cell { border-radius:6px;min-height:36px;display:flex;flex-direction:column;align-items:center;padding:4px 2px;transition:background .15s; }
+.mcw-cell:hover { background:#f1f5f9; }
+.mcw-cell.other { opacity:0.25; }
+.mcw-cell.today .mcw-d { background:#E67201;color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700; }
+.mcw-cell.custody { background:rgba(0,126,255,0.05); }
+.mcw-cell.custody:hover { background:rgba(0,126,255,0.1); }
+.mcw-d { font-size:11px;font-weight:600;line-height:1;margin-bottom:3px; }
+.mcw-icon { font-size:11px;line-height:1;opacity:0.7; }
+
+/* ── ACTUAL Cube Manager (light mode) ── */
+.db-sphere { color:#1e293b; }
+.db-sphere-stats { display:flex;gap:6px;margin-bottom:8px;font-size:11px;flex-wrap:wrap; }
+.db-sphere-stat { padding:4px 10px;border-radius:6px;font-weight:600;display:flex;align-items:center;gap:4px;background:#f8fafc;border:1px solid #e2e8f0; }
+.db-sphere-stat.active { background:#fff;box-shadow:0 0 8px rgba(230,114,1,0.15);border-color:#E67201; }
+.db-sphere-nodes { display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px;align-items:center; }
+.db-sphere-node-lbl { font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.5px;margin-right:2px; }
+.db-sphere-node-btn { font-size:10px;padding:2px 8px;border-radius:4px;border:1px solid #e2e8f0;background:#f8fafc;color:#1e293b;font-weight:600; }
+.db-sc { background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:12px 14px;margin-bottom:6px;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,0.04); }
+.db-sc:hover { background:#f8fafc;box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+.db-sc.focus { border-left:3px solid #E67201; }
+.db-sc.active { border-left:3px solid #007EFF; }
+.db-sc.parked { border-left:3px solid #cbd5e1;opacity:0.75; }
+.db-sc.spark { border-left:3px solid #9B59B6;opacity:0.8; }
+.db-sc-hdr { display:flex;justify-content:space-between;align-items:center;margin-bottom:4px; }
+.db-sc-title { font-size:13px;font-weight:600; }
+.db-sc-meta { display:flex;gap:6px;align-items:center;font-size:10px;color:#94a3b8; }
+.db-sc-sel { padding:1px 2px;font-size:9px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:3px;color:#64748b;font-family:inherit; }
+.db-sc-nodes { display:flex;gap:3px;flex-wrap:wrap;margin-bottom:4px; }
+.db-sc-nd { padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.3px; }
+.db-sc-tasks { margin-top:6px; }
+.db-sc-task { display:flex;align-items:center;gap:6px;padding:3px 0;font-size:13px;color:#1e293b; }
+.db-sc-task input[type="checkbox"] { width:15px;height:15px;accent-color:#E67201;flex-shrink:0; }
+.db-sc-task.done { color:#94a3b8;text-decoration:line-through; }
+.db-sc-urgency { font-size:10px;font-weight:700;padding:1px 5px;border-radius:3px; }
+.db-sc-urgency.u-now { background:rgba(239,68,68,0.1);color:#dc2626; }
+.db-sc-urgency.u-soon { background:rgba(234,179,8,0.1);color:#ca8a04; }
+.db-sc-urgency.u-later { background:#f1f5f9;color:#94a3b8; }
+.db-sc-energy { font-size:12px;color:#94a3b8; }
+.db-sc-log { margin-top:8px;border-top:1px solid #e2e8f0;padding-top:6px; }
+.db-sc-log-entry { position:relative;padding:6px 0 6px 14px;border-left:2px solid #e2e8f0;margin-left:4px;font-size:11px; }
+.db-sc-log-entry::before { content:'';position:absolute;left:-4px;top:10px;width:6px;height:6px;border-radius:50%;background:#007EFF;border:1px solid #fff; }
+.db-sc-log-entry:last-child::before { background:#1BBA01; }
+.db-sc-log-date { font-size:9px;color:#94a3b8;font-weight:600;letter-spacing:.3px;text-transform:uppercase; }
+.db-sc-log-text { color:#1e293b;margin-top:2px; }
+.db-sc-log-decision { color:#b45309;font-style:italic;margin-top:2px;font-size:10px; }
+.db-sc-log-decision::before { content:'↳ '; }
+.db-sc-log-artifacts { display:flex;gap:4px;flex-wrap:wrap;margin-top:3px; }
+.db-sc-log-artifact { font-size:9px;padding:2px 6px;border-radius:3px;background:rgba(0,126,255,0.08);border:1px solid rgba(0,126,255,0.2);color:#007EFF; }
+.db-sc-group-hdr { font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin:8px 0 6px;display:flex;align-items:center;gap:6px;color:#64748b; }
+.db-sc-group-hdr span.line { flex:1;height:1px;background:#e2e8f0; }
+.db-sc-add { margin-top:10px;font-size:11px;color:#94a3b8; }
+.db-sc-add-row { display:flex;gap:4px;margin-top:6px; }
+.db-sc-add-inp { flex:1;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;font-size:12px;color:#1e293b;font-family:inherit; }
+.db-sc-add-sel { background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:4px 8px;font-size:11px;color:#64748b;font-family:inherit;width:80px; }
+.db-sc-add-btn { background:#E67201;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:11px;font-weight:600;font-family:inherit; }
+
+/* ── Dashboard-accurate: Time Capsul (light mode) ── */
+.db-capsul { position:relative;padding-left:20px; }
+.db-capsul::before { content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,#007EFF,#1BBA01);border-radius:1px; }
+.db-capsul-entry { position:relative;padding:8px 0; }
+.db-capsul-entry::before { content:'';position:absolute;left:-17px;top:14px;width:8px;height:8px;border-radius:50%;background:#007EFF;border:2px solid #f1f5f9; }
+.db-capsul-entry:last-child::before { background:#1BBA01; }
+.db-capsul-date { font-size:9px;color:#94a3b8;font-weight:600;letter-spacing:.3px;text-transform:uppercase; }
+.db-capsul-text { font-size:12px;color:#1e293b;margin-top:2px; }
+.db-capsul-decision { color:#b45309;font-style:italic;margin-top:2px;font-size:10px; }
+.db-capsul-decision::before { content:'↳ '; }
+
+/* ── Dashboard-accurate: Timeline (light mode) ── */
+.db-timeline { display:flex;flex-direction:column;gap:2px; }
+.db-tle { display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #f1f5f9; }
+.db-tle:last-child { border-bottom:none; }
+.db-tle-time { font-size:10px;font-weight:600;color:#94a3b8;white-space:nowrap;min-width:56px;font-family:'Sora',monospace; }
+.db-tle-dot { width:7px;height:7px;border-radius:50%;background:#007EFF;margin-top:4px;flex-shrink:0; }
+.db-tle-text { font-size:12px;color:#1e293b;line-height:1.5; }
+
+/* ── Dashboard-accurate: Seed tree (light mode) ── */
+.db-tree { font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;font-size:12px;color:#64748b;line-height:2;padding:4px 0; }
+.db-tree .folder { color:#007EFF;font-weight:700; }
+.db-tree .file { color:#64748b; }
+
+/* ── Dashboard-accurate: Palette (light mode) ── */
+.db-palette { display:flex;gap:6px;margin-top:8px; }
+.db-swatch { width:28px;height:28px;border-radius:6px;cursor:pointer;border:2px solid transparent;transition:all .15s; }
+.db-swatch:hover { transform:scale(1.1); }
+.db-swatch.active { border-color:#1e293b;transform:scale(1.15); }
+
+/* ── Local-First visual (light mode) ── */
+.local-vis { display:flex;align-items:center;justify-content:center;padding:20px;gap:16px; }
+.local-vis svg { flex-shrink:0; }
+.local-files { display:flex;flex-direction:column;gap:3px; }
+.local-file { display:flex;align-items:center;gap:6px;font-size:11px;font-family:'SFMono-Regular',Consolas,monospace;color:#64748b;padding:3px 8px;background:#f8fafc;border-radius:4px;border:1px solid #e2e8f0; }
+.local-file .lf-icon { font-size:13px; }
+.local-file .lf-lock { color:#16a34a;font-size:9px;margin-left:auto;font-weight:700; }
+
+/* Image placeholder */
+.img-placeholder { width:100%;border-radius:0;background:#e2e8f0;border-bottom:2px dashed rgba(0,126,255,0.2);display:flex;align-items:center;justify-content:center;aspect-ratio:16/10; }
+.img-placeholder::after { content:attr(data-label);font-size:11px;font-weight:500;color:#94a3b8;text-align:center;padding:12px;line-height:1.4; }
+
+/* ── Dark-mode overrides for feature cards ── */
+[data-theme="dark"] .feature-grid .f-card { background:#16162A;border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .f-card h3 { color:#fff; }
+[data-theme="dark"] .f-card p { color:#9CA3AF; }
+[data-theme="dark"] .f-card .f-body { border-bottom-width:3px; }
+[data-theme="dark"] .mockup { background:#1A1A2E; }
+/* Focus 3 */
+[data-theme="dark"] .db-fi { background:#1A1A2E;border-color:rgba(255,255,255,.08);color:#e2e8f0; }
+[data-theme="dark"] .db-fi:hover { background:#20203A; }
+/* Budget */
+[data-theme="dark"] .db-budget { color:#e2e8f0; }
+[data-theme="dark"] .db-budget-bal { color:#fff; }
+[data-theme="dark"] .db-budget-lbl,[data-theme="dark"] .db-budget-today-lbl,[data-theme="dark"] .db-budget-dow { color:#6B7280; }
+[data-theme="dark"] .db-budget-bar-bg { background:#1A1A2E; }
+/* FRC */
+[data-theme="dark"] .db-frc { color:#e2e8f0; }
+[data-theme="dark"] .db-frc-summary { background:#1A1A2E;border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .db-frc-lbl,[data-theme="dark"] .db-frc-gap-lbl { color:#6B7280; }
+[data-theme="dark"] .db-frc-cat { background:#1A1A2E;border-color:rgba(255,255,255,.08); }
+/* Calendar */
+[data-theme="dark"] .mcw { color:#e2e8f0; }
+[data-theme="dark"] .mcw-custody { border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .mcw-nav-btn { background:#1A1A2E;border-color:rgba(255,255,255,.08);color:#9CA3AF; }
+[data-theme="dark"] .mcw-cell:hover { background:rgba(255,255,255,.05); }
+/* Cubes */
+[data-theme="dark"] .db-sphere { color:#e2e8f0; }
+[data-theme="dark"] .db-sphere-stat { background:#1A1A2E;border-color:rgba(255,255,255,.08); }
+[data-theme="dark"] .db-sphere-stat.active { background:#20203A;box-shadow:0 0 8px rgba(230,114,1,0.2); }
+[data-theme="dark"] .db-sphere-node-btn { background:#1A1A2E;border-color:rgba(255,255,255,.08);color:#e2e8f0; }
+[data-theme="dark"] .db-sc { background:#1A1A2E;border-color:rgba(255,255,255,.08);box-shadow:none; }
+[data-theme="dark"] .db-sc:hover { background:#20203A;box-shadow:none; }
+[data-theme="dark"] .db-sc-title { color:#e2e8f0; }
+[data-theme="dark"] .db-sc-task { color:#e2e8f0; }
+[data-theme="dark"] .db-sc-log-entry { border-left-color:rgba(255,255,255,.1); }
+[data-theme="dark"] .db-sc-log-text { color:#C4C4C4; }
+[data-theme="dark"] .db-sc-sel { background:#16162A;border-color:rgba(255,255,255,.08);color:#9CA3AF; }
+[data-theme="dark"] .db-sc-add-inp { background:#16162A;border-color:rgba(255,255,255,.08);color:#e2e8f0; }
+[data-theme="dark"] .db-sc-add-sel { background:#16162A;border-color:rgba(255,255,255,.08);color:#9CA3AF; }
+[data-theme="dark"] .db-sc-group-hdr span.line { background:rgba(255,255,255,.08); }
+/* Timeline */
+[data-theme="dark"] .db-tle { border-bottom-color:rgba(255,255,255,.06); }
+[data-theme="dark"] .db-tle-text { color:#C4C4C4; }
+/* Capsul */
+[data-theme="dark"] .db-capsul-text { color:#C4C4C4; }
+[data-theme="dark"] .db-capsul-entry::before { border-color:#16162A; }
+/* Seed tree */
+[data-theme="dark"] .db-tree { color:#9CA3AF; }
+[data-theme="dark"] .db-tree .file { color:#9CA3AF; }
+/* Local-first */
+[data-theme="dark"] .local-file { background:#1A1A2E;border-color:rgba(255,255,255,.08);color:#9CA3AF; }
+/* Agent name */
+[data-theme="dark"] .agent-name-tease { background:#1A1A2E;border-color:rgba(255,255,255,.08);color:#e2e8f0; }
+/* Combo stack divider */
+[data-theme="dark"] .f-combo .combo-stack .mockup + .mockup { border-top-color:rgba(255,255,255,.08); }
+
+/* ── Screenshot layouts ── */
+.f-card.f-capsul .mockup { padding:0;background:none; }
+.f-card.f-capsul .mockup img { border-radius:0 0 14px 14px;height:100%;object-fit:cover;object-position:top; }
+.f-card.f-dash .mockup { padding:0;background:none; }
+.f-card.f-dash .mockup img { border-radius:0 0 14px 14px; }
+
+/* ── Make It Yours: cycling color tease ── */
+@keyframes colorCycle { 0%,100%{--ac:#007EFF} 16%{--ac:#7c3aed} 33%{--ac:#E67201} 50%{--ac:#1BBA01} 66%{--ac:#ef4444} 83%{--ac:#06b6d4} }
+.palette-tease { text-align:center;padding:8px 0 0; }
+.palette-tease-bar { height:3px;border-radius:2px;margin:6px auto 0;max-width:180px;animation:teaseColor 8s ease infinite; }
+@keyframes teaseColor { 0%,100%{background:#007EFF} 16%{background:#7c3aed} 33%{background:#E67201} 50%{background:#1BBA01} 66%{background:#ef4444} 83%{background:#06b6d4} }
+.palette-tease-label { font-size:10px;color:#94a3b8;margin-top:6px;letter-spacing:.3px; }
+
+/* ── Agent naming tease ── */
+.agent-name-tease { display:flex;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-top:8px;font-size:12px;color:#1e293b; }
+.agent-name-tease .ant-label { color:#94a3b8;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px; }
+.agent-name-tease .ant-name { font-weight:700;color:#007EFF; }
+.agent-name-tease .ant-cursor { width:1px;height:14px;background:#007EFF;animation:blink 1s step-end infinite; }
+@keyframes blink { 50%{opacity:0} }
+
+/* ═══ HOW IT WORKS ═══ */
+#how .section-inner { max-width:960px; }
+.steps-icons { display:grid;grid-template-columns:repeat(3,1fr);position:relative;margin-bottom:24px; }
+.steps-icons::before { content:'';position:absolute;top:50%;left:calc(16.66%);right:calc(16.66%);height:3px;transform:translateY(-50%);background:linear-gradient(90deg,var(--blue),var(--ember),var(--go));opacity:.25;border-radius:2px; }
+.step-dot { display:flex;justify-content:center;position:relative;z-index:1; }
+.step-num { width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;color:#fff; }
+.step-num.s1 { background:var(--blue); } .step-num.s2 { background:var(--ember); } .step-num.s3 { background:var(--go); }
+.steps-copy { display:grid;grid-template-columns:repeat(3,minmax(0,240px));gap:56px;justify-content:center; }
+.step-text { text-align:left; }
+.step-text h3 { font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text); }
+.step-text p { font-size:14px;line-height:1.7;color:var(--text-dim); }
+
+/* Cycle inline — Chat → Learn → Improve loop inside Who section */
+.cs-inline { position:relative;display:flex;align-items:center;justify-content:center;gap:28px;margin:28px auto 40px;padding:18px 36px;max-width:460px;border:2px solid transparent;border-radius:999px;background-image:linear-gradient(var(--card),var(--card)),linear-gradient(135deg,#007EFF,#E67201,#1BBA01,#007EFF);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:var(--card-shadow); }
+.cs-item { display:flex;align-items:center;gap:8px;position:relative;z-index:1; }
+.cs-icon { width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.cs-word { font-size:16px;font-weight:700;color:var(--text);letter-spacing:.3px; }
+.cs-arrow { display:flex;align-items:center;position:relative;z-index:1; }
+
+/* ═══ WHO IT'S FOR ═══ */
+/* Section backgrounds — Cloud → Void (features) → White → Mist → gradient */
+#what { background:var(--bg); }
+#how { background:var(--surface); }
+#who { background:#E4E8F0; }
+[data-theme="dark"] #who { background:#0F0F1A; }
+.bottom-cta { background:var(--mist,#EBF4FF); }
+[data-theme="dark"] .bottom-cta { background:#0A0A14; }
+.who-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:800px;margin:0 auto; }
+.who-card { background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:28px 24px;box-shadow:var(--card-shadow); }
+.who-icon { width:48px;height:48px;border-radius:12px;background:var(--step-number-bg);display:flex;align-items:center;justify-content:center;margin-bottom:14px; }
+.who-icon svg { width:24px;height:24px;stroke:var(--blue); }
+.who-card h3 { font-size:16px;font-weight:700;margin-bottom:6px;color:var(--text); }
+.who-card p { font-size:13px;line-height:1.7;color:var(--text-dim); }
+
+/* ═══ BOTTOM CTA ═══ */
+.bottom-cta { padding:100px 24px; }
+.bottom-cta-inner { max-width:1080px;margin:0 auto;display:grid;grid-template-columns:420px 1fr;gap:48px;align-items:start; }
+.bottom-cta-card { background:var(--card);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.06); }
+.bottom-cta-card .cta-top { padding:32px 32px 24px; }
+.bottom-cta-card .cta-bottom { background:var(--blue);padding:24px 32px;color:#fff; }
+.why-free { padding-top:8px; }
+.why-free h2 { font-size:28px;font-weight:700;color:var(--text);margin-bottom:16px; }
+.why-free p { font-size:15px;line-height:1.8;color:var(--text-body);margin-bottom:16px; }
+.why-free .support-row { display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px; }
+.why-free .support-row p { margin:0; }
+.why-free .btn-coffee { display:inline-flex;align-items:center;gap:8px;background:#FFDD00;color:#000;padding:10px 20px;border-radius:10px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;white-space:nowrap;flex-shrink:0; }
+.why-free .btn-coffee:hover { transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,221,0,.3); }
+
+/* ═══ MODALS ═══ */
+.modal-overlay { display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:24px; }
+.modal-overlay.active { display:flex; }
+.modal { background:var(--card);border:1px solid var(--card-border);border-radius:16px;max-width:640px;width:100%;max-height:80vh;overflow-y:auto;padding:40px;position:relative; }
+.modal-close { position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:var(--bg2);border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all .15s; }
+.modal-close:hover { background:var(--card-border);color:var(--text); }
+.modal h2 { font-size:24px;font-weight:700;color:var(--text);margin-bottom:20px; }
+.modal h3 { font-size:15px;font-weight:700;color:var(--text);margin:20px 0 8px; }
+.modal p,.modal li { font-size:14px;color:var(--text-body);line-height:1.7;margin-bottom:12px; }
+.modal ul { padding-left:20px; }
+.modal a { color:var(--blue); }
+.modal .last-updated { font-size:12px;color:var(--text-muted);margin-bottom:16px; }
+
+/* ═══ FOOTER ═══ */
+footer { background:var(--footer-bg);padding:56px 48px 32px;color:#9CA3AF; }
+.footer-inner { max-width:1080px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between; }
+.footer-logo-img { height:48px;width:auto;display:block; }
+.footer-tagline { font-family:'widescreen',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#6B7280;margin-top:8px; }
+.footer-links { display:flex;gap:48px; }
+.footer-col h4 { font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;margin-bottom:12px; }
+.footer-col a,.footer-col button.link-btn { display:block;font-size:13px;color:#9CA3AF;text-decoration:none;margin-bottom:8px;transition:color .2s;background:none;border:none;cursor:pointer;font-family:'Sora',sans-serif;padding:0;text-align:left; }
+.footer-col a:hover,.footer-col button.link-btn:hover { color:#fff; }
+.footer-disclaimer { max-width:1080px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:#4B5563;line-height:1.6; }
+.footer-disclaimer a { color:#6B7280;text-decoration:underline; }
+.footer-disclaimer a:hover { color:#9CA3AF; }
+.footer-adhd { max-width:1080px;margin:20px auto 0;padding:10px 16px;display:flex;align-items:center;gap:10px;font-size:11px;color:#6B7280;line-height:1.5;border:1px solid rgba(255,255,255,.06);border-radius:8px;background:rgba(0,126,255,.04); }
+.footer-adhd strong { color:#9CA3AF;font-weight:600; }
+.footer-adhd svg { flex-shrink:0; }
+.footer-bottom { max-width:1080px;margin:16px auto 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#4B5563; }
+.footer-legal { display:flex;gap:16px; }
+.footer-legal button { background:none;border:none;font-size:12px;color:#4B5563;cursor:pointer;font-family:'Sora',sans-serif;transition:color .2s;padding:0; }
+.footer-legal button:hover { color:#9CA3AF; }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .hero { grid-template-columns:1fr;padding:120px 40px 64px;gap:40px; }
+  .hero-right { max-width:480px; }
+  .feature-grid { grid-template-columns:repeat(2,1fr); }
+  .f-card.f-dash,.f-card.f-combo,.f-card.f-cubes,.f-card.f-frc,.f-card.f-cal,.f-card.f-timeline,.f-card.f-capsul,.f-card.f-sm { grid-column:span 1; }
+  .f-card.f-dash { grid-column:1 / -1; }
+  .f-card.f-capsul { grid-row:span 3; }
+  .bottom-cta-inner { grid-template-columns:1fr;gap:40px; }
+  .bottom-cta-card { max-width:480px; }
+}
+@media(max-width:768px){
+  nav { padding:0 20px;height:56px; }
+  .nav-right { gap:12px; }
+  .nav-right .nav-link-text { display:none; }
+  .hero { grid-template-columns:1fr;padding:100px 20px 48px;min-height:auto;gap:36px; }
+  .hero-wordmark { font-size:48px; }
+  .hero-body { font-size:15px;margin-bottom:20px; }
+  .hero-cta-float { border-radius:16px; }
+  .cta-bottom .mail-form { flex-direction:column; }
+  .hero-learn-more { margin-bottom:8px; }
+  .loop-grid { grid-template-columns:1fr; }
+  .feature-grid { grid-template-columns:1fr; }
+  .f-card.f-dash,.f-card.f-combo,.f-card.f-cubes,.f-card.f-frc,.f-card.f-cal,.f-card.f-timeline,.f-card.f-capsul,.f-card.f-sm { grid-column:1 / -1;grid-row:span 1; }
+  .steps-icons { grid-template-columns:repeat(3,1fr); }
+  .steps-icons::before { left:16.66%;right:16.66%; }
+  .steps-copy { grid-template-columns:1fr;gap:24px; }
+  .step-num { width:56px;height:56px;font-size:24px; }
+  .who-grid { grid-template-columns:1fr; }
+  section { padding:64px 20px; }
+  .section-title { font-size:28px; }
+  footer { padding:40px 20px 24px; }
+  .footer-inner { flex-direction:column;gap:32px; }
+  .footer-links { gap:32px; }
+  .footer-bottom { flex-direction:column;gap:12px; }
+  .modal { padding:28px 20px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue);outline-offset:2px;border-radius:2px; }
+button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var(--blue);outline-offset:2px; }
+
+/* Reduced motion for users who prefer it */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+  #heroCanvas { display:none; }
+}
+
+/* Screen reader only utility */
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+</style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav aria-label="Main navigation">
+  <a href="#" class="nav-logo">
+    <img src="logo-light.png" alt="MyCapsul" class="logo-light">
+    <img src="logo-dark.png" alt="MyCapsul" class="logo-dark">
+  </a>
+  <div class="nav-right">
+    <a href="#features" class="nav-link-text">Features</a>
+    <a href="#how" class="nav-link-text">How It Works</a>
+    <a href="#get" class="nav-cta">Download</a>
+    <button class="nav-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<main id="main-content">
+<div class="hero-wrap">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        A plugin for <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> by Anthropic
+      </div>
+      <h1 class="hero-wordmark">
+        <span class="my">My</span><span class="capsul">Capsul</span>
+      </h1>
+      <div class="hero-tagline">Stop managing. Start living.</div>
+      <p class="hero-body">An Agent that actually knows your world — your schedule, your life, your goals — paired with a dashboard that makes it all visible. You chat, it learns. The more you use it, the less you have to explain.</p>
+      <div class="hero-learn-more">
+        <a href="#how">See how it works <span class="arrow">↓</span></a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-cta-float">
+        <div class="cta-top">
+          <div class="cta-version"><span class="ver-dot"></span> v1.0 Alpha</div>
+          <div class="cta-label">Download MyCapsul</div>
+          <div class="cta-sublabel">Free and open. Grab the plugin, install in one click, and start talking.</div>
+          <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.0.0/mycapsul-s36.plugin" class="btn-download" id="downloadBtn" download>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download .plugin
+          </a>
+          <p class="cta-fine">Requires <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> with Cowork mode enabled.</p>
+        </div>
+        <div class="cta-bottom">
+          <div class="mail-label">Stay in the loop</div>
+          <div class="mail-sub">We're actively building. Get notified when new features, widgets, and enhancements ship.</div>
+          <form class="mail-form" name="signup-hero" method="POST" data-netlify="true" action="/thanks.html" aria-label="Sign up for updates">
+            <label for="email-hero" class="sr-only">Email address</label>
+            <input type="email" name="email" id="email-hero" placeholder="Where should we send updates?" required autocomplete="email">
+            <button type="submit">Join</button>
+          </form>
+          <p class="mail-note">No spam. We won't sell your info. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ WHAT IT IS ═══ -->
+<section id="what">
+  <div class="section-inner">
+    <div class="section-label">An OS for your day to day</div>
+    <h2 class="section-title">AI that works the way you actually live</h2>
+    <p class="section-sub">Most productivity tools make you do the organizing. MyCapsul flips that. You just chat about your life — and your agent handles the rest.</p>
+    <div style="text-align:center;margin:-32px auto 40px;"><a href="#get" class="section-cta">Get it free →</a></div>
+    <div class="loop-grid">
+      <div class="loop-card">
+        <div class="loop-num">1</div>
+        <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>You chat</h3>
+        <p>"I spent $40 on groceries." "Rent is due the 1st." "My energy is low today." Just say what's going on — no forms, no menus, no data entry.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">2</div>
+        <div class="icon-box ember"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/><path d="M8 12a4 4 0 018 0"/></svg></div>
+        <h3>It learns</h3>
+        <p>Your agent saves everything to a personal knowledge base — your schedule, finances, health, goals, relationships. It remembers so you don't have to.</p>
+      </div>
+      <div class="loop-card">
+        <div class="loop-num">3</div>
+        <div class="icon-box go"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3>It acts</h3>
+        <p>Your dashboard updates in real time. Bills get tracked. Schedules get built. Focus gets set. The more sessions you have, the sharper it gets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-label">What's Inside</div>
+    <h2 class="section-title">A tool that adapts to how you live</h2>
+    <p class="section-sub">A personal command center with tools that matter for real life — not project management theater.</p>
+    <div class="feature-grid">
+
+      <!-- ROW 1: Live Dashboard — full width hero -->
+      <div class="f-card f-dash">
+        <div class="mockup"><img src="ss-dashboard-full.png" alt="Live Dashboard — full command center with Ring, Focus 3, calendar, countdowns, and project cubes"></div>
+        <div class="f-body">
+          <h3>Live Dashboard</h3>
+          <p>A single HTML file with 17+ tiles — calendar, budget, bills, countdowns, journal, health tracker, and more. Runs in your browser, powered by your data.</p>
+        </div>
+      </div>
+
+      <!-- ROW 2: Ring + Focus 3 combo (5col) | Cubes (7col) -->
+      <div class="f-card f-combo">
+        <div class="combo-stack">
+          <div class="mockup"><img src="ss-ring-tooltip.png" alt="Ring — 24-hour clock planner with hover tooltip"></div>
+          <div class="mockup">
+            <div class="db-focus3">
+              <div class="db-fi"><input type="checkbox" checked disabled><span class="fn">1</span><span style="color:#94a3b8;text-decoration:line-through;">Ship feature cards for website</span></div>
+              <div class="db-fi"><input type="checkbox" disabled><span class="fn">2</span><span>Prep salary ask deck</span></div>
+              <div class="db-fi"><input type="checkbox" disabled><span class="fn">3</span><span>Review Olive's grade report</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Ring + Focus 3</h3>
+          <p>Your day mapped as colored arcs on a 24-hour clock, with three non-negotiable priorities front and center. See the plan. Know the focus.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-cubes">
+        <div class="mockup">
+          <div class="db-sphere">
+            <div class="db-sphere-stats">
+              <span class="db-sphere-stat active" style="border-color:#E67201;color:#E67201;">All <span style="opacity:0.6;">5</span></span>
+              <span class="db-sphere-stat" style="color:#E67201;">&#9889; <span style="color:#E67201;">1</span> Focus</span>
+              <span class="db-sphere-stat" style="color:#007EFF;">&#128065; <span style="color:#007EFF;">2</span> Active</span>
+              <span class="db-sphere-stat" style="color:#9B59B6;">&#10024; <span style="color:#9B59B6;">2</span> Sparks</span>
+            </div>
+            <div class="db-sphere-nodes">
+              <span class="db-sphere-node-lbl">Nodes:</span>
+              <span class="db-sphere-node-btn" style="background:rgba(230,114,1,0.08);border-color:rgba(230,114,1,0.3);color:#E67201;">&#128188; Hustle 3</span>
+              <span class="db-sphere-node-btn" style="background:rgba(0,126,255,0.08);border-color:rgba(0,126,255,0.3);color:#007EFF;">&#128100; Life 2</span>
+              <span class="db-sphere-node-btn" style="background:rgba(27,186,1,0.08);border-color:rgba(27,186,1,0.3);color:#1BBA01;">&#128176; Money 1</span>
+            </div>
+            <div class="db-sc-group-hdr" style="color:#E67201;">&#9889; Focus <span style="opacity:0.5;font-weight:400;font-size:9px;">1</span><span class="line"></span></div>
+            <div class="db-sc focus">
+              <div class="db-sc-hdr">
+                <span class="db-sc-title">MyCapsul Website</span>
+                <div class="db-sc-meta">
+                  <span style="color:#facc15;">3d</span>
+                  <span>2 todo / 4 done</span>
+                  <select class="db-sc-sel" disabled><option selected>focus</option></select>
+                </div>
+              </div>
+              <div class="db-sc-nodes">
+                <span class="db-sc-nd" style="background:rgba(230,114,1,0.12);color:#E67201;">Hustle</span>
+              </div>
+              <div class="db-sc-tasks">
+                <div class="db-sc-task"><input type="checkbox" disabled><span style="flex:1;">Deploy to mycapsul.com</span><span class="db-sc-urgency u-now">now</span><span class="db-sc-energy">&#128293;</span></div>
+                <div class="db-sc-task"><input type="checkbox" disabled><span style="flex:1;">Set up Formspree contact form</span><span class="db-sc-urgency u-soon">soon</span><span class="db-sc-energy">&#9889;</span></div>
+                <div class="db-sc-task done"><input type="checkbox" checked disabled><span style="flex:1;text-decoration:line-through;color:#94a3b8;">Build features section with real widgets</span></div>
+              </div>
+              <div class="db-sc-log">
+                <div class="db-sc-log-entry">
+                  <div class="db-sc-log-date">Mar 10</div>
+                  <div class="db-sc-log-text">Interactive features live. Hero canvas animation.</div>
+                  <div class="db-sc-log-artifacts"><span class="db-sc-log-artifact">index.html</span></div>
+                </div>
+                <div class="db-sc-log-entry">
+                  <div class="db-sc-log-date">Mar 8</div>
+                  <div class="db-sc-log-text">Locked brand identity & type stack</div>
+                  <div class="db-sc-log-decision">Went with Sora + Museo Slab for type hierarchy</div>
+                </div>
+              </div>
+            </div>
+            <div class="db-sc-group-hdr" style="color:#007EFF;">&#128065; Active <span style="opacity:0.5;font-weight:400;font-size:9px;">2</span><span class="line"></span></div>
+            <div class="db-sc active">
+              <div class="db-sc-hdr">
+                <span class="db-sc-title">Budget Rebuild</span>
+                <div class="db-sc-meta"><span>3 todo</span><select class="db-sc-sel" disabled><option selected>active</option></select></div>
+              </div>
+              <div class="db-sc-nodes">
+                <span class="db-sc-nd" style="background:rgba(27,186,1,0.12);color:#1BBA01;">Money</span>
+              </div>
+            </div>
+            <div class="db-sc active" style="margin-top:-2px;">
+              <div class="db-sc-hdr">
+                <span class="db-sc-title">STEM Night Prep</span>
+                <div class="db-sc-meta"><span>5 todo</span><select class="db-sc-sel" disabled><option selected>active</option></select></div>
+              </div>
+              <div class="db-sc-nodes">
+                <span class="db-sc-nd" style="background:rgba(0,126,255,0.12);color:#007EFF;">Life</span>
+              </div>
+            </div>
+            <div class="db-sc-add">
+              <details>
+                <summary style="cursor:pointer;">+ Add Cube</summary>
+                <div class="db-sc-add-row" style="margin-top:6px;">
+                  <input class="db-sc-add-inp" type="text" placeholder="What are you tracking?" disabled>
+                  <select class="db-sc-add-sel" disabled><option>Spark</option><option>Focus</option><option>Active</option></select>
+                  <button class="db-sc-add-btn" disabled>Add</button>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Cubes</h3>
+          <p>Projects with a progress trail. Tasks, urgency, energy ratings, decisions logged, artifacts linked. From spark to done.</p>
+        </div>
+      </div>
+
+      <!-- ROW 3: FRC + Calendar + Timeline — 3 across -->
+      <div class="f-card f-frc">
+        <div class="mockup">
+          <div class="db-frc">
+            <div class="db-frc-summary">
+              <div>
+                <div class="db-frc-num">$4,850</div>
+                <div class="db-frc-lbl">Monthly Income</div>
+              </div>
+              <div class="db-frc-gap">
+                <div class="db-frc-gap-num" style="color:#16a34a;">+$712</div>
+                <div class="db-frc-gap-lbl">Gap &middot; $23/day</div>
+              </div>
+            </div>
+            <div class="db-frc-cats">
+              <div class="db-frc-cat"><span class="db-frc-cat-name"><span>&#127968;</span> Housing</span><span class="db-frc-cat-amt">$2,100</span></div>
+              <div class="db-frc-cat"><span class="db-frc-cat-name"><span>&#128179;</span> Debt</span><span class="db-frc-cat-amt">$680</span></div>
+              <div class="db-frc-cat"><span class="db-frc-cat-name"><span>&#128663;</span> Transport</span><span class="db-frc-cat-amt">$425</span></div>
+              <div class="db-frc-cat"><span class="db-frc-cat-name"><span>&#9889;</span> Utilities</span><span class="db-frc-cat-amt">$310</span></div>
+              <div class="db-frc-cat"><span class="db-frc-cat-name"><span>&#128722;</span> Living</span><span class="db-frc-cat-amt">$623</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Financial Reality Check</h3>
+          <p>Income minus obligations by category. Your real gap and daily budget at a glance.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-cal">
+        <div class="mockup">
+          <div class="mcw" id="miniCalWidget"></div>
+        </div>
+        <div class="f-body">
+          <h3>Calendar</h3>
+          <p>Custody-aware month view. Solo weeks vs. kids weeks, events, and holidays overlaid.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-timeline">
+        <div class="mockup"><img src="ss-timecapsul-detail.png" alt="Monthly capsul detail — activity log, journal entries, health log, check-ins"></div>
+        <div class="f-body">
+          <h3>Timeline</h3>
+          <p>Everything your agent tracks — flagged, changed, learned. Full visibility, no black boxes.</p>
+        </div>
+      </div>
+
+      <!-- ROW 5: Time Capsuls (tall, 5col) + 3 stacked cards (7col) -->
+      <div class="f-card f-capsul">
+        <div class="mockup" style="flex:1;min-height:0;"><img src="ss-timecapsul-overview.png" alt="Time Capsul — monthly overview with AI summary, stats, and highlights reel" style="height:100%;object-fit:cover;object-position:top;"></div>
+        <div class="f-body">
+          <h3>Time Capsuls</h3>
+          <p>Every month becomes a capsule — AI summaries, highlights, journal, health, check-ins. Look back and see how life evolved.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-sm">
+        <div class="mockup">
+          <div class="db-tree">
+            <div><span class="folder">seed/</span></div>
+            <div>&nbsp; ├── <span class="file">identity.md</span></div>
+            <div>&nbsp; ├── <span class="file">finances.md</span></div>
+            <div>&nbsp; ├── <span class="file">schedule.md</span></div>
+            <div>&nbsp; ├── <span class="file">health.md</span></div>
+            <div>&nbsp; ├── <span class="file">career.md</span></div>
+            <div>&nbsp; └── <span class="file">protocols.md</span></div>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Seed Modules</h3>
+          <p>Plain-text files that store everything your agent knows about you. You own every word.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-sm">
+        <div class="mockup">
+          <div class="local-vis">
+            <svg width="56" height="64" viewBox="0 0 64 72" fill="none">
+              <rect x="8" y="28" width="48" height="40" rx="6" stroke="#16a34a" stroke-width="2" fill="rgba(22,163,74,0.06)"/>
+              <path d="M20 28V20C20 13.373 25.373 8 32 8C38.627 8 44 13.373 44 20V28" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="32" cy="45" r="5" fill="#16a34a"/>
+              <rect x="30.5" y="49" width="3" height="8" rx="1.5" fill="#16a34a"/>
+            </svg>
+            <div class="local-files">
+              <div class="local-file"><span class="lf-icon">&#128196;</span> identity.md <span class="lf-lock">&#10003; LOCAL</span></div>
+              <div class="local-file"><span class="lf-icon">&#128176;</span> finances.md <span class="lf-lock">&#10003; LOCAL</span></div>
+              <div class="local-file"><span class="lf-icon">&#128197;</span> schedule.md <span class="lf-lock">&#10003; LOCAL</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Local-First Privacy</h3>
+          <p>No cloud. No account. No database. Everything lives on your computer in plain files.</p>
+        </div>
+      </div>
+
+      <div class="f-card f-sm">
+        <div class="mockup">
+          <div class="db-palette" id="paletteSwitcher">
+            <div class="db-swatch active" style="background:#007EFF" data-color="#007EFF"></div>
+            <div class="db-swatch" style="background:#7c3aed" data-color="#7c3aed"></div>
+            <div class="db-swatch" style="background:#E67201" data-color="#E67201"></div>
+            <div class="db-swatch" style="background:#1BBA01" data-color="#1BBA01"></div>
+            <div class="db-swatch" style="background:#ef4444" data-color="#ef4444"></div>
+            <div class="db-swatch" style="background:#06b6d4" data-color="#06b6d4"></div>
+          </div>
+          <div class="palette-tease">
+            <div class="palette-tease-bar"></div>
+            <div class="palette-tease-label">Your accent color, everywhere</div>
+          </div>
+          <div class="agent-name-tease">
+            <span class="ant-label">Capsul Agent:</span>
+            <span class="ant-name" id="agentNameCycle">Rocky</span><span class="ant-cursor"></span>
+          </div>
+        </div>
+        <div class="f-body">
+          <h3>Make It Yours</h3>
+          <p>Swap palettes, name your agent, change how it talks. Your system, your way.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-label">Start chatting. It handles the rest.</div>
+    <h2 class="section-title">Set up &amp; helping in one conversation</h2>
+    <p class="section-sub">No coding. No configuration. Just chat — and it gets smarter every session.</p>
+    <div style="text-align:center;margin:-32px auto 40px;"><a href="#get" class="section-cta">Get it free →</a></div>
+    <div class="steps-icons">
+      <div class="step-dot"><div class="step-num s1">1</div></div>
+      <div class="step-dot"><div class="step-num s2">2</div></div>
+      <div class="step-dot"><div class="step-num s3">3</div></div>
+    </div>
+    <div class="steps-copy">
+      <div class="step-text">
+        <h3>Install the plugin</h3>
+        <p>Download one file. Double-click to install in Claude Desktop. No accounts, no setup wizards, no dependencies.</p>
+      </div>
+      <div class="step-text">
+        <h3>Have a conversation</h3>
+        <p>Tell your agent about your life — schedule, budget, goals, health. It builds your personal knowledge base as you chat.</p>
+      </div>
+      <div class="step-text">
+        <h3>Open your dashboard</h3>
+        <p>Your command center is ready. Pin it to a second monitor, set it as your homepage, or keep it a tab away.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHO IT'S FOR ═══ -->
+<section id="who">
+  <div class="section-inner">
+    <div class="section-label">Built for Real People</div>
+    <h2 class="section-title">AI shouldn't require a CS degree</h2>
+    <p class="section-sub">MyCapsul is for anyone who wants AI to actually help with their actual life — not just answer trivia questions.</p>
+    <div class="cs-inline">
+      <div class="cs-item">
+        <div class="cs-icon" style="background:rgba(0,126,255,0.1);color:var(--blue);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <span class="cs-word">Chat</span>
+      </div>
+
+      <div class="cs-item">
+        <div class="cs-icon" style="background:rgba(230,114,1,0.1);color:var(--ember);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <span class="cs-word">Learn</span>
+      </div>
+
+      <div class="cs-item">
+        <div class="cs-icon" style="background:rgba(27,186,1,0.1);color:var(--go);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <span class="cs-word">Improve</span>
+      </div>
+    </div>
+    <div class="who-grid">
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <h3>The overwhelmed</h3>
+        <p>Too many tabs, too many deadlines, too many things slipping through the cracks. MyCapsul gives you external structure — visual systems, Focus 3, and an agent that remembers what you forget.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>The busy parent</h3>
+        <p>Custody schedules, school events, meal planning, bills — all in one place. Tell your agent once and it tracks everything from there.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+        <h3>The side hustler</h3>
+        <p>Day job plus projects plus life. Cubes track every initiative. Budget tiles show the real numbers. Your agent helps you juggle without dropping things.</p>
+      </div>
+      <div class="who-card">
+        <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h3>The AI-curious</h3>
+        <p>You've heard AI can help but don't know where to start. MyCapsul gives you a reason to chat with AI every day — and it gets more useful every time you do.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOTTOM CTA ═══ -->
+<section class="bottom-cta" id="get">
+  <div class="bottom-cta-inner">
+    <div class="bottom-cta-card">
+      <div class="cta-top">
+        <div class="cta-label">Download MyCapsul</div>
+        <div class="cta-sublabel">Free to download. Free to use. Always.</div>
+        <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.0.0/mycapsul-s36.plugin" class="btn-download" id="downloadBtn2" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download .plugin
+        </a>
+        <p class="cta-fine">Requires <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> with Cowork mode.</p>
+      </div>
+      <div class="cta-bottom">
+        <div class="mail-label">Stay in the loop</div>
+        <div class="mail-sub">New features, widgets, and enhancements — straight to your inbox.</div>
+        <form class="mail-form" name="signup-bottom" method="POST" data-netlify="true" action="/thanks.html" aria-label="Sign up for updates">
+          <label for="email-bottom" class="sr-only">Email address</label>
+          <input type="email" name="email" id="email-bottom" placeholder="Where should we send updates?" required autocomplete="email">
+          <button type="submit">Join</button>
+        </form>
+        <p class="mail-note">No spam. We won't sell your info. Unsubscribe anytime.</p>
+      </div>
+    </div>
+
+    <div class="why-free">
+      <h2>Why I built this</h2>
+      <p>MyCapsul started as a personal project. I was juggling too many things, dropping too many balls, and no productivity app actually fit the way my life works.</p>
+      <p>So I built an AI agent that knows my world and a dashboard that makes it visible. It changed how I manage my days, my money, my energy, my kids' schedules — everything.</p>
+      <p>I believe AI should be accessible to everyone, not just developers and power users. MyCapsul is my way of making that real. It's free because the goal isn't revenue — it's impact.</p>
+      <div class="support-row">
+        <p>If it helps you, and you want to support the work:</p>
+        <a href="https://buymeacoffee.com/mcatoms" target="_blank" class="btn-coffee">☕ Buy Me a Coffee</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- close main -->
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <img src="logo-footer.png" alt="MyCapsul" class="footer-logo-img">
+      <div class="footer-tagline">Stop managing. Start living.</div>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#get">Download</a>
+      </div>
+      <div class="footer-col">
+        <h4>Docs</h4>
+        <a href="docs/get-started.html">Getting Started</a>
+        <a href="docs/user-guide.html">User Guide</a>
+        <a href="docs/prompt-cookbook.html">Prompt Cookbook</a>
+        <a href="docs/faq.html">FAQ</a>
+        <a href="docs/about.html">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="https://buymeacoffee.com/mcatoms" target="_blank">Buy Me a Coffee</a>
+        <button class="link-btn" onclick="openModal('contact')">Contact</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-disclaimer">
+    MyCapsul is a third-party plugin built for <a href="https://claude.ai/download" target="_blank">Claude Desktop</a> by Anthropic.
+    It is not affiliated with, endorsed by, or sponsored by Anthropic.
+    Claude and Anthropic are trademarks of Anthropic, PBC.
+  </div>
+  <div class="footer-adhd">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    <span><strong>Designed for the ADHD brain.</strong> Visual structure, external accountability, and an agent that remembers what you forget. Built by someone who gets it.</span>
+  </div>
+  <div class="footer-bottom">
+    <span>Built by <a href="https://mcatoms.com" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;transition:color .2s;">McAtoms</a></span>
+    <div class="footer-legal">
+      <button onclick="openModal('privacy')">Privacy</button>
+      <button onclick="openModal('terms')">Terms</button>
+      <button onclick="openModal('contact')">Contact</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ MODALS ═══ -->
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-label="Privacy Policy" aria-modal="true"><div class="modal">
+  <button class="modal-close" onclick="closeModal('privacy')" aria-label="Close privacy policy">&times;</button>
+  <h2>Privacy Policy</h2>
+  <p class="last-updated">Last updated: March 2026</p>
+  <h3>What MyCapsul Collects</h3>
+  <p>MyCapsul is a local-first application. Your personal data (schedules, finances, health notes, goals, etc.) is stored entirely on your computer in plain-text files. We do not collect, transmit, or store any of your personal data on our servers.</p>
+  <h3>Mailing List</h3>
+  <p>If you choose to join our mailing list, we collect your email address solely to send you product updates. We use a third-party email service. You can unsubscribe at any time.</p>
+  <h3>Website Analytics</h3>
+  <p>We may use privacy-respecting analytics to understand how visitors interact with this website. We do not use cookies for tracking or advertising, and we do not sell or share any visitor data with third parties.</p>
+  <h3>AI Conversations</h3>
+  <p>When you use MyCapsul with Claude Desktop, your conversations are processed by Anthropic's Claude AI according to <a href="https://www.anthropic.com/privacy" target="_blank">Anthropic's privacy policy</a>. MyCapsul does not independently transmit your conversation data.</p>
+  <h3>Your Data, Your Control</h3>
+  <p>Delete your MyCapsul data at any time by deleting the folder on your computer. No accounts, no cloud, no hidden databases.</p>
+  <h3>Contact</h3>
+  <p>Questions? <a href="mailto:mcatomsinc@gmail.com">mcatomsinc@gmail.com</a></p>
+</div></div>
+
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-label="Terms of Use" aria-modal="true"><div class="modal">
+  <button class="modal-close" onclick="closeModal('terms')" aria-label="Close terms of use">&times;</button>
+  <h2>Terms of Use</h2>
+  <p class="last-updated">Last updated: March 2026</p>
+  <h3>What MyCapsul Is</h3>
+  <p>MyCapsul is a free, open plugin for Claude Desktop that helps you organize your personal life using AI. It is provided "as is" without warranty of any kind.</p>
+  <h3>Your Responsibility</h3>
+  <p>You are responsible for backing up your data. All data lives on your local machine — data loss from hardware failure or accidental deletion is your responsibility.</p>
+  <h3>No Professional Advice</h3>
+  <p>MyCapsul may help you track finances, health, and legal matters, but it does not provide financial, medical, or legal advice. Consult qualified professionals for important decisions.</p>
+  <h3>Third-Party Services</h3>
+  <p>MyCapsul operates within Claude Desktop by Anthropic. Your use of Claude Desktop is governed by Anthropic's terms of service. MyCapsul is not affiliated with Anthropic.</p>
+  <h3>Pay What You Want</h3>
+  <p>MyCapsul is free. Contributions via Buy Me a Coffee are voluntary, non-refundable, and do not grant additional features or support guarantees.</p>
+  <h3>Contact</h3>
+  <p>Questions? <a href="mailto:mcatomsinc@gmail.com">mcatomsinc@gmail.com</a></p>
+</div></div>
+
+<div class="modal-overlay" id="modal-contact" role="dialog" aria-label="Contact" aria-modal="true"><div class="modal">
+  <button class="modal-close" onclick="closeModal('contact')" aria-label="Close contact dialog">&times;</button>
+  <h2>Contact</h2>
+  <p>MyCapsul is built by McAtoms — a one-person studio making AI tools for real life.</p>
+  <h3>Get in Touch</h3>
+  <p>For questions, feedback, bug reports, or just to say hi:<br><a href="mailto:mcatomsinc@gmail.com">mcatomsinc@gmail.com</a></p>
+  <h3>Support the Project</h3>
+  <p>MyCapsul is free and always will be. If it helps, consider <a href="https://buymeacoffee.com/mcatoms" target="_blank">buying me a coffee</a>.</p>
+</div></div>
+
+<!-- ═══ JS ═══ -->
+<script>
+/* Theme */
+function toggleTheme(){const h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('mycapsul-theme',n);document.querySelector('.nav-toggle').textContent=n==='dark'?'☀️':'🌙';if(window._heroAnim)window._heroAnim.updateColors();}
+(function(){const s=localStorage.getItem('mycapsul-theme');if(s==='dark'){document.documentElement.setAttribute('data-theme','dark');const b=document.querySelector('.nav-toggle');if(b)b.textContent='☀️';}})();
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+/* Modals */
+function openModal(n){document.getElementById('modal-'+n).classList.add('active');document.body.style.overflow='hidden';}
+function closeModal(n){document.getElementById('modal-'+n).classList.remove('active');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(el=>{el.addEventListener('click',e=>{if(e.target===el){el.classList.remove('active');document.body.style.overflow='';}});});
+/* Close modals with Escape key */
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.active').forEach(el=>{el.classList.remove('active');document.body.style.overflow='';});}});
+
+/* Palette switcher */
+document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventListener('click',()=>{document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(x=>x.classList.remove('active'));s.classList.add('active');});});
+
+/* ═══ HERO CANVAS ═══ */
+(function(){
+  const canvas=document.getElementById('heroCanvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[],cubes=[],megas=[],time=0;
+
+  function resize(){const wr=canvas.parentElement;W=canvas.width=wr.offsetWidth;H=canvas.height=wr.offsetHeight;}
+  function isDark(){return document.documentElement.getAttribute('data-theme')==='dark';}
+
+  function getColors(){
+    const d=isDark();
+    return{
+      bracket:d?'rgba(255,255,255,0.04)':'rgba(0,0,0,0.03)',
+      /* Particles — smallest, lightest */
+      node:d?'rgba(0,126,255,0.1)':'rgba(0,126,255,0.1)',
+      nodeGo:d?'rgba(27,186,1,0.16)':'rgba(27,186,1,0.17)',
+      nodeEmber:d?'rgba(230,114,1,0.16)':'rgba(230,114,1,0.17)',
+      line:d?'rgba(0,126,255,0.08)':'rgba(0,126,255,0.07)',
+      lineGo:d?'rgba(27,186,1,0.1)':'rgba(27,186,1,0.1)',
+      lineEmber:d?'rgba(230,114,1,0.1)':'rgba(230,114,1,0.1)',
+      /* Cubes — mid size, mid opacity */
+      cube:d?'rgba(0,126,255,0.25)':'rgba(0,126,255,0.22)',
+      cubeGo:d?'rgba(27,186,1,0.3)':'rgba(27,186,1,0.26)',
+      cubeEmber:d?'rgba(230,114,1,0.3)':'rgba(230,114,1,0.26)',
+      cubeLine:d?'rgba(0,126,255,0.25)':'rgba(0,126,255,0.22)',
+      cubeLineGo:d?'rgba(27,186,1,0.3)':'rgba(27,186,1,0.26)',
+      cubeLineEmber:d?'rgba(230,114,1,0.3)':'rgba(230,114,1,0.26)',
+      /* Megas — biggest, darkest */
+      mega:d?'rgba(0,126,255,0.55)':'rgba(0,126,255,0.48)',
+      megaGo:d?'rgba(27,186,1,0.6)':'rgba(27,186,1,0.54)',
+      megaEmber:d?'rgba(230,114,1,0.6)':'rgba(230,114,1,0.54)',
+      megaLine:d?'rgba(0,126,255,0.55)':'rgba(0,126,255,0.48)',
+      megaLineGo:d?'rgba(27,186,1,0.6)':'rgba(27,186,1,0.54)',
+      megaLineEmber:d?'rgba(230,114,1,0.6)':'rgba(230,114,1,0.54)'
+    };
+  }
+  let colors=getColors();
+
+  function initParticles(){
+    particles=[];
+    const count=Math.min(120,Math.floor((W*H)/10000));
+    const pool=[colors.node,colors.node,colors.nodeGo,colors.nodeGo,colors.nodeEmber];
+    for(let i=0;i<count;i++){
+      particles.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-0.5)*0.9,vy:(Math.random()-0.5)*0.9,
+        r:Math.random()*8+4,
+        color:pool[Math.floor(Math.random()*pool.length)]
+      });
+    }
+    /* Big anchor cubes — nodes & connections layer */
+    cubes=[];
+    const cubeCount=Math.min(34,Math.max(16,Math.floor((W*H)/28000)));
+    const fills=[
+      {fill:colors.cube,line:colors.cubeLine},
+      {fill:colors.cube,line:colors.cubeLine},
+      {fill:colors.cubeGo,line:colors.cubeLineGo},
+      {fill:colors.cubeEmber,line:colors.cubeLineEmber}
+    ];
+    for(let i=0;i<cubeCount;i++){
+      const c=fills[Math.floor(Math.random()*fills.length)];
+      cubes.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-0.5)*0.65,vy:(Math.random()-0.5)*0.65,
+        r:Math.random()*12+28,
+        fill:c.fill,line:c.line
+      });
+    }
+    /* Mega layer — massive ambient spheres */
+    megas=[];
+    const megaCount=Math.min(5,Math.max(3,Math.floor((W*H)/220000)));
+    /* Exact distro: 1 orange, 1 green, rest blue */
+    const megaAssign=[];
+    for(let i=0;i<megaCount;i++){
+      if(i===0) megaAssign.push({fill:colors.megaEmber,line:colors.megaLineEmber});
+      else if(i===1) megaAssign.push({fill:colors.megaGo,line:colors.megaLineGo});
+      else megaAssign.push({fill:colors.mega,line:colors.megaLine});
+    }
+    /* Shuffle so positions aren't predictable */
+    for(let i=megaAssign.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[megaAssign[i],megaAssign[j]]=[megaAssign[j],megaAssign[i]];}
+    /* Spread megas evenly then jitter so they don't clump */
+    const cols=Math.ceil(Math.sqrt(megaCount*W/H));
+    const rows=Math.ceil(megaCount/cols);
+    for(let i=0;i<megaCount;i++){
+      const m=megaAssign[i];
+      const col=i%cols,row=Math.floor(i/cols);
+      const cellW=W/cols,cellH=H/rows;
+      megas.push({
+        x:cellW*(col+0.5)+(Math.random()-0.5)*cellW*0.5,
+        y:cellH*(row+0.5)+(Math.random()-0.5)*cellH*0.5,
+        vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.25,
+        r:Math.random()*30+90,
+        fill:m.fill,line:m.line
+      });
+    }
+  }
+
+
+  function drawBrackets(){
+    const size=24;
+    const spots=[
+      {x:W*0.06,y:H*0.12},{x:W*0.94,y:H*0.2},{x:W*0.12,y:H*0.82},
+      {x:W*0.88,y:H*0.78},{x:W*0.5,y:H*0.04},{x:W*0.72,y:H*0.92},
+      {x:W*0.3,y:H*0.95},{x:W*0.95,y:H*0.5}
+    ];
+    ctx.strokeStyle=colors.bracket;ctx.lineWidth=1.5;
+    spots.forEach((s,i)=>{
+      ctx.save();ctx.translate(s.x,s.y);ctx.rotate((i*0.7)+time*0.0003);
+      ctx.beginPath();ctx.moveTo(-size,-size);ctx.lineTo(-size,size);ctx.lineTo(size,size);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(size,size);ctx.lineTo(size,-size);ctx.lineTo(-size,-size);ctx.stroke();
+      ctx.restore();
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);time++;
+    drawBrackets();
+
+    /* ── Mega layer (massive ambient spheres + connections) ── */
+    megas.forEach(m=>{
+      m.x+=m.vx;m.y+=m.vy;
+      if(m.x<-m.r)m.x=W+m.r;if(m.x>W+m.r)m.x=-m.r;
+      if(m.y<-m.r)m.y=H+m.r;if(m.y>H+m.r)m.y=-m.r;
+    });
+    const megaMaxDist=500;
+    for(let i=0;i<megas.length;i++){
+      for(let j=i+1;j<megas.length;j++){
+        const dx=megas[i].x-megas[j].x,dy=megas[i].y-megas[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<megaMaxDist){
+          ctx.beginPath();ctx.moveTo(megas[i].x,megas[i].y);ctx.lineTo(megas[j].x,megas[j].y);
+          ctx.strokeStyle=megas[i].line;ctx.globalAlpha=(1-dist/megaMaxDist)*0.9;ctx.lineWidth=3.5;ctx.stroke();ctx.globalAlpha=1;
+        }
+      }
+    }
+    megas.forEach(m=>{
+      ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fillStyle=m.fill;ctx.fill();
+    });
+
+    /* ── Cube layer (big nodes + connections) ── */
+    // Move cubes
+    cubes.forEach(c=>{
+      c.x+=c.vx;c.y+=c.vy;
+      if(c.x<-c.r)c.x=W+c.r;if(c.x>W+c.r)c.x=-c.r;
+      if(c.y<-c.r)c.y=H+c.r;if(c.y>H+c.r)c.y=-c.r;
+    });
+    // Cube-cube lines (max 3 per cube)
+    const cubeMaxDist=280;
+    for(let i=0;i<cubes.length;i++){
+      let ccCount=0;
+      for(let j=i+1;j<cubes.length&&ccCount<3;j++){
+        const dx=cubes[i].x-cubes[j].x,dy=cubes[i].y-cubes[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<cubeMaxDist){
+          ctx.beginPath();ctx.moveTo(cubes[i].x,cubes[i].y);ctx.lineTo(cubes[j].x,cubes[j].y);
+          ctx.strokeStyle=cubes[i].line;ctx.globalAlpha=(1-dist/cubeMaxDist)*0.55;ctx.lineWidth=1.8;ctx.stroke();ctx.globalAlpha=1;
+          ccCount++;
+        }
+      }
+    }
+    // Draw cube circles
+    cubes.forEach(c=>{
+      ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fillStyle=c.fill;ctx.fill();
+    });
+
+    /* ── Particle layer (smaller nodes + connections) ── */
+    const maxDist=180;
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<maxDist){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=colors.line;ctx.globalAlpha=(1-dist/maxDist)*0.8;ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1;}
+      }
+    }
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
+    });
+
+    /* ── Cross-layer connections ── */
+    // Mega ↔ Cube bridges (max 4 per mega)
+    const mcDist=400;
+    for(let i=0;i<megas.length;i++){
+      let mcCount=0;
+      for(let j=0;j<cubes.length&&mcCount<4;j++){
+        const dx=megas[i].x-cubes[j].x,dy=megas[i].y-cubes[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<mcDist){
+          ctx.beginPath();ctx.moveTo(megas[i].x,megas[i].y);ctx.lineTo(cubes[j].x,cubes[j].y);
+          ctx.strokeStyle=cubes[j].line;ctx.globalAlpha=(1-dist/mcDist)*0.55;ctx.lineWidth=2.2;ctx.stroke();ctx.globalAlpha=1;
+          mcCount++;
+        }
+      }
+    }
+    // Cube ↔ Particle bridges (max 3 per cube)
+    const cpDist=190;
+    for(let i=0;i<cubes.length;i++){
+      let cpCount=0;
+      for(let j=0;j<particles.length&&cpCount<3;j++){
+        const dx=cubes[i].x-particles[j].x,dy=cubes[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<cpDist){
+          ctx.beginPath();ctx.moveTo(cubes[i].x,cubes[i].y);ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=cubes[i].line;ctx.globalAlpha=(1-dist/cpDist)*0.35;ctx.lineWidth=1;ctx.stroke();ctx.globalAlpha=1;
+          cpCount++;
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window._heroAnim={updateColors:function(){colors=getColors();const pool=[colors.node,colors.node,colors.nodeGo,colors.nodeGo,colors.nodeEmber];particles.forEach(p=>{p.color=pool[Math.floor(Math.random()*pool.length)];});const fills=[{fill:colors.cube,line:colors.cubeLine},{fill:colors.cube,line:colors.cubeLine},{fill:colors.cubeGo,line:colors.cubeLineGo},{fill:colors.cubeEmber,line:colors.cubeLineEmber}];cubes.forEach(c=>{const f=fills[Math.floor(Math.random()*fills.length)];c.fill=f.fill;c.line=f.line;});megas.forEach((m,i)=>{if(i===0){m.fill=colors.megaEmber;m.line=colors.megaLineEmber;}else if(i===1){m.fill=colors.megaGo;m.line=colors.megaLineGo;}else{m.fill=colors.mega;m.line=colors.megaLine;}});}};
+  resize();initParticles();draw();
+  window.addEventListener('resize',()=>{resize();initParticles();});
+})();
+
+/* ═══ MINI RING — removed, now using screenshot ═══ */
+(function(){
+  return; /* Ring card now uses screenshot instead of canvas */
+  const c=document.getElementById('miniRing');if(!c)return;
+  const ctx=c.getContext('2d');
+  const dpr=window.devicePixelRatio||1;
+  const S=300;
+  c.width=S*dpr;c.height=S*dpr;c.style.width=S+'px';c.style.height=S+'px';
+  ctx.scale(dpr,dpr);
+  const cx=S/2,cy=S/2,outerR=S/2-24,ringW=Math.max(36,S*0.13),innerR=outerR-ringW;
+
+  /* Actual template RING_CATS */
+  const CATS={work:'#d97706',build:'#7c3aed',family:'#0e7490',admin:'#d97706',personal:'#16a34a',break:'#94a3b8'};
+  /* Zone tints */
+  const ZONES={core:'rgba(217,119,6,0.08)',evening:'rgba(124,58,237,0.06)',sleep:'rgba(100,116,139,0.04)'};
+
+  /* Sample schedule */
+  const blocks=[
+    {start:'06:00',end:'07:00',cat:'personal',label:'AM Prep'},
+    {start:'07:00',end:'08:00',cat:'family',label:'Kids Ready'},
+    {start:'08:00',end:'08:30',cat:'break',label:'Commute'},
+    {start:'09:00',end:'10:30',cat:'work',label:'KlearTrust'},
+    {start:'10:30',end:'12:00',cat:'build',label:'MyCapsul'},
+    {start:'12:00',end:'13:00',cat:'break',label:'Lunch'},
+    {start:'13:00',end:'15:00',cat:'work',label:'KlearTrust'},
+    {start:'15:00',end:'16:30',cat:'build',label:'Build'},
+    {start:'16:30',end:'17:00',cat:'admin',label:'Budget'},
+    {start:'17:00',end:'19:00',cat:'family',label:'Family'},
+    {start:'19:00',end:'20:00',cat:'personal',label:'Gym'},
+    {start:'21:00',end:'23:00',cat:'personal',label:'Wind Down'}
+  ];
+  function parseT(s){const[h,m]=s.split(':').map(Number);return h*60+m;}
+  function minToAngle(m){return -Math.PI/2+(m/(24*60))*Math.PI*2;}
+
+  function draw(){
+    ctx.clearRect(0,0,S,S);
+
+    /* Zone backgrounds (core 7a-5p, evening 5p-10p, sleep 10p-7a) */
+    const zoneArcs=[
+      {s:minToAngle(420),e:minToAngle(1020),fill:ZONES.core},
+      {s:minToAngle(1020),e:minToAngle(1320),fill:ZONES.evening}
+    ];
+    const sleepS=minToAngle(1320),sleepE=minToAngle(420)+Math.PI*2;
+    zoneArcs.push({s:sleepS,e:sleepE,fill:ZONES.sleep});
+    zoneArcs.forEach(z=>{
+      ctx.beginPath();ctx.arc(cx,cy,outerR,z.s,z.e);ctx.arc(cx,cy,innerR,z.e,z.s,true);ctx.closePath();
+      ctx.fillStyle=z.fill;ctx.fill();
+    });
+
+    /* Ring track */
+    ctx.beginPath();ctx.arc(cx,cy,outerR,0,Math.PI*2);ctx.arc(cx,cy,innerR,Math.PI*2,0,true);ctx.closePath();
+    ctx.fillStyle='rgba(0,0,0,0.03)';ctx.fill();
+
+    /* Zone separator lines */
+    [1020,1320].forEach(m=>{
+      const ang=minToAngle(m),cs=Math.cos(ang),sn=Math.sin(ang);
+      ctx.beginPath();ctx.moveTo(cx+cs*(innerR-2),cy+sn*(innerR-2));ctx.lineTo(cx+cs*(outerR+2),cy+sn*(outerR+2));
+      ctx.strokeStyle='rgba(0,0,0,0.12)';ctx.lineWidth=1;ctx.stroke();
+    });
+
+    /* Time blocks — filled arcs */
+    blocks.forEach(b=>{
+      const sM=parseT(b.start),eM=parseT(b.end);
+      const s=minToAngle(sM),e=minToAngle(eM);
+      const catColor=CATS[b.cat]||CATS.break;
+      ctx.beginPath();ctx.arc(cx,cy,outerR-1,s,e);ctx.arc(cx,cy,innerR+1,e,s,true);ctx.closePath();
+      ctx.fillStyle=catColor;ctx.globalAlpha=0.55;ctx.fill();ctx.globalAlpha=1;
+      /* White border */
+      ctx.beginPath();ctx.arc(cx,cy,outerR-1,s,e);ctx.arc(cx,cy,innerR+1,e,s,true);ctx.closePath();
+      ctx.strokeStyle='rgba(255,255,255,0.7)';ctx.lineWidth=1.5;ctx.stroke();
+      /* Label */
+      const mid=(s+e)/2,lr=(outerR+innerR)/2,arcLen=Math.abs(e-s)*lr;
+      if(arcLen>20){
+        ctx.save();ctx.translate(cx+Math.cos(mid)*lr,cy+Math.sin(mid)*lr);
+        let rot=mid;if(rot>Math.PI/2&&rot<Math.PI*1.5)rot+=Math.PI;
+        ctx.rotate(rot);
+        const fs=Math.max(6,Math.min(9,ringW*0.18));
+        ctx.font='bold '+fs+'px Sora,system-ui,sans-serif';ctx.fillStyle='#fff';ctx.globalAlpha=0.92;ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(b.label,0,0);ctx.globalAlpha=1;ctx.restore();
+      }
+    });
+
+    /* Hour ticks */
+    for(let h=0;h<24;h++){
+      const angle=minToAngle(h*60),cs=Math.cos(angle),sn=Math.sin(angle);
+      const major=h%3===0;
+      ctx.beginPath();ctx.moveTo(cx+cs*(major?outerR-5:outerR-2),cy+sn*(major?outerR-5:outerR-2));
+      ctx.lineTo(cx+cs*(outerR+2),cy+sn*(outerR+2));
+      ctx.strokeStyle=major?'rgba(0,0,0,0.35)':'rgba(0,0,0,0.1)';ctx.lineWidth=major?1.5:0.5;ctx.stroke();
+      if(major){
+        const inSleep=(h*60>=1320||h*60<420);
+        if(!inSleep||h%6===0){
+          const nr=outerR+14;
+          ctx.font='600 10px Sora,sans-serif';ctx.fillStyle='rgba(0,0,0,0.4)';ctx.textAlign='center';ctx.textBaseline='middle';
+          ctx.fillText(String(h).padStart(2,'0'),cx+cs*nr,cy+sn*nr);
+        }
+      }
+    }
+
+    /* Current time hand */
+    const now=new Date(),nowMin=now.getHours()*60+now.getMinutes();
+    const ha=minToAngle(nowMin);
+    ctx.beginPath();ctx.moveTo(cx+Math.cos(ha)*(innerR-6),cy+Math.sin(ha)*(innerR-6));
+    ctx.lineTo(cx+Math.cos(ha)*(outerR+8),cy+Math.sin(ha)*(outerR+8));
+    ctx.strokeStyle='#1e293b';ctx.lineWidth=2;ctx.shadowColor='rgba(0,0,0,0.15)';ctx.shadowBlur=4;ctx.stroke();ctx.shadowBlur=0;
+    ctx.beginPath();ctx.arc(cx+Math.cos(ha)*(outerR+8),cy+Math.sin(ha)*(outerR+8),3,0,Math.PI*2);
+    ctx.fillStyle='#1e293b';ctx.fill();
+
+    /* Center text */
+    const curBlock=blocks.find(b=>{const s=parseT(b.start),e=parseT(b.end);return nowMin>=s&&nowMin<e;});
+    const dayNames=['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+    ctx.font='700 13px Sora,sans-serif';ctx.fillStyle='#1e293b';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(dayNames[now.getDay()],cx,cy-12);
+    if(curBlock){
+      ctx.font='600 10px Sora,sans-serif';ctx.fillStyle='#d97706';
+      ctx.fillText('NOW: '+curBlock.label,cx,cy+4);
+    }
+
+    /* Category legend */
+    const legend=[{c:'#d97706',l:'Work'},{c:'#7c3aed',l:'Build'},{c:'#0e7490',l:'Family'},{c:'#16a34a',l:'Personal'}];
+    const lw=legend.length*60;let lx=cx-lw/2+10;
+    ctx.font='600 9px Sora,sans-serif';ctx.textAlign='left';
+    legend.forEach(item=>{
+      ctx.beginPath();ctx.arc(lx,cy+64,3.5,0,Math.PI*2);ctx.fillStyle=item.c;ctx.fill();
+      ctx.fillStyle='rgba(0,0,0,0.4)';ctx.fillText(item.l,lx+7,cy+67);
+      lx+=60;
+    });
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ═══ MINI CALENDAR WIDGET — matches real dashboard cw-* calendar ═══ */
+(function(){
+  const el=document.getElementById('miniCalWidget');
+  if(!el)return;
+
+  /* Custody calculation — mirrors dashboard hasKids() */
+  const anchor=new Date(2026,2,2); // Mar 2 2026 anchor
+  function hasKids(d){
+    const diff=Math.floor((d-anchor)/(86400000));
+    const cycle=((diff%14)+14)%14;
+    return cycle>=7; /* days 7-13 are kids week */
+  }
+
+  /* Dummy events for visual interest */
+  const events={
+    3:'&#128170;',7:'&#128197;',10:'&#11088;',14:'&#127874;',18:'&#128218;',22:'&#127891;',26:'&#128176;'
+  };
+
+  const now=new Date();
+  const year=2026, month=2; /* March 2026 */
+  const firstDay=new Date(year,month,1).getDay();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const daysInPrev=new Date(year,month,0).getDate();
+  const today=now.getDate();
+
+  /* Count custody days */
+  let soloDays=0,kidsDays=0;
+  for(let d=1;d<=daysInMonth;d++){
+    if(hasKids(new Date(year,month,d)))kidsDays++;else soloDays++;
+  }
+
+  let html='';
+  /* Header */
+  html+='<div class="mcw-header">';
+  html+='<div class="mcw-title">March 2026</div>';
+  html+='<div class="mcw-custody">';
+  html+='<span class="mcw-seg solo active">Solo '+soloDays+'</span>';
+  html+='<span class="mcw-seg kids active">Kids '+kidsDays+'</span>';
+  html+='</div>';
+  html+='<div class="mcw-nav"><span class="mcw-nav-btn">&#9666;</span><span class="mcw-nav-btn">&#9656;</span></div>';
+  html+='</div>';
+
+  /* DOW row */
+  html+='<div class="mcw-dow">';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d=>html+='<span>'+d+'</span>');
+  html+='</div>';
+
+  /* Grid */
+  html+='<div class="mcw-grid">';
+  /* Prev month filler */
+  for(let i=firstDay-1;i>=0;i--){
+    html+='<div class="mcw-cell other"><span class="mcw-d">'+(daysInPrev-i)+'</span></div>';
+  }
+  /* Current month */
+  for(let d=1;d<=daysInMonth;d++){
+    const dt=new Date(year,month,d);
+    const isToday=d===today&&month===now.getMonth()&&year===now.getFullYear();
+    const isKids=hasKids(dt);
+    let cls='mcw-cell';
+    if(isToday)cls+=' today';
+    if(isKids)cls+=' custody';
+    html+='<div class="'+cls+'">';
+    html+='<span class="mcw-d">'+d+'</span>';
+    if(events[d])html+='<span class="mcw-icon">'+events[d]+'</span>';
+    html+='</div>';
+  }
+  /* Next month filler */
+  const totalCells=firstDay+daysInMonth;
+  const remaining=totalCells%7===0?0:7-(totalCells%7);
+  for(let i=1;i<=remaining;i++){
+    html+='<div class="mcw-cell other"><span class="mcw-d">'+i+'</span></div>';
+  }
+  html+='</div>';
+
+  el.innerHTML=html;
+})();
+
+/* ═══ LOOP CARD CYCLING ANIMATION — 1sec per card ═══ */
+(function(){
+  const cards=document.querySelectorAll('.loop-card');
+  if(!cards.length)return;
+  let idx=0;
+  function cycle(){
+    cards.forEach(c=>c.classList.remove('cycle-active'));
+    cards[idx].classList.add('cycle-active');
+    idx=(idx+1)%cards.length;
+  }
+  let hovered=false;
+  cards.forEach(c=>{
+    c.addEventListener('mouseenter',()=>{hovered=true;cards.forEach(x=>x.classList.remove('cycle-active'));});
+    c.addEventListener('mouseleave',()=>hovered=false);
+  });
+  setInterval(()=>{if(!hovered)cycle();},1000);
+})();
+
+/* ═══ AGENT NAME CYCLING ═══ */
+(function(){
+  const el=document.getElementById('agentNameCycle');
+  if(!el)return;
+  const names=['Rocky','Atlas','Nova','Sage','Capsul','Buddy','Chief'];
+  let idx=0;
+  setInterval(()=>{
+    idx=(idx+1)%names.length;
+    el.style.opacity='0';
+    setTimeout(()=>{el.textContent=names[idx];el.style.opacity='1';},200);
+  },2500);
+  el.style.transition='opacity 0.2s';
+})();
+  /* ═══ DOWNLOAD CLICK TRACKING ═══ */
+  document.querySelectorAll('.btn-download').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(window.goatcounter && window.goatcounter.count){
+        window.goatcounter.count({path:'download-plugin',title:'Plugin Download',event:true});
+      }
+    });
+  });
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
