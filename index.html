@@ -562,20 +562,71 @@ footer { background:var(--footer-bg);padding:56px 48px 32px;color:#9CA3AF; }
   .bottom-cta-inner { grid-template-columns:1fr;gap:40px; }
   .bottom-cta-card { max-width:480px; }
 }
-/* ═══ CSS ORBS — mobile replacement for canvas ═══ */
-.css-orb { display:none;position:absolute;border-radius:50%;pointer-events:none;will-change:transform; }
+/* ═══ CSS ORBS — pure CSS hero background ═══ */
+#heroCanvas { display:none!important; }
+.css-orb { position:absolute;border-radius:50%;pointer-events:none;will-change:transform;filter:blur(10px); }
+/* ── Keyframes — big travel, punchy motion ── */
+@keyframes drift1 { 0%{transform:translate(0,0) scale(1)} 25%{transform:translate(80px,-60px) scale(1.1)} 50%{transform:translate(-40px,70px) scale(0.92)} 75%{transform:translate(55px,25px) scale(1.07)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes drift2 { 0%{transform:translate(0,0) scale(1)} 33%{transform:translate(-65px,45px) scale(1.08)} 66%{transform:translate(50px,-65px) scale(0.91)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes drift3 { 0%{transform:translate(0,0) scale(1)} 20%{transform:translate(45px,60px) scale(0.93)} 50%{transform:translate(-55px,-35px) scale(1.1)} 80%{transform:translate(35px,-50px) scale(1.04)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes drift4 { 0%{transform:translate(0,0) scale(1)} 30%{transform:translate(-55px,-40px) scale(1.09)} 60%{transform:translate(70px,30px) scale(0.93)} 100%{transform:translate(0,0) scale(1)} }
+@keyframes driftSm { 0%{transform:translate(0,0) scale(1);opacity:0.55} 50%{transform:translate(25px,-18px) scale(1.2);opacity:1} 100%{transform:translate(0,0) scale(1);opacity:0.55} }
+
+/* ── Large orbs — desktop (7 total, BIG, defined) ── */
+.css-orb-1 { width:340px;height:340px;top:6%;left:4%;filter:blur(4px);background:radial-gradient(circle,rgba(230,114,1,0.44) 0%,rgba(230,114,1,0) 65%);animation:drift1 10s ease-in-out infinite; }
+.css-orb-2 { width:400px;height:400px;top:18%;right:6%;filter:blur(4px);background:radial-gradient(circle,rgba(27,186,1,0.4) 0%,rgba(27,186,1,0) 65%);animation:drift2 13s ease-in-out infinite; }
+.css-orb-3 { width:370px;height:370px;bottom:10%;left:12%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 65%);animation:drift3 11s ease-in-out infinite; }
+.css-orb-4 { width:310px;height:310px;top:50%;right:18%;filter:blur(4px);background:radial-gradient(circle,rgba(230,114,1,0.34) 0%,rgba(230,114,1,0) 65%);animation:drift4 14s ease-in-out infinite; }
+.css-orb-5 { width:330px;height:330px;top:3%;left:40%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.36) 0%,rgba(0,126,255,0) 65%);animation:drift1 12s ease-in-out infinite 3s; }
+.css-orb-6 { width:280px;height:280px;bottom:25%;right:5%;filter:blur(4px);background:radial-gradient(circle,rgba(27,186,1,0.36) 0%,rgba(27,186,1,0) 65%);animation:drift2 9s ease-in-out infinite 2s; }
+.css-orb-7 { width:295px;height:295px;top:38%;left:2%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.32) 0%,rgba(0,126,255,0) 65%);animation:drift3 15s ease-in-out infinite 5s; }
+/* ── Medium orbs (10 total, +2) ── */
+.css-orb-md-1 { width:90px;height:90px;top:25%;left:30%;filter:blur(5px);background:radial-gradient(circle,rgba(27,186,1,0.42) 0%,rgba(27,186,1,0) 70%);animation:driftSm 6s ease-in-out infinite; }
+.css-orb-md-2 { width:75px;height:75px;bottom:20%;right:25%;filter:blur(4px);background:radial-gradient(circle,rgba(230,114,1,0.42) 0%,rgba(230,114,1,0) 70%);animation:drift4 9s ease-in-out infinite 1s; }
+.css-orb-md-3 { width:80px;height:80px;top:10%;right:28%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.38) 0%,rgba(0,126,255,0) 70%);animation:driftSm 7s ease-in-out infinite 3s; }
+.css-orb-md-4 { width:85px;height:85px;bottom:30%;left:5%;filter:blur(4px);background:radial-gradient(circle,rgba(27,186,1,0.38) 0%,rgba(27,186,1,0) 70%);animation:drift4 10s ease-in-out infinite 0.5s; }
+.css-orb-md-5 { width:70px;height:70px;top:58%;left:45%;filter:blur(3px);background:radial-gradient(circle,rgba(230,114,1,0.38) 0%,rgba(230,114,1,0) 70%);animation:driftSm 6.5s ease-in-out infinite 4s; }
+.css-orb-md-6 { width:80px;height:80px;top:6%;left:20%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.36) 0%,rgba(0,126,255,0) 70%);animation:drift4 8s ease-in-out infinite 2s; }
+.css-orb-md-7 { width:72px;height:72px;top:42%;right:8%;filter:blur(3px);background:radial-gradient(circle,rgba(230,114,1,0.35) 0%,rgba(230,114,1,0) 70%);animation:driftSm 7.5s ease-in-out infinite 5s; }
+.css-orb-md-8 { width:78px;height:78px;bottom:8%;left:42%;filter:blur(4px);background:radial-gradient(circle,rgba(27,186,1,0.36) 0%,rgba(27,186,1,0) 70%);animation:drift4 11s ease-in-out infinite 3s; }
+.css-orb-md-9 { width:82px;height:82px;top:68%;right:35%;filter:blur(4px);background:radial-gradient(circle,rgba(0,126,255,0.4) 0%,rgba(0,126,255,0) 70%);animation:driftSm 8.5s ease-in-out infinite 1.5s; }
+.css-orb-md-10 { width:76px;height:76px;top:15%;left:55%;filter:blur(3px);background:radial-gradient(circle,rgba(27,186,1,0.4) 0%,rgba(27,186,1,0) 70%);animation:drift4 7s ease-in-out infinite 4.5s; }
+/* ── Small accent orbs (13 total, +3) ── */
+.css-orb-sm-1 { width:35px;height:35px;top:18%;left:52%;filter:blur(1px);background:radial-gradient(circle,rgba(0,126,255,0.45) 0%,rgba(0,126,255,0) 70%);animation:driftSm 5s ease-in-out infinite; }
+.css-orb-sm-2 { width:28px;height:28px;bottom:15%;right:38%;filter:blur(1px);background:radial-gradient(circle,rgba(230,114,1,0.48) 0%,rgba(230,114,1,0) 70%);animation:driftSm 6s ease-in-out infinite 1s; }
+.css-orb-sm-3 { width:30px;height:30px;top:45%;left:12%;filter:blur(1px);background:radial-gradient(circle,rgba(27,186,1,0.45) 0%,rgba(27,186,1,0) 70%);animation:driftSm 5.5s ease-in-out infinite 2s; }
+.css-orb-sm-4 { width:25px;height:25px;top:72%;right:42%;filter:blur(1px);background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 70%);animation:driftSm 7s ease-in-out infinite 3.5s; }
+.css-orb-sm-5 { width:32px;height:32px;top:8%;right:15%;filter:blur(1px);background:radial-gradient(circle,rgba(230,114,1,0.44) 0%,rgba(230,114,1,0) 70%);animation:driftSm 4.5s ease-in-out infinite 0.5s; }
+.css-orb-sm-6 { width:22px;height:22px;bottom:40%;left:28%;filter:blur(1px);background:radial-gradient(circle,rgba(27,186,1,0.46) 0%,rgba(27,186,1,0) 70%);animation:driftSm 6.5s ease-in-out infinite 4s; }
+.css-orb-sm-7 { width:30px;height:30px;top:32%;right:48%;filter:blur(1px);background:radial-gradient(circle,rgba(0,126,255,0.4) 0%,rgba(0,126,255,0) 70%);animation:driftSm 5s ease-in-out infinite 2.5s; }
+.css-orb-sm-8 { width:26px;height:26px;bottom:48%;right:12%;filter:blur(1px);background:radial-gradient(circle,rgba(230,114,1,0.42) 0%,rgba(230,114,1,0) 70%);animation:driftSm 7.5s ease-in-out infinite 1.5s; }
+.css-orb-sm-9 { width:20px;height:20px;top:65%;left:62%;filter:blur(1px);background:radial-gradient(circle,rgba(27,186,1,0.5) 0%,rgba(27,186,1,0) 70%);animation:driftSm 4s ease-in-out infinite 5s; }
+.css-orb-sm-10 { width:24px;height:24px;top:15%;left:68%;filter:blur(1px);background:radial-gradient(circle,rgba(0,126,255,0.44) 0%,rgba(0,126,255,0) 70%);animation:driftSm 5.5s ease-in-out infinite 3s; }
+.css-orb-sm-11 { width:27px;height:27px;bottom:5%;right:18%;filter:blur(1px);background:radial-gradient(circle,rgba(230,114,1,0.46) 0%,rgba(230,114,1,0) 70%);animation:driftSm 5s ease-in-out infinite 0.8s; }
+.css-orb-sm-12 { width:22px;height:22px;top:52%;right:55%;filter:blur(1px);background:radial-gradient(circle,rgba(27,186,1,0.48) 0%,rgba(27,186,1,0) 70%);animation:driftSm 6s ease-in-out infinite 3.2s; }
+.css-orb-sm-13 { width:30px;height:30px;top:3%;left:82%;filter:blur(1px);background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 70%);animation:driftSm 4.5s ease-in-out infinite 5.5s; }
+
+/* ── Dark mode — slightly brighter ── */
+[data-theme="dark"] .css-orb-1 { background:radial-gradient(circle,rgba(230,114,1,0.5) 0%,rgba(230,114,1,0) 65%); }
+[data-theme="dark"] .css-orb-2 { background:radial-gradient(circle,rgba(27,186,1,0.46) 0%,rgba(27,186,1,0) 65%); }
+[data-theme="dark"] .css-orb-3 { background:radial-gradient(circle,rgba(0,126,255,0.48) 0%,rgba(0,126,255,0) 65%); }
+[data-theme="dark"] .css-orb-4 { background:radial-gradient(circle,rgba(230,114,1,0.4) 0%,rgba(230,114,1,0) 65%); }
+[data-theme="dark"] .css-orb-5 { background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 65%); }
+[data-theme="dark"] .css-orb-6 { background:radial-gradient(circle,rgba(27,186,1,0.42) 0%,rgba(27,186,1,0) 65%); }
+[data-theme="dark"] .css-orb-7 { background:radial-gradient(circle,rgba(0,126,255,0.38) 0%,rgba(0,126,255,0) 65%); }
+
+/* ── Mobile — 3 large + 2 small, static, no mediums ── */
 @media(max-width:768px){
-  #heroCanvas { display:none!important; }
-  .css-orb { display:block;filter:blur(2px); }
-  .css-orb-1 { width:120px;height:120px;top:12%;left:8%;background:radial-gradient(circle,rgba(230,114,1,0.45) 0%,rgba(230,114,1,0) 70%); }
-  .css-orb-2 { width:140px;height:140px;top:35%;right:5%;background:radial-gradient(circle,rgba(27,186,1,0.4) 0%,rgba(27,186,1,0) 70%); }
-  .css-orb-3 { width:130px;height:130px;bottom:18%;left:20%;background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 70%); }
-  .css-orb-sm-1 { width:40px;height:40px;top:22%;right:30%;background:radial-gradient(circle,rgba(27,186,1,0.35) 0%,rgba(27,186,1,0) 70%); }
-  .css-orb-sm-2 { width:35px;height:35px;bottom:30%;left:55%;background:radial-gradient(circle,rgba(230,114,1,0.35) 0%,rgba(230,114,1,0) 70%); }
+  .css-orb { animation:none!important;filter:blur(14px); }
+  .css-orb-1 { width:120px;height:120px;top:12%;left:8%;background:radial-gradient(circle,rgba(230,114,1,0.4) 0%,rgba(230,114,1,0) 70%); }
+  .css-orb-2 { width:140px;height:140px;top:35%;right:5%;background:radial-gradient(circle,rgba(27,186,1,0.35) 0%,rgba(27,186,1,0) 70%); }
+  .css-orb-3 { width:130px;height:130px;bottom:18%;left:20%;background:radial-gradient(circle,rgba(0,126,255,0.38) 0%,rgba(0,126,255,0) 70%); }
+  .css-orb-4,.css-orb-5,.css-orb-6,.css-orb-7,
+  [class^="css-orb-md-"],
+  .css-orb-sm-3,.css-orb-sm-4,.css-orb-sm-5,.css-orb-sm-6,.css-orb-sm-7,.css-orb-sm-8,.css-orb-sm-9,.css-orb-sm-10,.css-orb-sm-11,.css-orb-sm-12,.css-orb-sm-13 { display:none; }
+  .css-orb-sm-1 { width:40px;height:40px;top:22%;right:30%;filter:blur(6px);animation:none!important; }
+  .css-orb-sm-2 { width:35px;height:35px;bottom:30%;left:55%;filter:blur(6px);animation:none!important; }
 }
-[data-theme="dark"] .css-orb-1 { background:radial-gradient(circle,rgba(230,114,1,0.5) 0%,rgba(230,114,1,0) 70%); }
-[data-theme="dark"] .css-orb-2 { background:radial-gradient(circle,rgba(27,186,1,0.45) 0%,rgba(27,186,1,0) 70%); }
-[data-theme="dark"] .css-orb-3 { background:radial-gradient(circle,rgba(0,126,255,0.5) 0%,rgba(0,126,255,0) 70%); }
 
 @media(max-width:768px){
   nav { padding:0 20px;height:56px; }
@@ -614,6 +665,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
   #heroCanvas { display:none; }
+  .css-orb,[class^="css-orb-md-"] { animation:none!important; }
 }
 
 /* Screen reader only utility */
@@ -643,11 +695,37 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 <main id="main-content">
 <div class="hero-wrap">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <!-- CSS orbs — ambient background -->
   <div class="css-orb css-orb-1" aria-hidden="true"></div>
   <div class="css-orb css-orb-2" aria-hidden="true"></div>
   <div class="css-orb css-orb-3" aria-hidden="true"></div>
+  <div class="css-orb css-orb-4" aria-hidden="true"></div>
+  <div class="css-orb css-orb-5" aria-hidden="true"></div>
+  <div class="css-orb css-orb-6" aria-hidden="true"></div>
+  <div class="css-orb css-orb-7" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-1" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-2" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-3" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-4" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-5" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-6" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-7" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-8" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-9" aria-hidden="true"></div>
+  <div class="css-orb css-orb-md-10" aria-hidden="true"></div>
   <div class="css-orb css-orb-sm-1" aria-hidden="true"></div>
   <div class="css-orb css-orb-sm-2" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-3" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-4" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-5" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-6" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-7" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-8" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-9" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-10" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-11" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-12" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-13" aria-hidden="true"></div>
   <section class="hero">
     <div class="hero-left">
       <div class="hero-badge">
@@ -1204,8 +1282,9 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
 
 /* ═══ HERO CANVAS ═══ */
 (function(){
+  return; /* CSS orbs now handle all hero background — canvas disabled */
   const isMobile=window.innerWidth<=768||/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if(isMobile)return; /* CSS orbs handle mobile — no canvas needed */
+  if(isMobile)return;
   const canvas=document.getElementById('heroCanvas');if(!canvas)return;
   const ctx=canvas.getContext('2d');
   let W,H,particles=[],cubes=[],megas=[],time=0;
