@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Release Notes — MyCapsul</title>
-<meta name="description" content="Changelog and release notes for MyCapsul, the AI-maintained personal life dashboard.">
+<title>Releases & Roadmap — MyCapsul</title>
+<meta name="description" content="Changelog, release notes, and product roadmap for MyCapsul, the AI-maintained personal life dashboard.">
 <link rel="canonical" href="https://mycapsul.com/docs/releases.html">
 
 <!-- Open Graph -->
@@ -167,6 +167,49 @@ body {
   color: var(--text); font-weight: 600;
 }
 
+/* ===== ROADMAP ===== */
+.roadmap-section {
+  margin-top: 72px; margin-bottom: 48px;
+}
+.roadmap-header {
+  text-align: center; margin-bottom: 48px;
+}
+.roadmap-header h2 {
+  font-family: 'Sora', sans-serif; font-size: 30px; font-weight: 700;
+  letter-spacing: -0.5px; margin-bottom: 12px;
+}
+.roadmap-header h2 span { color: var(--ember); }
+.roadmap-header p {
+  font-size: 15px; color: var(--text-dim); max-width: 520px; margin: 0 auto; line-height: 1.7;
+}
+.roadmap-lane {
+  margin-bottom: 36px;
+}
+.lane-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  padding: 5px 14px; border-radius: 6px; margin-bottom: 16px;
+}
+.lane-label.building { background: rgba(0,126,255,0.08); color: var(--blue); }
+.lane-label.next { background: rgba(230,114,1,0.08); color: var(--ember); }
+.lane-label.exploring { background: rgba(124,58,237,0.08); color: var(--purple); }
+.roadmap-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 24px; margin-bottom: 12px; transition: box-shadow 0.2s;
+}
+.roadmap-card:hover { box-shadow: var(--shadow-hover); }
+.roadmap-card h3 {
+  font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600;
+  margin-bottom: 8px; letter-spacing: -0.2px;
+}
+.roadmap-card p {
+  font-size: 14px; color: var(--text-dim); line-height: 1.7;
+}
+.roadmap-note {
+  text-align: center; font-size: 13px; color: var(--text-xdim); margin-top: 32px;
+  padding: 20px; border-top: 1px solid var(--border-light);
+}
+
 /* ===== FOOTER ===== */
 .doc-footer {
   text-align: center; padding: 40px 20px 20px; border-top: 1px solid var(--border);
@@ -220,7 +263,7 @@ body {
 <div class="hero">
   <div class="hero-pill">Release Notes</div>
   <h1>What's <span>New</span></h1>
-  <p class="hero-sub">Changelog and updates for MyCapsul. See what shipped, what improved, and what's coming.</p>
+  <p class="hero-sub">Changelog, updates, and where we're headed. See what shipped and what's coming next.</p>
 </div>
 
 <!-- RELEASES -->
@@ -285,6 +328,75 @@ body {
       <strong>Full documentation suite</strong> — Getting started guide, user guide, prompt cookbook, FAQ, and release notes. Everything you need to know.
     </li>
   </ul>
+</div>
+
+<!-- ROADMAP -->
+<div class="roadmap-section">
+  <div class="roadmap-header">
+    <h2>What's <span>Coming</span></h2>
+    <p>MyCapsul is actively evolving. Here's where we're headed — priorities shift based on what users actually need, so this list is a compass, not a contract.</p>
+  </div>
+
+  <div class="roadmap-lane">
+    <div class="lane-label building">Building Now</div>
+
+    <div class="roadmap-card">
+      <h3>FinCapsul — Financial Intelligence Extension</h3>
+      <p>A dedicated financial analysis page that connects to your main dashboard. Paycheck cash flow analysis, automatic spending categorization, monthly trend tracking, and an eating-out modeler. Import your bank CSV and get real insight into where your money goes.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>More Pre-Built Widgets</h3>
+      <p>Expanding the widget library beyond the running tracker and reading list. Think: meal planner, meditation tracker, habit streaks, workout log, gratitude journal. Each one installs in seconds and connects to your goals and health data.</p>
+    </div>
+  </div>
+
+  <div class="roadmap-lane">
+    <div class="lane-label next">Up Next</div>
+
+    <div class="roadmap-card">
+      <h3>HealthCapsul — Wellness Intelligence Extension</h3>
+      <p>Energy and mood trend visualization, medication tracking, condition management, and ADHD-aware focus pattern analysis. Generates structured health summaries you can actually share with your doctor.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>KidsCapsul — Family & School Hub Extension</h3>
+      <p>Custody calendar visualization, school event tracking, grade monitoring, and activity scheduling. Built for co-parents who need everything about their kids in one place.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Auto-Sync</h3>
+      <p>Automatic bidirectional sync between your dashboard and your AI agent using the File System Access API. No more clicking "Sync" — your dashboard and agent stay in lockstep in real time.</p>
+    </div>
+  </div>
+
+  <div class="roadmap-lane">
+    <div class="lane-label exploring">Exploring</div>
+
+    <div class="roadmap-card">
+      <h3>LegalCapsul — Legal & Document Tracker Extension</h3>
+      <p>Document timeline, incident logging, court date prep, obligation tracking, and a document repository index. For anyone managing legal matters who needs a clear, factual record.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>HustleCapsul — Career & Side Projects Extension</h3>
+      <p>Consulting pipeline tracking, side project portfolio, income stream breakdown, and professional development logging. For anyone building beyond their 9-to-5.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Widget Marketplace</h3>
+      <p>A place to browse, share, and install community-built widgets. Build a tracker for anything — guitar practice, garden watering, book clubs — and share it as a .capsul-widget file that anyone can install.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <h3>Custom Palettes & Themes</h3>
+      <p>Beyond the 6 built-in palettes — define your own accent color and generate a full theme. Community-submitted palettes. Layout density and typography preferences.</p>
+    </div>
+  </div>
+
+  <div class="roadmap-note">
+    Capsul Extensions are standalone pages that share the MyCapsul design system and connect back to your main dashboard. Each one adds depth to a specific area of your life without cluttering your daily view.
+  </div>
 </div>
 
 </div><!-- /doc-body -->
