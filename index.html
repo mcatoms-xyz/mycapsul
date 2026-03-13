@@ -1186,6 +1186,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
 (function(){
   const canvas=document.getElementById('heroCanvas');if(!canvas)return;
   const ctx=canvas.getContext('2d');
+  const isMobile=window.innerWidth<=768||/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   let W,H,particles=[],cubes=[],megas=[],time=0;
 
   function resize(){const wr=canvas.parentElement;W=canvas.width=wr.offsetWidth;H=canvas.height=wr.offsetHeight;}
@@ -1222,6 +1223,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
 
   function initParticles(){
     particles=[];
+    if(!isMobile){
     const count=Math.min(120,Math.floor((W*H)/10000));
     const pool=[colors.node,colors.node,colors.nodeGo,colors.nodeGo,colors.nodeEmber];
     for(let i=0;i<count;i++){
@@ -1232,8 +1234,21 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
         color:pool[Math.floor(Math.random()*pool.length)]
       });
     }
+    }else{
+    /* Mobile: just 2 small particles for texture */
+    const pool=[colors.nodeGo,colors.nodeEmber];
+    for(let i=0;i<2;i++){
+      particles.push({
+        x:Math.random()*W,y:Math.random()*H,
+        vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,
+        r:Math.random()*6+5,
+        color:pool[i]
+      });
+    }
+    }
     /* Big anchor cubes — nodes & connections layer */
     cubes=[];
+    if(!isMobile){
     const cubeCount=Math.min(34,Math.max(16,Math.floor((W*H)/28000)));
     const fills=[
       {fill:colors.cube,line:colors.cubeLine},
@@ -1250,9 +1265,10 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
         fill:c.fill,line:c.line
       });
     }
+    }
     /* Mega layer — massive ambient spheres */
     megas=[];
-    const megaCount=Math.min(5,Math.max(3,Math.floor((W*H)/220000)));
+    const megaCount=isMobile?3:Math.min(5,Math.max(3,Math.floor((W*H)/220000)));
     /* Exact distro: 1 orange, 1 green, rest blue */
     const megaAssign=[];
     for(let i=0;i<megaCount;i++){
@@ -1272,8 +1288,8 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
       megas.push({
         x:cellW*(col+0.5)+(Math.random()-0.5)*cellW*0.5,
         y:cellH*(row+0.5)+(Math.random()-0.5)*cellH*0.5,
-        vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.25,
-        r:Math.random()*30+90,
+        vx:(Math.random()-0.5)*(isMobile?0.12:0.25),vy:(Math.random()-0.5)*(isMobile?0.12:0.25),
+        r:isMobile?Math.random()*20+60:Math.random()*30+90,
         fill:m.fill,line:m.line
       });
     }
@@ -1298,7 +1314,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
 
   function draw(){
     ctx.clearRect(0,0,W,H);time++;
-    drawBrackets();
+    if(!isMobile)drawBrackets();
 
     /* ── Mega layer (massive ambient spheres + connections) ── */
     megas.forEach(m=>{
@@ -1306,6 +1322,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
       if(m.x<-m.r)m.x=W+m.r;if(m.x>W+m.r)m.x=-m.r;
       if(m.y<-m.r)m.y=H+m.r;if(m.y>H+m.r)m.y=-m.r;
     });
+    if(!isMobile){
     const megaMaxDist=500;
     for(let i=0;i<megas.length;i++){
       for(let j=i+1;j<megas.length;j++){
@@ -1315,6 +1332,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
           ctx.strokeStyle=megas[i].line;ctx.globalAlpha=(1-dist/megaMaxDist)*0.9;ctx.lineWidth=3.5;ctx.stroke();ctx.globalAlpha=1;
         }
       }
+    }
     }
     megas.forEach(m=>{
       ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,Math.PI*2);ctx.fillStyle=m.fill;ctx.fill();
@@ -1327,6 +1345,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
       if(c.x<-c.r)c.x=W+c.r;if(c.x>W+c.r)c.x=-c.r;
       if(c.y<-c.r)c.y=H+c.r;if(c.y>H+c.r)c.y=-c.r;
     });
+    if(!isMobile){
     // Cube-cube lines (max 3 per cube)
     const cubeMaxDist=280;
     for(let i=0;i<cubes.length;i++){
@@ -1340,12 +1359,14 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
         }
       }
     }
+    }
     // Draw cube circles
     cubes.forEach(c=>{
       ctx.beginPath();ctx.arc(c.x,c.y,c.r,0,Math.PI*2);ctx.fillStyle=c.fill;ctx.fill();
     });
 
     /* ── Particle layer (smaller nodes + connections) ── */
+    if(!isMobile){
     const maxDist=180;
     for(let i=0;i<particles.length;i++){
       for(let j=i+1;j<particles.length;j++){
@@ -1353,13 +1374,15 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
         if(dist<maxDist){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=colors.line;ctx.globalAlpha=(1-dist/maxDist)*0.8;ctx.lineWidth=1.5;ctx.stroke();ctx.globalAlpha=1;}
       }
     }
+    }
     particles.forEach(p=>{
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill();
     });
 
-    /* ── Cross-layer connections ── */
+    /* ── Cross-layer connections (desktop only) ── */
+    if(!isMobile){
     // Mega ↔ Cube bridges (max 4 per mega)
     const mcDist=400;
     for(let i=0;i<megas.length;i++){
@@ -1385,6 +1408,7 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
           cpCount++;
         }
       }
+    }
     }
 
     requestAnimationFrame(draw);
