@@ -562,6 +562,21 @@ footer { background:var(--footer-bg);padding:56px 48px 32px;color:#9CA3AF; }
   .bottom-cta-inner { grid-template-columns:1fr;gap:40px; }
   .bottom-cta-card { max-width:480px; }
 }
+/* ═══ CSS ORBS — mobile replacement for canvas ═══ */
+.css-orb { display:none;position:absolute;border-radius:50%;pointer-events:none;will-change:transform; }
+@media(max-width:768px){
+  #heroCanvas { display:none!important; }
+  .css-orb { display:block;filter:blur(2px); }
+  .css-orb-1 { width:120px;height:120px;top:12%;left:8%;background:radial-gradient(circle,rgba(230,114,1,0.45) 0%,rgba(230,114,1,0) 70%); }
+  .css-orb-2 { width:140px;height:140px;top:35%;right:5%;background:radial-gradient(circle,rgba(27,186,1,0.4) 0%,rgba(27,186,1,0) 70%); }
+  .css-orb-3 { width:130px;height:130px;bottom:18%;left:20%;background:radial-gradient(circle,rgba(0,126,255,0.42) 0%,rgba(0,126,255,0) 70%); }
+  .css-orb-sm-1 { width:40px;height:40px;top:22%;right:30%;background:radial-gradient(circle,rgba(27,186,1,0.35) 0%,rgba(27,186,1,0) 70%); }
+  .css-orb-sm-2 { width:35px;height:35px;bottom:30%;left:55%;background:radial-gradient(circle,rgba(230,114,1,0.35) 0%,rgba(230,114,1,0) 70%); }
+}
+[data-theme="dark"] .css-orb-1 { background:radial-gradient(circle,rgba(230,114,1,0.5) 0%,rgba(230,114,1,0) 70%); }
+[data-theme="dark"] .css-orb-2 { background:radial-gradient(circle,rgba(27,186,1,0.45) 0%,rgba(27,186,1,0) 70%); }
+[data-theme="dark"] .css-orb-3 { background:radial-gradient(circle,rgba(0,126,255,0.5) 0%,rgba(0,126,255,0) 70%); }
+
 @media(max-width:768px){
   nav { padding:0 20px;height:56px; }
   .nav-right { gap:12px; }
@@ -628,6 +643,11 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 <main id="main-content">
 <div class="hero-wrap">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="css-orb css-orb-1" aria-hidden="true"></div>
+  <div class="css-orb css-orb-2" aria-hidden="true"></div>
+  <div class="css-orb css-orb-3" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-1" aria-hidden="true"></div>
+  <div class="css-orb css-orb-sm-2" aria-hidden="true"></div>
   <section class="hero">
     <div class="hero-left">
       <div class="hero-badge">
@@ -1184,9 +1204,10 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
 
 /* ═══ HERO CANVAS ═══ */
 (function(){
+  const isMobile=window.innerWidth<=768||/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile)return; /* CSS orbs handle mobile — no canvas needed */
   const canvas=document.getElementById('heroCanvas');if(!canvas)return;
   const ctx=canvas.getContext('2d');
-  const isMobile=window.innerWidth<=768||/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   let W,H,particles=[],cubes=[],megas=[],time=0;
 
   function resize(){const wr=canvas.parentElement;W=canvas.width=wr.offsetWidth;H=canvas.height=wr.offsetHeight;}
