@@ -1411,12 +1411,12 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
     }
     }
 
-    requestAnimationFrame(draw);
+    if(!isMobile)requestAnimationFrame(draw);
   }
 
   window._heroAnim={updateColors:function(){colors=getColors();const pool=[colors.node,colors.node,colors.nodeGo,colors.nodeGo,colors.nodeEmber];particles.forEach(p=>{p.color=pool[Math.floor(Math.random()*pool.length)];});const fills=[{fill:colors.cube,line:colors.cubeLine},{fill:colors.cube,line:colors.cubeLine},{fill:colors.cubeGo,line:colors.cubeLineGo},{fill:colors.cubeEmber,line:colors.cubeLineEmber}];cubes.forEach(c=>{const f=fills[Math.floor(Math.random()*fills.length)];c.fill=f.fill;c.line=f.line;});megas.forEach((m,i)=>{if(i===0){m.fill=colors.megaEmber;m.line=colors.megaLineEmber;}else if(i===1){m.fill=colors.megaGo;m.line=colors.megaLineGo;}else{m.fill=colors.mega;m.line=colors.megaLine;}});}};
   resize();initParticles();draw();
-  window.addEventListener('resize',()=>{resize();initParticles();});
+  window.addEventListener('resize',()=>{resize();initParticles();if(isMobile)draw();});
 })();
 
 /* ═══ MINI RING — removed, now using screenshot ═══ */
