@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release Notes — MyCapsul</title>
+<meta name="description" content="Changelog and release notes for MyCapsul, the AI-maintained personal life dashboard.">
+<link rel="canonical" href="https://mycapsul.com/docs/releases.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/releases.html">
+<meta property="og:title" content="Release Notes — MyCapsul">
+<meta property="og:description" content="Changelog and release notes for MyCapsul, the AI-maintained personal life dashboard.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Release Notes — MyCapsul">
+<meta name="twitter:description" content="Changelog and release notes for MyCapsul, the AI-maintained personal life dashboard.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Sora', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ===== NAV ===== */
+.doc-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  transition: background 0.3s;
+}
+.doc-nav-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; height: 52px;
+}
+.doc-nav-brand {
+  text-decoration: none; display: flex; align-items: center; gap: 8px;
+}
+.doc-nav-brand img { height: 24px; }
+.doc-nav-brand .logo-light { display: block; }
+.doc-nav-brand .logo-dark { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-light { display: none; }
+[data-theme="dark"] .doc-nav-brand .logo-dark { display: block; }
+.doc-nav-brand .docs-label { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; color: var(--text-dim); letter-spacing: 1px; text-transform: uppercase; }
+.doc-nav-links { display: flex; align-items: center; gap: 4px; }
+.doc-nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text-dim); text-decoration: none;
+  padding: 6px 12px; border-radius: 8px; transition: all 0.15s;
+}
+.doc-nav-links a:hover { color: var(--text); background: var(--bg2); }
+.doc-nav-links a.active { color: var(--blue); background: rgba(0,126,255,0.08); }
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-size: 16px; transition: all 0.15s; margin-left: 8px;
+}
+.theme-toggle:hover { border-color: var(--blue); }
+
+/* ===== LAYOUT ===== */
+.doc-body { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
+
+/* ===== HERO ===== */
+.hero { text-align: center; padding: 64px 20px 56px; }
+.hero-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 4px 14px;
+  border-radius: 100px; background: rgba(27,186,1,0.08); color: var(--go);
+  letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Sora', sans-serif; font-size: 38px; font-weight: 700;
+  letter-spacing: -1px; line-height: 1.2; margin-bottom: 16px;
+}
+.hero h1 span { color: var(--blue); }
+.hero .hero-sub {
+  font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 560px; margin: 0 auto;
+}
+
+/* ===== RELEASE CARD ===== */
+.release-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 40px; margin-bottom: 32px; transition: box-shadow 0.2s;
+}
+.release-card:hover { box-shadow: var(--shadow-hover); }
+.release-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 16px;
+}
+.release-info h2 {
+  font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 700;
+  letter-spacing: -0.3px; margin-bottom: 6px;
+}
+.release-date {
+  font-size: 13px; color: var(--text-dim);
+}
+.release-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 6px;
+  letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap;
+  flex-shrink: 0;
+}
+.release-badge.improvement {
+  background: rgba(0,126,255,0.08); color: var(--blue);
+}
+.release-badge.launch {
+  background: rgba(27,186,1,0.08); color: var(--go);
+}
+.release-badge.feature {
+  background: rgba(230,114,1,0.08); color: var(--ember);
+}
+.release-changes {
+  display: flex; flex-direction: column; gap: 0;
+}
+.release-changes li {
+  list-style: none; padding: 14px 0; border-bottom: 1px solid var(--border-light);
+  font-size: 14px; color: var(--text-dim); line-height: 1.7;
+}
+.release-changes li:last-child { border-bottom: none; }
+.release-changes strong {
+  color: var(--text); font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+.doc-footer {
+  text-align: center; padding: 40px 20px 20px; border-top: 1px solid var(--border);
+  max-width: 960px; margin: 0 auto;
+}
+.doc-footer p { font-size: 13px; color: var(--text-dim); }
+.doc-footer a { color: var(--blue); text-decoration: none; }
+.doc-footer a:hover { text-decoration: underline; }
+.doc-footer .footer-nav { display: flex; gap: 20px; justify-content: center; margin-bottom: 16px; }
+.doc-footer .footer-nav a { font-size: 13px; font-weight: 500; color: var(--text-dim); }
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: 28px; }
+  .release-card { padding: 24px; }
+  .release-header { flex-direction: column; align-items: flex-start; }
+  .release-info h2 { font-size: 20px; }
+  .doc-nav-links a { font-size: 12px; padding: 6px 8px; }
+}
+
+/* ═══ ACCESSIBILITY ═══ */
+.skip-nav { position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--blue,#007EFF);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;z-index:9999;transition:top .2s; }
+.skip-nav:focus { top:0; }
+*:focus-visible { outline:2px solid var(--blue,#007EFF);outline-offset:2px;border-radius:2px; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after { animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="https://mycapsul.com" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Get Started</a>
+      <a href="user-guide.html">User Guide</a>
+      <a href="prompt-cookbook.html">Prompts</a>
+      <a href="faq.html">FAQ</a>
+      <a href="releases.html" class="active">Releases</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="doc-body" id="doc-content" role="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">Release Notes</div>
+  <h1>What's <span>New</span></h1>
+  <p class="hero-sub">Changelog and updates for MyCapsul. See what shipped, what improved, and what's coming.</p>
+</div>
+
+<!-- RELEASES -->
+
+<!-- v1.1.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.1.0</h2>
+      <div class="release-date">March 13, 2026</div>
+    </div>
+    <div class="release-badge improvement">Improvement</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Friendlier first boot experience</strong> — Your Capsul agent now greets you and introduces itself before asking any questions. On first launch, you'll see a welcome message with two clear options: start the setup wizard or view a demo dashboard (Brodie's Capsul) first. No more jumping straight into an interrogation.
+    </li>
+    <li>
+      <strong>HTML onboarding wizard is now the primary setup path</strong> — The 5-step in-browser wizard handles initial setup. Your agent picks up after you finish, acknowledges what you entered, and offers to fill in anything you skipped. The old agent-asks-questions approach is still available as a fallback if needed.
+    </li>
+    <li>
+      <strong>Faster first load</strong> — Reduced the skill file size by 36% by moving widget and customization reference docs to a lazy-loaded file. Your agent only reads those sections when you actually ask to build a widget or customize something.
+    </li>
+    <li>
+      <strong>Reminders stay in your Capsul</strong> — When you say "remind me to X," your agent now routes reminders through MyCapsul-native systems (dashboard inbox, schedule, Focus 3, session handoff) instead of external tools. This keeps reminders connected to your full life context.
+    </li>
+  </ul>
+</div>
+
+<!-- v1.0.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.0.0</h2>
+      <div class="release-date">March 11, 2026</div>
+    </div>
+    <div class="release-badge launch">Launch</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Full personal dashboard with 17 built-in tiles</strong> — Ring planner, Focus 3, Budget, Cubes, Goals, Calendar, Health, Journal, and more. Everything you need to see your whole life at a glance.
+    </li>
+    <li>
+      <strong>AI-maintained knowledge system with seed modules</strong> — Your agent builds and maintains a personal knowledge base (identity, schedule, finances, health, career, legal) that powers every conversation and dashboard update.
+    </li>
+    <li>
+      <strong>Widget creation and installation system</strong> — Build custom dashboard widgets in the .capsul-widget format. Install them with a single command. Share them with friends.
+    </li>
+    <li>
+      <strong>Dual-layer data persistence</strong> — localStorage + IndexedDB backup. Your dashboard data survives browser clears and unexpected restarts.
+    </li>
+    <li>
+      <strong>6 color palettes with light/dark mode</strong> — Choose Hustle, Life, Money, or custom. Dark mode adapts all colors automatically.
+    </li>
+    <li>
+      <strong>Co-parent custody schedule support</strong> — Built-in custody calendar with modular arithmetic patterns. Your agent knows when you have the kids and adjusts reminders, schedule, and game nights accordingly.
+    </li>
+    <li>
+      <strong>TimeCapsul year-in-review feature</strong> — At the end of the year, your agent compiles a curated year in review from your cubes, journal, and life events.
+    </li>
+    <li>
+      <strong>Full documentation suite</strong> — Getting started guide, user guide, prompt cookbook, FAQ, and release notes. Everything you need to know.
+    </li>
+  </ul>
+</div>
+
+</div><!-- /doc-body -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Get Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompts</a>
+    <a href="faq.html">FAQ</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.1.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
