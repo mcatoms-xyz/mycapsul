@@ -268,6 +268,28 @@ body {
 
 <!-- RELEASES -->
 
+<!-- v1.2.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.2.0</h2>
+      <div class="release-date">March 15, 2026</div>
+    </div>
+    <div class="release-badge improvement">Improvement</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Zero-friction agent updates</strong> — Your agent's changes now appear on the dashboard automatically when you refresh the page. No more "Pull from Agent" button, no file handle setup. The dashboard loads agent commands via a script tag and also auto-polls every 5 seconds for live updates while the page is open.
+    </li>
+    <li>
+      <strong>Legacy sync demoted</strong> — The File System Access API file handle (previously required to connect agent updates) is now optional and tucked under Advanced in settings. It still works for anyone who prefers it, but the default path requires zero setup.
+    </li>
+    <li>
+      <strong>Docs updated</strong> — FAQ and troubleshooting reflect the new sync architecture. All references updated from the old .json format to the new .js format.
+    </li>
+  </ul>
+</div>
+
 <!-- v1.1.0 -->
 <div class="release-card">
   <div class="release-header">
@@ -412,7 +434,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.1.0 — March 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.2.0 — March 2026</p>
 </div>
 
 <script>

@@ -330,7 +330,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> How do I get changes from my agent to show up on the dashboard?</div>
-  <div class="faq-a">Your agent writes changes to a <strong>push file</strong> (<code>capsul-agent-push.json</code>). When you open or refresh your dashboard, it reads this file and applies the updates. If changes aren't showing up, try refreshing the page.</div>
+  <div class="faq-a">Your agent writes changes to a <strong>push file</strong> (<code>capsul-agent-push.js</code>). When you open or refresh your dashboard, it loads this file automatically and applies the updates. The dashboard also auto-polls for new updates every 5 seconds while the page is open. If changes aren't showing up, try refreshing the page.</div>
 </div>
 
 <div class="faq-item">
@@ -360,7 +360,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are the sync files and how do they work?</div>
-  <div class="faq-a">Two JSON files handle communication between your dashboard and your agent. <strong>capsul-sync.json</strong> (dashboard → agent) exports all your dashboard data so your agent can read it. <strong>capsul-agent-push.json</strong> (agent → dashboard) carries commands from your agent — new messages, schedule updates, data changes. Both live in the <code>_inbox/</code> folder. The sync flow: you click "Sync to Agent" in Settings to export, and your agent writes push commands that the dashboard loads on refresh.</div>
+  <div class="faq-a">Two files handle communication between your dashboard and your agent. <strong>capsul-sync.json</strong> (dashboard → agent) exports all your dashboard data so your agent can read it. <strong>capsul-agent-push.js</strong> (agent → dashboard) carries commands from your agent — new messages, schedule updates, data changes. Both live in the <code>_inbox/</code> folder. The sync flow: you click "Sync to Agent" in Settings to export your state, and your agent writes push commands that the dashboard loads automatically on refresh (plus live auto-polling every 5 seconds).</div>
 </div>
 
 <div class="faq-item">
@@ -416,7 +416,7 @@ body {
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What if I want to share my setup without sharing my personal data?</div>
   <div class="faq-a">
     <p>The easiest way? <strong>Send them to <a href="https://mycapsul.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">mycapsul.com</a></strong> to download the most recent release. That way they get a clean, up-to-date version with no risk of your personal data tagging along.</p>
-    <p>If you want to share your specific setup, share the <strong>structure</strong>, not the content. The files safe to share: <code>mycapsul.html</code> (the dashboard), <code>SKILL.md</code> (the agent manual), and any custom widget files. The files you should <strong>not share</strong>: anything in the <code>seed/</code> folder (your personal knowledge base), <code>capsul-sync.json</code> or <code>capsul-agent-push.json</code> (dashboard state snapshots), <code>CLAUDE.md</code> (may contain personal preferences and protocols), and <code>session-handoff.md</code> (session context). Think of it like sharing a blank journal vs. a filled-in one.</p>
+    <p>If you want to share your specific setup, share the <strong>structure</strong>, not the content. The files safe to share: <code>mycapsul.html</code> (the dashboard), <code>SKILL.md</code> (the agent manual), and any custom widget files. The files you should <strong>not share</strong>: anything in the <code>seed/</code> folder (your personal knowledge base), <code>capsul-sync.json</code> or <code>capsul-agent-push.js</code> (dashboard state snapshots), <code>CLAUDE.md</code> (may contain personal preferences and protocols), and <code>session-handoff.md</code> (session context). Think of it like sharing a blank journal vs. a filled-in one.</p>
   </div>
 </div>
 
@@ -445,7 +445,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Changes from my agent aren't showing on the dashboard</div>
-  <div class="faq-a">Three things to check: (1) <strong>Refresh the dashboard page</strong> — it reads the push file on load. (2) Check that <code>capsul-agent-push.json</code> exists in your <code>_inbox/</code> folder — this is how the agent sends data to the dashboard. (3) Open browser dev tools (F12) and check the console for errors.</div>
+  <div class="faq-a">Three things to check: (1) <strong>Refresh the dashboard page</strong> — it loads the push file automatically on refresh and auto-polls every 5 seconds. (2) Check that <code>capsul-agent-push.js</code> exists in your <code>_inbox/</code> folder — this is how the agent sends data to the dashboard. (3) Open browser dev tools (F12) and check the console for errors.</div>
 </div>
 
 <div class="faq-item">
