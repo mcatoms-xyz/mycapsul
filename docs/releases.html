@@ -530,6 +530,7 @@ body {
 </div>
 
 <script>
+if(window.location.hash==='#update'){document.getElementById('updateModal').classList.add('open');history.replaceState(null,'',window.location.pathname);}
 function toggleTheme() {
   const html = document.documentElement;
   const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
