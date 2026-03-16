@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widgets — MyCapsul</title>
+<meta name="description" content="Browse and install community widgets for your MyCapsul dashboard. Stock ticker, weather, daily quotes, and more.">
+<link rel="canonical" href="https://mycapsul.com/docs/widgets.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mycapsul.com/docs/widgets.html">
+<meta property="og:title" content="Widgets — MyCapsul">
+<meta property="og:description" content="Browse and install community widgets for your MyCapsul dashboard.">
+<meta property="og:image" content="https://mycapsul.com/og-image.png">
+<meta property="og:site_name" content="MyCapsul">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Widgets — MyCapsul">
+<meta name="twitter:description" content="Browse and install community widgets for your MyCapsul dashboard.">
+<meta name="twitter:image" content="https://mycapsul.com/og-image.png">
+
+<meta name="author" content="McAtoms">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #FAFBFD;
+  --bg2: #F3F5F9;
+  --card: #FFFFFF;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --text-xdim: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f0f1f3;
+  --blue: #007EFF;
+  --sky: #3B9EFF;
+  --ember: #E67201;
+  --go: #1BBA01;
+  --purple: #7c3aed;
+  --void: #0f0f1a;
+  --deep: #16162a;
+  --surface: #1E1E38;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0a14;
+  --bg2: #0f0f1a;
+  --card: #16162a;
+  --text: #e8e8f0;
+  --text-dim: #9ca3b8;
+  --text-xdim: #6b7280;
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(255,255,255,0.04);
+  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body { font-family:'Sora',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:var(--blue); text-decoration:none; }
+a:hover { text-decoration:underline; }
+code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(--bg2); padding:2px 6px; border-radius:4px; }
+
+/* NAV */
+.doc-nav { position:sticky; top:0; z-index:100; background:var(--card); border-bottom:1px solid var(--border); backdrop-filter:blur(12px); }
+.doc-nav-inner { max-width:900px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; }
+.doc-nav-brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:700; font-size:15px; }
+.doc-nav-brand img { height:28px; }
+.logo-light { display:inline; } .logo-dark { display:none; }
+[data-theme="dark"] .logo-light { display:none; } [data-theme="dark"] .logo-dark { display:inline; }
+.docs-label { font-size:11px; font-weight:600; color:var(--text-dim); background:var(--bg2); padding:2px 8px; border-radius:4px; }
+.doc-nav-links { display:flex; align-items:center; gap:16px; font-size:13px; font-weight:500; }
+.doc-nav-links a { color:var(--text-dim); text-decoration:none; transition:color .2s; }
+.doc-nav-links a:hover, .doc-nav-links a.active { color:var(--text); }
+.theme-toggle { background:none; border:none; font-size:16px; cursor:pointer; padding:4px; }
+
+/* DOC BODY */
+.doc-body { max-width:900px; margin:0 auto; padding:40px 24px 60px; }
+
+/* HERO */
+.hero { text-align:center; margin-bottom:48px; }
+.hero-pill { display:inline-block; font-size:11px; font-weight:700; letter-spacing:.8px; text-transform:uppercase; color:var(--ember); background:rgba(230,114,1,0.08); padding:6px 16px; border-radius:100px; margin-bottom:16px; }
+.hero h1 { font-size:clamp(28px,5vw,42px); font-weight:800; line-height:1.15; margin-bottom:12px; }
+.hero h1 span { background:linear-gradient(135deg,var(--ember),var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.hero-sub { font-size:15px; color:var(--text-dim); max-width:540px; margin:0 auto; line-height:1.7; }
+
+/* WIDGET GALLERY */
+.widget-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:20px; margin-bottom:48px; }
+
+.widget-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; transition:box-shadow .2s, transform .2s; }
+.widget-card:hover { box-shadow:var(--shadow-hover); transform:translateY(-2px); }
+.widget-card-icon { font-size:36px; margin-bottom:12px; }
+.widget-card-title { font-size:16px; font-weight:700; margin-bottom:4px; }
+.widget-card-author { font-size:11px; color:var(--text-xdim); margin-bottom:10px; }
+.widget-card-desc { font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:14px; }
+.widget-card-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.widget-tag { font-size:10px; font-weight:600; padding:3px 8px; border-radius:100px; background:var(--bg2); color:var(--text-dim); }
+.widget-tag.spec02 { color:var(--blue); background:rgba(0,126,255,0.08); }
+.widget-tag.fetch { color:var(--go); background:rgba(27,186,1,0.08); }
+.widget-tag.config { color:var(--purple); background:rgba(124,58,237,0.08); }
+
+.widget-card-footer { display:flex; align-items:center; justify-content:space-between; }
+.widget-version { font-size:11px; color:var(--text-xdim); font-family:'JetBrains Mono',monospace; }
+.widget-download-btn { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:var(--ember); color:#fff; font-size:12px; font-weight:600; border-radius:8px; border:none; cursor:pointer; text-decoration:none; transition:background .2s; }
+.widget-download-btn:hover { background:#cf6600; text-decoration:none; color:#fff; }
+.widget-download-btn svg { width:14px; height:14px; }
+
+/* HOW TO INSTALL */
+.install-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:32px; margin-bottom:48px; }
+.install-section h2 { font-size:20px; font-weight:700; margin-bottom:16px; }
+.install-steps { padding-left:0; counter-reset:step; list-style:none; }
+.install-steps li { position:relative; padding:12px 0 12px 48px; border-bottom:1px solid var(--border-light); font-size:14px; line-height:1.6; }
+.install-steps li:last-child { border-bottom:none; }
+.install-steps li::before { content:counter(step); counter-increment:step; position:absolute; left:0; top:12px; width:32px; height:32px; display:flex; align-items:center; justify-content:center; background:var(--bg2); border-radius:50%; font-weight:700; font-size:13px; color:var(--ember); }
+
+/* SUBMIT IDEA */
+.submit-section { text-align:center; padding:40px 24px; background:var(--bg2); border-radius:12px; margin-bottom:48px; }
+.submit-section h2 { font-size:20px; font-weight:700; margin-bottom:8px; }
+.submit-section p { font-size:14px; color:var(--text-dim); margin-bottom:16px; max-width:460px; margin-left:auto; margin-right:auto; line-height:1.7; }
+.submit-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 24px; background:var(--blue); color:#fff; font-size:13px; font-weight:600; border-radius:8px; border:none; cursor:pointer; text-decoration:none; transition:background .2s; }
+.submit-btn:hover { background:#0066cc; text-decoration:none; color:#fff; }
+
+/* SPEC INFO */
+.spec-section { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:32px; margin-bottom:48px; }
+.spec-section h2 { font-size:20px; font-weight:700; margin-bottom:8px; }
+.spec-section p { font-size:14px; color:var(--text-dim); line-height:1.7; margin-bottom:12px; }
+.spec-section code { font-size:12px; }
+
+/* FOOTER */
+.doc-footer { text-align:center; padding:32px 24px; border-top:1px solid var(--border); font-size:12px; color:var(--text-dim); }
+.doc-footer a { color:var(--text-dim); text-decoration:none; }
+.doc-footer a:hover { color:var(--text); }
+.footer-nav { display:flex; justify-content:center; gap:20px; margin-bottom:12px; font-weight:500; }
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .doc-nav-links { gap:10px; font-size:11px; }
+  .doc-body { padding:24px 16px 48px; }
+  .widget-grid { grid-template-columns:1fr; }
+  .install-section, .spec-section { padding:20px; }
+}
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="doc-nav" aria-label="Documentation navigation">
+  <div class="doc-nav-inner">
+    <a href="https://mycapsul.com" class="doc-nav-brand"><img src="assets/logo-light.png" alt="MyCapsul" class="logo-light"><img src="assets/logo-dark.png" alt="MyCapsul" class="logo-dark"><span class="docs-label">Docs</span></a>
+    <div class="doc-nav-links">
+      <a href="get-started.html">Get Started</a>
+      <a href="user-guide.html">User Guide</a>
+      <a href="prompt-cookbook.html">Prompts</a>
+      <a href="widgets.html" class="active">Widgets</a>
+      <a href="faq.html">FAQ</a>
+      <a href="releases.html">Releases</a>
+      <a href="about.html">About</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="doc-body" id="doc-content" role="main">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-pill">Widget Gallery</div>
+  <h1>Extend Your <span>Capsul</span></h1>
+  <p class="hero-sub">Browse widgets built for MyCapsul. Each one is a single <code>.capsul-widget</code> file — drop it in your inbox folder and tell your agent to install it.</p>
+</div>
+
+<!-- WIDGET GALLERY -->
+<div class="widget-grid">
+
+  <!-- STOCK TICKER -->
+  <div class="widget-card">
+    <div class="widget-card-icon">📈</div>
+    <div class="widget-card-title">Stock Ticker</div>
+    <div class="widget-card-author">by mycapsul</div>
+    <div class="widget-card-desc">Track stock prices with day change and color-coded movement. Configure your own watchlist. Refreshes every 5 minutes.</div>
+    <div class="widget-card-tags">
+      <span class="widget-tag spec02">spec v0.2</span>
+      <span class="widget-tag fetch">live data</span>
+      <span class="widget-tag config">configurable</span>
+    </div>
+    <div class="widget-card-footer">
+      <span class="widget-version">v1.0.0</span>
+      <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/stock-ticker.capsul-widget" class="widget-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="widget-card">
+    <div class="widget-card-icon">🌤️</div>
+    <div class="widget-card-title">Weather</div>
+    <div class="widget-card-author">by mycapsul</div>
+    <div class="widget-card-desc">Current conditions and 3-day forecast. Uses Open-Meteo — free, no API key needed. Supports Fahrenheit and Celsius.</div>
+    <div class="widget-card-tags">
+      <span class="widget-tag spec02">spec v0.2</span>
+      <span class="widget-tag fetch">live data</span>
+      <span class="widget-tag config">configurable</span>
+    </div>
+    <div class="widget-card-footer">
+      <span class="widget-version">v1.0.0</span>
+      <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/weather.capsul-widget" class="widget-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+  <!-- DAILY QUOTE -->
+  <div class="widget-card">
+    <div class="widget-card-icon">💬</div>
+    <div class="widget-card-title">Daily Quote</div>
+    <div class="widget-card-author">by mycapsul</div>
+    <div class="widget-card-desc">A curated daily quote for inspiration. 100 quotes from leaders, thinkers, and creators. Rotates based on the date — no API needed.</div>
+    <div class="widget-card-tags">
+      <span class="widget-tag">offline-ready</span>
+    </div>
+    <div class="widget-card-footer">
+      <span class="widget-version">v1.0.0</span>
+      <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/daily-quote.capsul-widget" class="widget-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+  <!-- READING LIST -->
+  <div class="widget-card">
+    <div class="widget-card-icon">📚</div>
+    <div class="widget-card-title">Reading List</div>
+    <div class="widget-card-author">by mycapsul</div>
+    <div class="widget-card-desc">Track books you're reading, want to read, and have finished. Logs to check-in and links to reading goals.</div>
+    <div class="widget-card-tags">
+      <span class="widget-tag">hooks: goals, checkin</span>
+    </div>
+    <div class="widget-card-footer">
+      <span class="widget-version">v1.0.0</span>
+      <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/reading-list.capsul-widget" class="widget-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+  <!-- RUNNING LOG -->
+  <div class="widget-card">
+    <div class="widget-card-icon">🏃</div>
+    <div class="widget-card-title">Running Log</div>
+    <div class="widget-card-author">by mycapsul</div>
+    <div class="widget-card-desc">Track runs with distance, pace, and route notes. Weekly mileage, streak tracking, and links to running goals.</div>
+    <div class="widget-card-tags">
+      <span class="widget-tag">hooks: health, goals, checkin</span>
+    </div>
+    <div class="widget-card-footer">
+      <span class="widget-version">v1.0.0</span>
+      <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/running-tracker.capsul-widget" class="widget-download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- HOW TO INSTALL -->
+<div class="install-section">
+  <h2>How to Install a Widget</h2>
+  <ol class="install-steps">
+    <li><strong>Download the widget</strong> — Click the download button on any widget card above to get the <code>.capsul-widget</code> file.</li>
+    <li><strong>Drop it in your inbox</strong> — Move the file into your MyCapsul <code>_inbox/</code> folder.</li>
+    <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Install the widget in my inbox."</strong> Your agent will validate, register, and render it on your dashboard.</li>
+    <li><strong>Configure (if applicable)</strong> — Widgets with the <span style="color:var(--purple);font-weight:600;">configurable</span> tag will show a ⚙ gear icon on their tile. Click it to customize settings like stock symbols or location.</li>
+  </ol>
+</div>
+
+<!-- SUBMIT AN IDEA -->
+<div class="submit-section">
+  <h2>Have a Widget Idea?</h2>
+  <p>Track your guitar practice sessions. Log your garden watering schedule. Build a habit tracker. A pet care log. Anything you track regularly can be a widget.</p>
+  <a href="https://github.com/mcatoms-xyz/mycapsul/issues/new?labels=widget-idea&template=widget-idea.md&title=%5BWidget+Idea%5D+" class="submit-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    Submit a Widget Idea
+  </a>
+</div>
+
+<!-- WIDGET SPEC INFO -->
+<div class="spec-section">
+  <h2>Building Widgets</h2>
+  <p>Widgets are JSON files with a <code>.capsul-widget</code> extension. They contain metadata, a render function, hook declarations, and optional sample data. Your Capsul agent can help you build one from scratch — just describe what you want to track.</p>
+  <p>The current widget spec is <strong>v0.2</strong>, which adds support for <code>fetchConfig</code> (external API data) and <code>userConfig</code> (user-customizable settings). All v0.1 widgets remain fully compatible.</p>
+  <p>See the <a href="user-guide.html">User Guide</a> for the full widget creation protocol, or tell your agent: <strong>"Help me build a custom widget."</strong></p>
+</div>
+
+</div><!-- /doc-body -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div class="footer-nav">
+    <a href="get-started.html">Get Started</a>
+    <a href="user-guide.html">User Guide</a>
+    <a href="prompt-cookbook.html">Prompts</a>
+    <a href="widgets.html">Widgets</a>
+    <a href="faq.html">FAQ</a>
+    <a href="releases.html">Releases</a>
+    <a href="about.html">About</a>
+  </div>
+  <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.3.0 — March 2026</p>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('mycapsul-docs-theme', next);
+  document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+}
+(function() {
+  const saved = localStorage.getItem('mycapsul-docs-theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+</script>
+<script data-goatcounter="https://mycapsul.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
