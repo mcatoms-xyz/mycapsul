@@ -105,6 +105,70 @@ body {
 }
 .theme-toggle:hover { border-color: var(--blue); }
 
+/* ===== UPDATE LINK (BADGE) ===== */
+.update-link {
+  font-size: 11px !important; font-weight: 700 !important; color: #fff !important;
+  background: var(--ember); padding: 4px 12px !important; border-radius: 100px !important;
+  letter-spacing: 0.3px; text-transform: uppercase; cursor: pointer;
+  transition: all 0.2s; text-decoration: none !important; white-space: nowrap;
+}
+.update-link:hover { background: #c96400 !important; color: #fff !important; transform: scale(1.04); }
+
+/* ===== UPDATE MODAL ===== */
+.update-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.update-overlay.open { display: flex; }
+.update-modal {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+  max-width: 540px; width: 100%; padding: 40px; position: relative;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+}
+.update-modal-close {
+  position: absolute; top: 16px; right: 16px; width: 32px; height: 32px;
+  border-radius: 8px; border: 1px solid var(--border); background: var(--bg2);
+  cursor: pointer; font-size: 16px; display: flex; align-items: center;
+  justify-content: center; transition: all 0.15s; color: var(--text-dim);
+}
+.update-modal-close:hover { border-color: var(--blue); color: var(--text); }
+.update-modal h2 {
+  font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 700;
+  letter-spacing: -0.3px; margin-bottom: 6px;
+}
+.update-modal .version-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: 100px; background: rgba(0,126,255,0.08); color: var(--blue);
+  letter-spacing: 0.3px; margin-bottom: 20px;
+}
+.update-modal p { font-size: 14px; color: var(--text-dim); line-height: 1.7; margin-bottom: 16px; }
+.update-steps { list-style: none; padding: 0; margin: 0 0 24px; counter-reset: steps; }
+.update-steps li {
+  counter-increment: steps; padding: 12px 0 12px 40px; position: relative;
+  font-size: 14px; color: var(--text-dim); line-height: 1.7;
+  border-bottom: 1px solid var(--border-light);
+}
+.update-steps li:last-child { border-bottom: none; }
+.update-steps li::before {
+  content: counter(steps); position: absolute; left: 0; top: 12px;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--bg2);
+  border: 1px solid var(--border); font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; color: var(--text);
+}
+.update-steps li strong { color: var(--text); font-weight: 600; }
+.update-download-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue); color: #fff; border: none; border-radius: 10px;
+  padding: 12px 24px; font-family: 'Sora', sans-serif; font-size: 14px;
+  font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none;
+}
+.update-download-btn:hover { background: #0060c0; transform: translateY(-1px); }
+.update-download-btn svg { width: 16px; height: 16px; }
+.update-note {
+  font-size: 12px; color: var(--text-xdim); margin-top: 16px; line-height: 1.6;
+}
+
 /* ===== LAYOUT ===== */
 .doc-body { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
 
@@ -251,6 +315,7 @@ body {
       <a href="prompt-cookbook.html">Prompts</a>
       <a href="faq.html">FAQ</a>
       <a href="releases.html" class="active">Releases</a>
+      <a href="#" class="update-link" onclick="document.getElementById('updateModal').classList.add('open');return false;">How to Update</a>
       <a href="about.html">About</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
     </div>
@@ -441,6 +506,27 @@ body {
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
   <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.2.0 — March 2026</p>
+</div>
+
+<!-- UPDATE MODAL -->
+<div class="update-overlay" id="updateModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="update-modal">
+    <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
+    <h2>How to Update MyCapsul</h2>
+    <div class="version-pill">Latest: v1.2.0</div>
+    <p>Updating is quick and your data is safe — everything lives in your browser's storage, not in the HTML file. Here's the process:</p>
+    <ol class="update-steps">
+      <li><strong>Download the latest plugin</strong> — Click the button below to get the newest <code>.plugin</code> file.</li>
+      <li><strong>Install it</strong> — Double-click the downloaded file. It will replace your existing MyCapsul plugin automatically.</li>
+      <li><strong>Tell your agent</strong> — Open a session with your Capsul agent and say: <strong>"I updated my plugin."</strong> Your agent will detect the version change, explain what's new, and update your dashboard HTML.</li>
+      <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
+    </ol>
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.2.0/mycapsul-v1.2.0.plugin" class="update-download-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download v1.2.0 Plugin
+    </a>
+    <p class="update-note">Your dashboard data (tiles, settings, seed modules, everything in localStorage) is completely untouched by this process. Only the HTML file gets replaced.</p>
+  </div>
 </div>
 
 <script>
