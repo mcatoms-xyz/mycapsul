@@ -285,6 +285,12 @@ body {
       <strong>Legacy sync demoted</strong> — The File System Access API file handle (previously required to connect agent updates) is now optional and tucked under Advanced in settings. It still works for anyone who prefers it, but the default path requires zero setup.
     </li>
     <li>
+      <strong>Built-in version detection</strong> — The dashboard now carries a version meta tag. When you install a new plugin version, your agent can detect the mismatch and walk you through updating your dashboard HTML — no guesswork, no manual diffing. Your data stays untouched in the browser.
+    </li>
+    <li>
+      <strong>Plugin Update Protocol</strong> — Your agent now knows how to guide you through updating to a new version. Just say "I updated my plugin" and it handles the rest: checks your version, explains what changed, replaces the HTML, confirms the update. Fully manual and user-triggered — no wasted tokens on auto-checking.
+    </li>
+    <li>
       <strong>Docs updated</strong> — FAQ and troubleshooting reflect the new sync architecture. All references updated from the old .json format to the new .js format.
     </li>
   </ul>
