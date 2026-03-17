@@ -334,6 +334,37 @@ body {
 
 <!-- RELEASES -->
 
+<!-- v1.3.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.3.0</h2>
+      <div class="release-date">March 17, 2026</div>
+    </div>
+    <div class="release-badge improvement">Improvement</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Core Widgets Unification</strong> — All 17 built-in dashboard features are now powered by a unified CORE_WIDGETS registry. Single source of truth for widget definitions, titles, icons, render functions, and metadata. Cleaner architecture, faster loads, and a foundation for future extensibility.
+    </li>
+    <li>
+      <strong>Widget Framework v0.2 + 3 new add-on widgets</strong> — Stock Ticker (real-time prices via Yahoo Finance), Weather (OpenWeatherMap with 5-day forecast), and Daily Quote (curated motivational quotes with category filtering). All installable as .capsul-widget files.
+    </li>
+    <li>
+      <strong>New distribution format</strong> — MyCapsul now ships as a single zip file instead of a .plugin file. Download it, place it in your folder, point Cowork at it, and say "set up my MyCapsul." Everything is inside — the dashboard, agent skill, docs, seed templates, and add-on widgets.
+    </li>
+    <li>
+      <strong>Two-tier widget architecture</strong> — Core widgets run as native JavaScript functions for maximum performance. Add-on widgets use JSON-defined .capsul-widget files that can be installed, shared, and community-built. Both types integrate seamlessly with the dashboard.
+    </li>
+    <li>
+      <strong>Tile → Widget taxonomy</strong> — All user-facing references to "tiles" are now "widgets" throughout the dashboard, documentation, and agent skill. The underlying data model is unchanged — no migration needed.
+    </li>
+    <li>
+      <strong>Docs updated</strong> — Getting Started rewritten for zip-based install flow. User Guide, FAQ, and Prompt Cookbook updated with widget terminology. All docs now at v1.3.0.
+    </li>
+  </ul>
+</div>
+
 <!-- v1.2.0 -->
 <div class="release-card">
   <div class="release-header">
@@ -398,7 +429,7 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Full personal dashboard with 17 built-in tiles</strong> — Ring planner, Focus 3, Budget, Cubes, Goals, Calendar, Health, Journal, and more. Everything you need to see your whole life at a glance.
+      <strong>Full personal dashboard with 17 built-in widgets</strong> — Ring planner, Focus 3, Budget, Cubes, Goals, Calendar, Health, Journal, and more. Everything you need to see your whole life at a glance.
     </li>
     <li>
       <strong>AI-maintained knowledge system with seed modules</strong> — Your agent builds and maintains a personal knowledge base (identity, schedule, finances, health, career, legal) that powers every conversation and dashboard update.
@@ -440,8 +471,8 @@ body {
     </div>
 
     <div class="roadmap-card">
-      <h3>More Pre-Built Widgets</h3>
-      <p>Expanding the widget library beyond the running tracker and reading list. Think: meal planner, meditation tracker, habit streaks, workout log, gratitude journal. Each one installs in seconds and connects to your goals and health data.</p>
+      <h3>Widget Marketplace</h3>
+      <p>A centralized hub for discovering, sharing, and installing community-built widgets. Beyond the 3 new v1.3.0 add-ons (Stock Ticker, Weather, Daily Quote), we're building a marketplace where users can publish .capsul-widget files — meal planners, habit trackers, workout logs, and anything else you can imagine.</p>
     </div>
   </div>
 
@@ -515,17 +546,17 @@ body {
   <div class="update-modal">
     <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
     <h2>How to Update MyCapsul</h2>
-    <div class="version-pill">Latest: v1.2.0</div>
+    <div class="version-pill">Latest: v1.3.0</div>
     <p>Updating is quick and your data is safe — everything lives in your browser's storage, not in the HTML file. Here's the process:</p>
     <ol class="update-steps">
-      <li><strong>Download the latest plugin</strong> — Click the button below to get the newest <code>.plugin</code> file.</li>
-      <li><strong>Drop it in your inbox</strong> — Move the downloaded <code>.plugin</code> file into your MyCapsul <code>_inbox/</code> folder. This is how you feed files to your Capsul agent.</li>
-      <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Review and update my plugin."</strong> Your agent will find the file, detect the version change, explain what's new, and update your dashboard HTML.</li>
+      <li><strong>Download the latest zip</strong> — Click the button below to get the newest <code>.zip</code> file.</li>
+      <li><strong>Drop it in your MyCapsul folder</strong> — Move the downloaded <code>.zip</code> file into your MyCapsul folder (or <code>_inbox/</code>). This is how you feed updates to your Capsul agent.</li>
+      <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Update my MyCapsul."</strong> Your agent will find the file, detect the version change, explain what's new, and update your dashboard HTML.</li>
       <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
     </ol>
-    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.2.0/mycapsul-v1.2.0.plugin" class="update-download-btn">
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/mycapsul-v1.3.0.zip" class="update-download-btn">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download v1.2.0 Plugin
+      Download v1.3.0
     </a>
     <p class="update-note">Your dashboard data (tiles, settings, seed modules, everything in localStorage) is completely untouched by this process. Only the HTML file gets replaced.</p>
   </div>

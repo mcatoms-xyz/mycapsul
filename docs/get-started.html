@@ -341,7 +341,7 @@ body {
   <nav aria-label="Table of contents">
     <div class="toc-label">On this page</div>
     <a href="#requirements">What You Need</a>
-    <a href="#install">Install the Plugin</a>
+    <a href="#install">Download & Set Up</a>
     <a href="#create">Create Your Capsul</a>
     <a href="#first-session">Your First Session</a>
     <a href="#whats-next">What's Next</a>
@@ -384,26 +384,26 @@ body {
 <!-- INSTALL STEPS -->
 <div class="section-break" id="install">
   <div class="label blue">Installation</div>
-  <h2>Install the Plugin</h2>
-  <p>MyCapsul ships as a Cowork plugin — a small package that teaches Claude how to be your personal life assistant.</p>
+  <h2>Download & Set Up</h2>
+  <p>MyCapsul ships as a zip file — everything you need in one download. No installers, no app stores.</p>
 </div>
 
 <div class="step">
   <div class="step-num blue">1</div>
   <div class="step-content">
-    <h3>Download the Plugin</h3>
-    <p>Get the <strong>mycapsul.plugin</strong> file from <a href="https://mycapsul.com" style="color:var(--blue);">MyCapsul.com</a>. It's a single file — no unzipping, no installers.</p>
+    <h3>Download the Zip</h3>
+    <p>Get <strong>mycapsul-v1.3.0.zip</strong> from <a href="https://mycapsul.com" style="color:var(--blue);">MyCapsul.com</a>. It's a single zip file with everything inside.</p>
   </div>
 </div>
 
 <div class="step">
   <div class="step-num blue">2</div>
   <div class="step-content">
-    <h3>Install It</h3>
-    <p><strong>Double-click the .plugin file.</strong> Claude Desktop will open and ask you to confirm the installation. Click Install. That's it — the plugin is now part of your Claude setup.</p>
+    <h3>Place It in Your Folder</h3>
+    <p>Move the zip file into the folder where you want MyCapsul to live — <strong>Documents</strong> is a great default. Don't unzip it yet — your agent handles that.</p>
     <div class="callout note">
       <div class="c-icon">📌</div>
-      <div class="c-text">If double-clicking doesn't work, you can drag the file into the Claude Desktop window, or install it manually through Settings → Plugins.</div>
+      <div class="c-text">MyCapsul lives wherever you put it. Desktop, Documents, a cloud-synced folder — your choice. Just pick one place and stick with it.</div>
     </div>
   </div>
 </div>
@@ -412,14 +412,14 @@ body {
 <div class="section-break" id="create">
   <div class="label go">Setup</div>
   <h2>Create Your Capsul</h2>
-  <p>With the plugin installed, you're one conversation away from a working dashboard.</p>
+  <p>With the zip in your folder, you're one conversation away from a working dashboard.</p>
 </div>
 
 <div class="step">
   <div class="step-num go">3</div>
   <div class="step-content">
     <h3>Open Cowork and Select Your Folder</h3>
-    <p>Open a <strong>new Cowork session</strong> in Claude Desktop. When prompted, select a folder on your computer — this is where MyCapsul will live. Your agent creates a <code>MyCapsul/</code> directory inside it with everything: your dashboard, Seed files, <code>_inbox/</code> drop folder, and agent config.</p>
+    <p>Open a <strong>new Cowork session</strong> in Claude Desktop. When prompted, <strong>select the folder where you placed the zip file</strong>. This tells your agent where MyCapsul lives.</p>
   </div>
 </div>
 
@@ -427,17 +427,14 @@ body {
   <div class="step-num go">4</div>
   <div class="step-content">
     <h3>Run Setup</h3>
-    <p>Type <strong>/setup-capsul</strong> or just say <strong>"set up my Capsul"</strong>. Your agent will scaffold the workspace and start the onboarding conversation.</p>
+    <p>Say <strong>"Unzip and set up my MyCapsul"</strong>. Your agent will handle the unzipping and scaffold the workspace, then start the onboarding conversation.</p>
     <div class="code-block">
       <div class="code-header">
         <div class="code-dot r"></div><div class="code-dot y"></div><div class="code-dot g"></div>
         <span class="code-name">cowork session</span>
       </div>
       <div class="code-body">
-        <span class="cmd">&gt;</span> <span class="highlight">/setup-capsul</span><br>
-        <br>
-        <span class="comment">or just say:</span><br>
-        <span class="cmd">&gt;</span> Set up my Capsul
+        <span class="cmd">&gt;</span> Unzip and set up my MyCapsul
       </div>
     </div>
   </div>
@@ -472,7 +469,7 @@ body {
       <div class="code-body">
         <span class="dir">MyCapsul/</span><br>
         ├── <span class="file">mycapsul.html</span> <span class="desc">← open this in your browser</span><br>
-        ├── <span class="file">SKILL.md</span> <span class="desc">← your agent's operating manual</span><br>
+        ├── <span class="file">mycapsul-demo.html</span> <span class="desc">← demo version</span><br>
         ├── <span class="file">CLAUDE.md</span> <span class="desc">← your agent's personality &amp; protocols</span><br>
         ├── <span class="dir">seed/</span> <span class="desc">← your personal knowledge base</span><br>
         │   ├── <span class="file">identity.md</span><br>
@@ -481,7 +478,8 @@ body {
         │   ├── <span class="file">health.md</span><br>
         │   └── <span class="file">...</span><br>
         ├── <span class="dir">_inbox/</span> <span class="desc">← drop files here for your agent</span><br>
-        └── <span class="dir">widgets/</span> <span class="desc">← custom widget files</span>
+        ├── <span class="dir">widgets/</span> <span class="desc">← add-on widgets</span><br>
+        └── <span class="dir">.skills/</span> <span class="desc">← agent skill (auto-loaded)</span>
       </div>
     </div>
   </div>
@@ -515,7 +513,7 @@ body {
   <div class="step-num ember">9</div>
   <div class="step-content">
     <h3>Sync Your Dashboard</h3>
-    <p>When your agent makes changes, they get pushed to a sync file. <strong>Open your dashboard</strong> and it will pull in the latest data automatically. You'll see updates reflected in your tiles, calendar, budget, and everywhere else.</p>
+    <p>When your agent makes changes, they get pushed to a sync file. <strong>Open your dashboard</strong> and it will pull in the latest data automatically. You'll see updates reflected in your widgets, calendar, budget, and everywhere else.</p>
     <div class="callout note">
       <div class="c-icon">📌</div>
       <div class="c-text"><strong>Two-way sync:</strong> Your dashboard also exports data back to your agent via a sync file. Click the Sync button in your dashboard to export, then tell your agent to "sync from the dashboard" to pull in any changes you made directly in the UI.</div>
@@ -538,7 +536,7 @@ body {
   <a href="user-guide.html" class="next-card">
     <div class="nc-label">Read next</div>
     <h4>User Guide →</h4>
-    <p>Learn what every tile does, how the seed system works, and how your agent maintains your dashboard.</p>
+    <p>Learn what every widget does, how the seed system works, and how your agent maintains your dashboard.</p>
   </a>
   <a href="prompt-cookbook.html" class="next-card">
     <div class="nc-label">Explore</div>
@@ -573,7 +571,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.1.0 — March 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.3.0 — March 2026</p>
 </div>
 
 <script>

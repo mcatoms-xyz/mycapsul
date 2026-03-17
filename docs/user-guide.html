@@ -875,7 +875,7 @@ body {
     </div>
     <div style="background:var(--bg2);border-radius:10px;padding:14px 16px;margin-bottom:16px;">
       <div style="font-size:12px;font-weight:700;color:var(--go);margin-bottom:6px;">Step 5 — Your Capsul is Ready</div>
-      <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Shows a summary of everything you configured, including which tiles are active. Hit "Launch Your Capsul" and the wizard closes — your dashboard loads with your palette applied and tiles ready to go.</div>
+      <div style="font-size:13px;color:var(--text-dim);line-height:1.6;">Shows a summary of everything you configured, including which widgets are active. Hit "Launch Your Capsul" and the wizard closes — your dashboard loads with your palette applied and widgets ready to go.</div>
     </div>
 
     <div style="font-size:13px;color:var(--text-dim);line-height:1.7;padding:12px 16px;background:rgba(0,126,255,0.04);border-radius:8px;border-left:3px solid var(--blue);">
@@ -1183,28 +1183,28 @@ body {
 <div class="section" id="settings">
   <div class="section-label" style="color:var(--ember);">Controls</div>
   <h2>Settings & Features</h2>
-  <p class="intro">Your dashboard has more built-in features than you might notice at first. Here's what's available from the header and tiles.</p>
+  <p class="intro">Your dashboard has more built-in features than you might notice at first. Here's what's available from the header and widgets.</p>
 
   <div class="card" style="padding:0;">
     <div class="step-block" style="padding:24px 28px;">
       <div class="step-num" style="background:var(--ember);">⚙️</div>
       <div class="step-content">
         <h4>Settings Drawer</h4>
-        <p>Click the gear icon in the header. This opens the Settings drawer where you can change your color palette (7 options: MyCapsul brand default, Ocean, Sunset, Forest, Lavender, Amber, Slate), show/hide tiles, drag tiles to reorder them, and manage your agent sync connection.</p>
+        <p>Click the gear icon in the header. This opens the Settings drawer where you can change your color palette (7 options: MyCapsul brand default, Ocean, Sunset, Forest, Lavender, Amber, Slate), show/hide widgets, drag widgets to reorder them, and manage your agent sync connection.</p>
       </div>
     </div>
     <div class="step-block" style="padding:24px 28px;">
       <div class="step-num" style="background:var(--go);">📐</div>
       <div class="step-content">
-        <h4>Tile Resize & Reorder</h4>
-        <p>Each tile has a resize button (in the tile header) that lets you pick from compact, standard, wide, or full-width sizes. You can also drag tiles to reorder them from the Settings drawer, or just tell your agent: <span style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg2);padding:2px 8px;border-radius:4px;">"Move the budget tile above the calendar."</span></p>
+        <h4>Widget Resize & Reorder</h4>
+        <p>Each widget has a resize button (in the widget header) that lets you pick from compact, standard, wide, or full-width sizes. You can also drag widgets to reorder them from the Settings drawer, or just tell your agent: <span style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg2);padding:2px 8px;border-radius:4px;">"Move the budget widget above the calendar."</span></p>
       </div>
     </div>
     <div class="step-block" style="padding:24px 28px;">
       <div class="step-num" style="background:var(--sky);">ℹ️</div>
       <div class="step-content">
-        <h4>Tile Info</h4>
-        <p>Every tile has an ℹ️ button that opens a quick overview — what the tile does, how to use it, and suggestions for things to tell your agent. Great for learning the system without reading the full docs.</p>
+        <h4>Widget Info</h4>
+        <p>Every widget has an ℹ️ button that opens a quick overview — what the widget does, how to use it, and suggestions for things to tell your agent. Great for learning the system without reading the full docs.</p>
       </div>
     </div>
     <div class="step-block" style="padding:24px 28px;">
@@ -1218,21 +1218,21 @@ body {
       <div class="step-num" style="background:var(--ember);">📅</div>
       <div class="step-content">
         <h4>Calendar Popover</h4>
-        <p>Click any day on the Calendar tile to see a popover with that day's events and a mini Ring preview. Click the pin icon to keep the popover open while you navigate. If you're in co-parent mode, custody weeks are highlighted with a subtle background tint. US holidays appear automatically.</p>
+        <p>Click any day on the Calendar widget to see a popover with that day's events and a mini Ring preview. Click the pin icon to keep the popover open while you navigate. If you're in co-parent mode, custody weeks are highlighted with a subtle background tint. US holidays appear automatically.</p>
       </div>
     </div>
     <div class="step-block" style="padding:24px 28px;">
       <div class="step-num" style="background:var(--go);">🔮</div>
       <div class="step-content">
         <h4>TimeCapsul (Year-in-Review)</h4>
-        <p>At the end of the year (or anytime you want), open your TimeCapsul from the Timeline tile. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and cube completions. Your agent contributes milestone data throughout the year so the review is rich and personal.</p>
+        <p>At the end of the year (or anytime you want), open your TimeCapsul from the Timeline widget. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and cube completions. Your agent contributes milestone data throughout the year so the review is rich and personal.</p>
       </div>
     </div>
     <div class="step-block" style="padding:24px 28px;">
       <div class="step-num" style="background:var(--sky);">❓</div>
       <div class="step-content">
         <h4>"How it works" Overview</h4>
-        <p>Click the "How it works" button in the header to see a visual tour of all core features. Hover over any tile preview to see it animate. The overview also has a docs bar linking to these support documents.</p>
+        <p>Click the "How it works" button in the header to see a visual tour of all core features. Hover over any widget preview to see it animate. The overview also has a docs bar linking to these support documents.</p>
       </div>
     </div>
   </div>
@@ -1407,7 +1407,7 @@ body {
       <div class="bi-icon">📁</div>
       <div>
         <h4>You choose where it lives</h4>
-        <p>You select the parent folder during setup — could be your Documents folder, Desktop, or anywhere you want. MyCapsul creates a <code>MyCapsul/</code> directory inside it with all the scaffolding: <code>seed/</code> for your knowledge base, <code>_inbox/</code> for file drops, <code>widgets/</code> for custom tiles, and your dashboard HTML file.</p>
+        <p>You select the parent folder during setup — could be your Documents folder, Desktop, or anywhere you want. MyCapsul creates a <code>MyCapsul/</code> directory inside it with all the scaffolding: <code>seed/</code> for your knowledge base, <code>_inbox/</code> for file drops, <code>widgets/</code> for add-on widgets, and your dashboard HTML file.</p>
       </div>
     </div>
     <div class="box-item">
@@ -1534,7 +1534,7 @@ body {
     <a href="releases.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">Releases</a>
     <a href="about.html" style="color:var(--blue);text-decoration:none;font-size:13px;font-weight:500;">About</a>
   </div>
-  <div class="doc-meta">User Guide v1.1.0 — March 2026</div>
+  <div class="doc-meta">User Guide v1.3.0 — March 2026</div>
 </div>
 
 <script>

@@ -273,7 +273,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Is MyCapsul an app I need to install?</div>
-  <div class="faq-a">Not in the traditional sense. MyCapsul is a <strong><a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a> plugin</strong> — it installs into <a href="https://claude.ai/download?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Claude Desktop</a> and teaches Claude how to manage your dashboard. The dashboard itself is just an HTML file you open in your browser. No app store, no installer, no account creation.</div>
+  <div class="faq-a">Not in the traditional sense. Download the MyCapsul zip file from <a href="https://mycapsul.com?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">mycapsul.com</a>, point <a href="https://www.anthropic.com/research/cowork?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq" target="_blank" style="color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);">Cowork</a> to the extracted folder during setup, and you're ready to go. The dashboard itself is just an HTML file you open in your browser. No app store, no installer, no account creation, no cloud. Everything stays local on your machine.</div>
 </div>
 
 <div class="faq-item">
@@ -335,7 +335,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I edit things directly on the dashboard?</div>
-  <div class="faq-a"><strong>Yes.</strong> Many tiles have interactive elements — you can check off Focus 3 items, mark bills as paid, toggle hobbies, edit journal entries, and more. Changes you make in the dashboard are saved to localStorage. Click the <strong>Sync</strong> button to export your dashboard state so your agent can pick up those changes next session.</div>
+  <div class="faq-a"><strong>Yes.</strong> Many widgets have interactive elements — you can check off Focus 3 items, mark bills as paid, toggle hobbies, edit journal entries, and more. Changes you make in the dashboard are saved to localStorage. Click the <strong>Sync</strong> button to export your dashboard state so your agent can pick up those changes next session.</div>
 </div>
 
 <div class="faq-item">
@@ -344,8 +344,8 @@ body {
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I rearrange or hide tiles?</div>
-  <div class="faq-a">Yes. Tell your agent "hide the news tile" or "move budget to the top." Your agent adjusts the tile layout and sizing. You can also toggle visibility from the dashboard's tile manager. There are 17 built-in tiles, and you can add custom widgets on top of those.</div>
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Can I rearrange or hide widgets?</div>
+  <div class="faq-a">Yes. Tell your agent "hide the news widget" or "move budget to the top." Your agent adjusts the widget layout and sizing. You can also toggle visibility from the dashboard's widget manager. There are 17 built-in widgets, and you can add add-on widgets on top of those.</div>
 </div>
 
 <div class="faq-item">
@@ -355,7 +355,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What is TimeCapsul?</div>
-  <div class="faq-a"><strong>TimeCapsul</strong> is a year-in-review feature. Access it from the "View TimeCapsul" button on the Timeline tile. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and project completions. Your agent contributes milestone data throughout the year, so the more you use MyCapsul, the richer your TimeCapsul becomes.</div>
+  <div class="faq-a"><strong>TimeCapsul</strong> is a year-in-review feature. Access it from the "View TimeCapsul" button on the Timeline widget. It generates a visual summary of your year — monthly highlights, goal progress, journal excerpts, and project completions. Your agent contributes milestone data throughout the year, so the more you use MyCapsul, the richer your TimeCapsul becomes.</div>
 </div>
 
 <div class="faq-item">
@@ -364,8 +364,8 @@ body {
 </div>
 
 <div class="faq-item">
-  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What do the ℹ️ buttons on tiles do?</div>
-  <div class="faq-a">Each tile has an info button that opens a quick overview — what the tile does, how to use it, and suggestions for things to tell your agent. It's a built-in mini-guide for every feature.</div>
+  <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What do the ℹ️ buttons on widgets do?</div>
+  <div class="faq-a">Each widget has an info button that opens a quick overview — what the widget does, how to use it, and suggestions for things to tell your agent. It's a built-in mini-guide for every feature.</div>
 </div>
 
 <!-- ═══════ DATA, PRIVACY & SECURITY ═══════ -->
@@ -376,7 +376,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> Where is my data stored?</div>
-  <div class="faq-a"><strong>Everything stays on your computer.</strong> During setup, you select a folder in Cowork — MyCapsul creates a <code>MyCapsul/</code> directory inside it. That's home base. Your seed modules are plain-text Markdown files in <code>MyCapsul/seed/</code>. There's a <code>MyCapsul/_inbox/</code> folder where you can drop files for your agent to process. Your dashboard stores tile data in your browser's localStorage. Sync files are JSON files in the inbox folder. Nothing is uploaded to any server. There's no cloud, no account, no database.</div>
+  <div class="faq-a"><strong>Everything stays on your computer.</strong> During setup, you select a folder on your computer — MyCapsul creates a <code>MyCapsul/</code> directory inside it. That's home base. Your seed modules are plain-text Markdown files in <code>MyCapsul/seed/</code>. There's a <code>MyCapsul/_inbox/</code> folder where you can drop files for your agent to process. Your dashboard stores widget data in your browser's localStorage. Sync files are JSON files in the inbox folder. Nothing is uploaded to any server. There's no cloud, no account, no database.</div>
 </div>
 
 <div class="faq-item">
@@ -404,7 +404,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What about the dashboard's localStorage?</div>
-  <div class="faq-a">The dashboard stores tile data in your browser's localStorage, which is tied to the file path of the HTML file. Anyone who opens that same file in the same browser profile on your computer can see the dashboard data. This is standard browser behavior — not unique to MyCapsul. If you share your browser profile, be aware of this. Clearing browser data will erase dashboard state, but your <strong>seed modules are unaffected</strong> — your agent can repopulate the dashboard from them.</div>
+  <div class="faq-a">The dashboard stores widget data in your browser's localStorage, which is tied to the file path of the HTML file. Anyone who opens that same file in the same browser profile on your computer can see the dashboard data. This is standard browser behavior — not unique to MyCapsul. If you share your browser profile, be aware of this. Clearing browser data will erase dashboard state, but your <strong>seed modules are unaffected</strong> — your agent can repopulate the dashboard from them.</div>
 </div>
 
 <div class="faq-item">
@@ -450,12 +450,12 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> My dashboard looks empty after opening in a new browser</div>
-  <div class="faq-a">Dashboard UI data lives in <strong>localStorage</strong>, which is browser-specific. If you open the file in a different browser (or after clearing data), the tiles will be empty. To fix this: open a Cowork session, tell your agent to "sync from the dashboard" (if you have a recent <code>capsul-sync.json</code>), or ask your agent to repopulate from seed modules.</div>
+  <div class="faq-a">Dashboard UI data lives in <strong>localStorage</strong>, which is browser-specific. If you open the file in a different browser (or after clearing data), the widgets will be empty. To fix this: open a Cowork session, tell your agent to "sync from the dashboard" (if you have a recent <code>capsul-sync.json</code>), or ask your agent to repopulate from seed modules.</div>
 </div>
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> I messed up my dashboard — can I undo?</div>
-  <div class="faq-a">Ask your agent. If the change was made via an agent push, your agent can write a new push to revert it. If you edited something in the UI, you may need to manually fix it or ask your agent to reset that tile's data. For big changes, your agent should be making backup copies before editing — check for a <code>mycapsul-template-backup-*.html</code> file.</div>
+  <div class="faq-a">Ask your agent. If the change was made via an agent push, your agent can write a new push to revert it. If you edited something in the UI, you may need to manually fix it or ask your agent to reset that widget's data. For big changes, your agent should be making backup copies before editing — check for a <code>mycapsul-template-backup-*.html</code> file.</div>
 </div>
 
 <div class="faq-item">
@@ -476,7 +476,7 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are widgets?</div>
-  <div class="faq-a"><strong>Widgets are custom tiles</strong> that extend your dashboard. They're saved as <code>.capsul-widget</code> files and can be installed by dropping them in the <code>widgets/</code> folder and telling your agent to install them. You can also ask your agent to build completely new widgets from scratch — just describe what you want.</div>
+  <div class="faq-a"><strong>Widgets are add-on extensions</strong> that add new features to your dashboard. They're saved as <code>.capsul-widget</code> files and can be installed by dropping them in the <code>widgets/</code> folder and telling your agent to install them. You can also ask your agent to build completely new widgets from scratch — just describe what you want.</div>
 </div>
 
 <div class="faq-item">
@@ -514,7 +514,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p>Still stuck? <a href="https://buymeacoffee.com/mcatoms?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq">Reach out on Buy Me a Coffee</a> — or just ask your agent. It probably knows.</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.1.0 — March 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.3.0 — March 2026</p>
 </div>
 
 <script>
