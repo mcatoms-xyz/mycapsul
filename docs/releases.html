@@ -334,6 +334,37 @@ body {
 
 <!-- RELEASES -->
 
+<!-- v1.4.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.4.0</h2>
+      <div class="release-date">March 30, 2026</div>
+    </div>
+    <div class="release-badge feature">Feature</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>External Widget Protocol</strong> — 12 of 17 core widgets now render from standalone <code>.js</code> files via a new bridge system (<code>_wBridge</code>). Each widget file is validated against its inline counterpart for data access parity, interactive handler wiring, and visual fidelity. This is the foundation for hot-swappable widget updates without touching the main dashboard HTML.
+    </li>
+    <li>
+      <strong>Core vs. Optional widget split</strong> — 8 core widgets (Ring, Focus 3, Capsul, Calendar, Countdowns, Journal, Goals, Timeline) are always visible. 9 optional widgets (Health, Check-in, Budget, Bills, Subscriptions, Quick Wins, Hobbies, Life Areas, News) start hidden and activate based on your onboarding answers. Less clutter on first boot, more relevant from day one.
+    </li>
+    <li>
+      <strong>Onboarding-driven visibility</strong> — The setup wizard now controls which optional widgets appear. Track your budget? Budget and Bills light up. Care about health? Health and Check-in activate. Follow the news? News widget appears. You get exactly the dashboard you asked for.
+    </li>
+    <li>
+      <strong>Interactive widget upgrades</strong> — Focus 3 gets inline editing with toggle, edit, confirm, and delete. Journal gets a working entry composer. Goals gets milestone posting. Budget gets a transaction input row. Countdowns gets an add button. Every widget that was display-only now has working interaction when loaded externally.
+    </li>
+    <li>
+      <strong>Dual-mode rendering</strong> — External widget files detect whether they're running inside the full dashboard (with access to global helpers) or in standalone/preview mode. In standalone mode, widgets gracefully degrade to read-only displays instead of throwing errors.
+    </li>
+    <li>
+      <strong>Docs updated</strong> — All documentation pages updated to v1.4.0. SKILL.md updated with new widget architecture details and core/optional split documentation.
+    </li>
+  </ul>
+</div>
+
 <!-- v1.3.0 -->
 <div class="release-card">
   <div class="release-header">
@@ -538,7 +569,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.3.0 — March 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.4.0 — March 2026</p>
 </div>
 
 <!-- UPDATE MODAL -->
@@ -546,17 +577,17 @@ body {
   <div class="update-modal">
     <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
     <h2>How to Update MyCapsul</h2>
-    <div class="version-pill">Latest: v1.3.0</div>
+    <div class="version-pill">Latest: v1.4.0</div>
     <p>Updating is quick and your data is safe — everything lives in your browser's storage, not in the HTML file. Here's the process:</p>
     <ol class="update-steps">
-      <li><strong>Download the latest zip</strong> — Click the button below to get the newest <code>.zip</code> file.</li>
+      <li><strong>Download the latest zip</strong> — Click the button below to get the newest <code>.zip</code> file. Or install the plugin directly in Cowork.</li>
       <li><strong>Drop it in your MyCapsul folder</strong> — Move the downloaded <code>.zip</code> file into your MyCapsul folder (or <code>_inbox/</code>). This is how you feed updates to your Capsul agent.</li>
       <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Update my MyCapsul."</strong> Your agent will find the file, detect the version change, explain what's new, and update your dashboard HTML.</li>
       <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
     </ol>
-    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.3.0/mycapsul-v1.3.0.zip" class="update-download-btn">
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.4.0/mycapsul-v1.4.0.zip" class="update-download-btn">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download v1.3.0
+      Download v1.4.0
     </a>
     <p class="update-note">Your dashboard data (tiles, settings, seed modules, everything in localStorage) is completely untouched by this process. Only the HTML file gets replaced.</p>
   </div>
