@@ -334,6 +334,34 @@ body {
 
 <!-- RELEASES -->
 
+<!-- v1.5.0 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.5.0</h2>
+      <div class="release-date">April 18, 2026</div>
+    </div>
+    <div class="release-badge feature">Feature</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Self-Maintenance Protocols</strong> — Your Capsul agent now runs a Monthly Pass on the 1st of every month (checks for drift in your tile layout, seed modules, sync status, and config) and a Quarterly Deep Audit on Jan/Apr/Jul/Oct 1st (a five-step pass that cross-references SKILL.md, widget registry, command surface, data model, and doc site). Findings get written to a new <code>audits/</code> directory so you have a paper trail.
+    </li>
+    <li>
+      <strong>Cornerstone instruction for scaffolded bots</strong> — Added a standing rule to the CLAUDE.md template: <em>every bot should periodically audit its own structure, registry, and references for drift.</em> Referenceable from any other bot-scaffolding work via <code>docs/cornerstone-self-maintenance.md</code>. If you build other agents on top of the MyCapsul pattern, they inherit the same discipline.
+    </li>
+    <li>
+      <strong>Widget bridge hardening</strong> — The <code>_wBridge</code> CSS injection path now defensively handles both string and array CSS formats from external widget files. Prevents a class of silent style-injection bugs where widget authors returned CSS as an array of strings. Array-to-string coercion is explicit now.
+    </li>
+    <li>
+      <strong>Audit directory</strong> — New <code>audits/</code> folder ships with the plugin, documenting the naming convention (<code>YYYY-MM-audit.md</code> for monthly, <code>YYYY-QN-audit.md</code> for quarterly) and the never-delete rule. Your audit history is a feature, not a log to clear.
+    </li>
+    <li>
+      <strong>Docs updated</strong> — All documentation pages bumped to v1.5.0. SKILL.md updated with the new Self-Maintenance Protocols section. CLAUDE.md template gets the Cornerstone block and extended proactive-monitoring checklist.
+    </li>
+  </ul>
+</div>
+
 <!-- v1.4.0 -->
 <div class="release-card">
   <div class="release-header">
@@ -569,7 +597,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.4.0 — March 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.0 — April 2026</p>
 </div>
 
 <!-- UPDATE MODAL -->
@@ -577,7 +605,7 @@ body {
   <div class="update-modal">
     <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
     <h2>How to Update MyCapsul</h2>
-    <div class="version-pill">Latest: v1.4.0</div>
+    <div class="version-pill">Latest: v1.5.0</div>
     <p>Updating is quick and your data is safe — everything lives in your browser's storage, not in the HTML file. Here's the process:</p>
     <ol class="update-steps">
       <li><strong>Download the latest zip</strong> — Click the button below to get the newest <code>.zip</code> file. Or install the plugin directly in Cowork.</li>
@@ -585,9 +613,9 @@ body {
       <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Update my MyCapsul."</strong> Your agent will find the file, detect the version change, explain what's new, and update your dashboard HTML.</li>
       <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
     </ol>
-    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.4.0/mycapsul-v1.4.0.zip" class="update-download-btn">
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.0/mycapsul-v1.5.0.zip" class="update-download-btn">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download v1.4.0
+      Download v1.5.0
     </a>
     <p class="update-note">Your dashboard data (tiles, settings, seed modules, everything in localStorage) is completely untouched by this process. Only the HTML file gets replaced.</p>
   </div>
