@@ -172,7 +172,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
 <div class="hero">
   <div class="hero-pill">Widget Gallery</div>
   <h1>Extend Your <span>Capsul</span></h1>
-  <p class="hero-sub">Browse widgets built for MyCapsul. Each one is a single <code>.capsul-widget</code> file — drop it in your inbox folder and tell your agent to install it.</p>
+  <p class="hero-sub">Each widget is one <code>.capsul-widget</code> file. Drop it in your inbox folder and tell your agent to install it.</p>
 </div>
 
 <!-- WIDGET GALLERY -->
@@ -183,7 +183,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
     <div class="widget-card-icon">📈</div>
     <div class="widget-card-title">Stock Ticker</div>
     <div class="widget-card-author">by mycapsul</div>
-    <div class="widget-card-desc">Track stock prices with day change and color-coded movement. Configure your own watchlist. Refreshes every 5 minutes.</div>
+    <div class="widget-card-desc">Your watchlist with day change, color-coded. Refreshes every 5 minutes.</div>
     <div class="widget-card-tags">
       <span class="widget-tag spec02">spec v0.2</span>
       <span class="widget-tag fetch">live data</span>
@@ -203,7 +203,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
     <div class="widget-card-icon">🌤️</div>
     <div class="widget-card-title">Weather</div>
     <div class="widget-card-author">by mycapsul</div>
-    <div class="widget-card-desc">Current conditions and 3-day forecast. Uses Open-Meteo — free, no API key needed. Supports Fahrenheit and Celsius.</div>
+    <div class="widget-card-desc">Current conditions and a 3-day forecast from Open-Meteo (free, no API key). Fahrenheit or Celsius.</div>
     <div class="widget-card-tags">
       <span class="widget-tag spec02">spec v0.2</span>
       <span class="widget-tag fetch">live data</span>
@@ -223,7 +223,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
     <div class="widget-card-icon">💬</div>
     <div class="widget-card-title">Daily Quote</div>
     <div class="widget-card-author">by mycapsul</div>
-    <div class="widget-card-desc">A curated daily quote for inspiration. 100 quotes from leaders, thinkers, and creators. Rotates based on the date — no API needed.</div>
+    <div class="widget-card-desc">One of 100 quotes, rotating by date. No API.</div>
     <div class="widget-card-tags">
       <span class="widget-tag">offline-ready</span>
     </div>
@@ -278,17 +278,17 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
 <div class="install-section">
   <h2>How to Install a Widget</h2>
   <ol class="install-steps">
-    <li><strong>Download the widget</strong> — Click the download button on any widget card above to get the <code>.capsul-widget</code> file.</li>
-    <li><strong>Drop it in your inbox</strong> — Move the file into your MyCapsul <code>_inbox/</code> folder.</li>
-    <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Install the widget in my inbox."</strong> Your agent will validate, register, and render it on your dashboard.</li>
-    <li><strong>Configure (if applicable)</strong> — Widgets with the <span style="color:var(--purple);font-weight:600;">configurable</span> tag will show a ⚙ gear icon on their widget. Click it to customize settings like stock symbols or location.</li>
+    <li><strong>Download</strong> the <code>.capsul-widget</code> file from a card above.</li>
+    <li><strong>Move it</strong> into your MyCapsul <code>_inbox/</code> folder.</li>
+    <li><strong>Say</strong> <strong>"Install the widget in my inbox."</strong> Your agent validates, registers, and renders it. Only install widgets from sources you trust — a widget runs as code inside your dashboard with access to all of its data.</li>
+    <li><strong>Configure</strong> — widgets tagged <span style="color:var(--purple);font-weight:600;">configurable</span> show a ⚙ gear icon. Click it to set symbols, location, and the like.</li>
   </ol>
 </div>
 
 <!-- SUBMIT AN IDEA -->
 <div class="submit-section">
   <h2>Have a Widget Idea?</h2>
-  <p>Track your guitar practice sessions. Log your garden watering schedule. Build a habit tracker. A pet care log. Anything you track regularly can be a widget.</p>
+  <p>Guitar practice. Garden watering. A habit tracker, a pet log. Anything you track regularly can be a widget.</p>
   <a href="https://github.com/mcatoms-xyz/mycapsul/issues/new?labels=widget-idea&template=widget-idea.md&title=%5BWidget+Idea%5D+" class="submit-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
     Submit a Widget Idea
@@ -298,9 +298,9 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
 <!-- WIDGET SPEC INFO -->
 <div class="spec-section">
   <h2>Building Widgets</h2>
-  <p>Widgets are JSON files with a <code>.capsul-widget</code> extension. They contain metadata, a render function, hook declarations, and optional sample data. Your Capsul agent can help you build one from scratch — just describe what you want to track.</p>
-  <p>The current widget spec is <strong>v0.2</strong>, which adds support for <code>fetchConfig</code> (external API data) and <code>userConfig</code> (user-customizable settings). All v0.1 widgets remain fully compatible.</p>
-  <p>See the <a href="user-guide.html">User Guide</a> for the full widget creation protocol, or tell your agent: <strong>"Help me build a custom widget."</strong></p>
+  <p>Widgets are JSON files with a <code>.capsul-widget</code> extension. Inside: metadata, a render function, hook declarations, and optional sample data. Describe what you want to track and your agent can build one.</p>
+  <p>The current spec is <strong>v0.2</strong>, which adds <code>fetchConfig</code> (external API data) and <code>userConfig</code> (user settings). v0.1 widgets still work.</p>
+  <p>The <a href="user-guide.html">User Guide</a> has the full spec, or tell your agent: <strong>"Help me build a custom widget."</strong></p>
 </div>
 
 </div><!-- /doc-body -->
@@ -317,7 +317,7 @@ code { font-family:'JetBrains Mono',monospace; font-size:0.85em; background:var(
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.0 — April 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.1 — September 2026</p>
 </div>
 
 <script>

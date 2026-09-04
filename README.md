@@ -2,9 +2,7 @@
 
 **A personal life dashboard plugin for Claude Desktop by Anthropic.**
 
-MyCapsul turns Claude into a personal chief of staff. It pairs an AI agent that actually knows your world — your schedule, finances, goals, health, legal matters — with a visual dashboard that makes it all visible.
-
-You chat, it learns. The more you use it, the less you have to explain.
+An agent that knows your world — schedule, finances, goals, health, legal matters — and a dashboard that makes it visible. You chat, it learns.
 
 ![MyCapsul Dashboard](https://mycapsul.com/og-image.png)
 
@@ -19,17 +17,17 @@ You chat, it learns. The more you use it, the less you have to explain.
 
 ## How It Works
 
-MyCapsul is a plugin for [Claude Desktop](https://claude.ai/download) (Cowork mode). Install it and Claude becomes context-aware about your personal life, maintaining a living dashboard that updates as you talk.
+A plugin for [Claude Desktop](https://claude.ai/download) (Cowork mode). Install it and Claude keeps a dashboard of your life current as you talk.
 
-All data stays on your local machine. No cloud. No accounts. No tracking.
+Your life data stays on your local machine — no cloud, no accounts. (The page loads web fonts from Google/Adobe, and optional live tiles like News, Weather, and Stocks call third-party services with what you configure.)
 
 ## Install
 
-1. Download the latest `.plugin` file from [Releases](https://github.com/mcatoms-xyz/mycapsul/releases)
-2. Open Claude Desktop
-3. Go to Settings → Plugins → Install from file
-4. Select the `.plugin` file
-5. Say "set up my Capsul" to get started
+1. Download the latest `mycapsul-v*.zip` from [Releases](https://github.com/mcatoms-xyz/mycapsul/releases)
+2. Drop the zip in a folder on your computer — don't unzip it
+3. Open a Cowork session in Claude Desktop and select that folder
+4. Say "Unzip and set up my MyCapsul"
+5. Walk through the 5-step wizard that opens in your browser (Chrome or Edge for automatic sync)
 
 ## Links
 
@@ -40,7 +38,7 @@ All data stays on your local machine. No cloud. No accounts. No tracking.
 
 ## Tech
 
-Single-file HTML dashboard (~5500 lines). All CSS/JS inline. No external dependencies except fonts. Dual-layer persistence (localStorage + IndexedDB). Canvas-based visualizations. Satellite module architecture for specialized views (FinCapsul, etc.).
+Single-file HTML dashboard (~6100 lines). All CSS/JS inline. No build tools; external dependencies are web fonts and Chart.js (FinCapsul only). Dual-layer persistence (localStorage + IndexedDB). Canvas-based visualizations. Satellite module architecture for specialized views (FinCapsul, etc.).
 
 ## License
 

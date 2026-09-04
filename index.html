@@ -6,14 +6,14 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>MyCapsul — Your AI-Powered Life OS</title>
-<meta name="description" content="MyCapsul is a personal life dashboard powered by an AI that actually knows your world. You chat, it learns, it acts. Stop managing. Start living.">
+<meta name="description" content="A personal life dashboard and a Claude agent that knows your world. You chat, it learns, it acts. Stop managing. Start living.">
 <link rel="canonical" href="https://mycapsul.com/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mycapsul.com/">
 <meta property="og:title" content="MyCapsul — Your AI-Powered Life OS">
-<meta property="og:description" content="A personal life dashboard powered by an AI that actually knows your world. Budget, schedule, goals, health — all in one place. You chat, it learns, it acts.">
+<meta property="og:description" content="A personal life dashboard and a Claude agent that knows your world. Budget, schedule, goals, health in one place. You chat, it learns, it acts.">
 <meta property="og:image" content="https://mycapsul.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,7 +22,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MyCapsul — Your AI-Powered Life OS">
-<meta name="twitter:description" content="A personal life dashboard powered by an AI that actually knows your world. You chat, it learns, it acts. Stop managing. Start living.">
+<meta name="twitter:description" content="A personal life dashboard and a Claude agent that knows your world. You chat, it learns, it acts. Stop managing. Start living.">
 <meta name="twitter:image" content="https://mycapsul.com/og-image.png">
 
 <!-- Additional SEO -->
@@ -40,7 +40,7 @@
   "description": "AI-powered personal life dashboard plugin for Claude Desktop. An agent that knows your schedule, budget, goals, and health — paired with a visual command center. Built for ADHD brains, single parents, and anyone drowning in life admin.",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "macOS, Windows, Linux",
-  "softwareVersion": "1.5.0",
+  "softwareVersion": "1.5.1",
   "datePublished": "2026-03-01",
   "dateModified": "2026-03-30",
   "downloadUrl": "https://github.com/mcatoms-xyz/mycapsul/releases/latest",
@@ -756,7 +756,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         <span class="my">My</span><span class="capsul">Capsul</span>
       </h1>
       <div class="hero-tagline">Stop managing. Start living.</div>
-      <p class="hero-body">An Agent that actually knows your world — your schedule, your life, your goals — paired with a dashboard that makes it all visible. You chat, it learns. The more you use it, the less you have to explain.</p>
+      <p class="hero-body">An agent that knows your world — schedule, money, goals — and a dashboard that makes it visible. You chat, it learns. The more you use it, the less you have to explain.</p>
       <div class="hero-learn-more">
         <a href="#how">See how it works <span class="arrow">↓</span></a>
       </div>
@@ -765,10 +765,10 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
     <div class="hero-right">
       <div class="hero-cta-float">
         <div class="cta-top">
-          <div class="cta-version" style="display:flex;align-items:center;justify-content:space-between;"><span style="display:inline-flex;align-items:center;gap:6px;"><span class="ver-dot"></span> v1.5 <a href="docs/releases.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Release Notes</a></span><a href="docs/releases.html#update" style="background:var(--ember,#E67201);color:#fff;text-decoration:none;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.3px;text-transform:uppercase;">How to Update</a></div>
+          <div class="cta-version" style="display:flex;align-items:center;justify-content:space-between;"><span style="display:inline-flex;align-items:center;gap:6px;"><span class="ver-dot"></span> v1.5.1 <a href="docs/releases.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Release Notes</a></span><a href="docs/releases.html#update" style="background:var(--ember,#E67201);color:#fff;text-decoration:none;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.3px;text-transform:uppercase;">How to Update</a></div>
           <div class="cta-label">Download MyCapsul</div>
           <div class="cta-sublabel">Free and open. Download the zip, point Cowork at it, and start talking.</div>
-          <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.0/mycapsul-v1.5.0.zip" class="btn-download" id="downloadBtn" download>
+          <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.1/mycapsul-v1.5.1.zip" class="btn-download" id="downloadBtn" download>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download .zip
           </a>
@@ -776,7 +776,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         </div>
         <div class="cta-bottom">
           <div class="mail-label">Stay in the loop</div>
-          <div class="mail-sub">We're actively building. Get notified when new features, widgets, and enhancements ship.</div>
+          <div class="mail-sub">Get a note when new widgets and features ship.</div>
           <form class="mail-form" name="signup-hero" method="POST" data-netlify="true" action="/thanks.html" aria-label="Sign up for updates">
             <label for="email-hero" class="sr-only">Email address</label>
             <input type="email" name="email" id="email-hero" placeholder="Where should we send updates?" required autocomplete="email">
@@ -793,27 +793,27 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 <section id="what">
   <div class="section-inner">
     <div class="section-label">An OS for your day to day</div>
-    <h2 class="section-title">AI that works the way you actually live</h2>
-    <p class="section-sub">Most productivity tools make you do the organizing. MyCapsul flips that. You just chat about your life — and your agent handles the rest.</p>
+    <h2 class="section-title">AI that works the way you live</h2>
+    <p class="section-sub">Most productivity tools make you do the organizing. Here you talk about your life and the agent does the filing.</p>
     <div style="text-align:center;margin:-32px auto 40px;"><a href="#get" class="section-cta">Get it free →</a></div>
     <div class="loop-grid">
       <div class="loop-card">
         <div class="loop-num">1</div>
         <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <h3>You chat</h3>
-        <p>"I spent $40 on groceries." "Rent is due the 1st." "My energy is low today." Just say what's going on — no forms, no menus, no data entry.</p>
+        <p>"I spent $40 on groceries." "Rent is due the 1st." "My energy is low today." Say what's going on. No forms, no menus.</p>
       </div>
       <div class="loop-card">
         <div class="loop-num">2</div>
         <div class="icon-box ember"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/><path d="M8 12a4 4 0 018 0"/></svg></div>
         <h3>It learns</h3>
-        <p>Your agent saves everything to a personal knowledge base — your schedule, finances, health, goals, relationships. It remembers so you don't have to.</p>
+        <p>Your agent files it in a plain-text knowledge base — schedule, finances, health, goals, people. It remembers so you don't have to.</p>
       </div>
       <div class="loop-card">
         <div class="loop-num">3</div>
         <div class="icon-box go"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
         <h3>It acts</h3>
-        <p>Your dashboard updates in real time. Bills get tracked. Schedules get built. Focus gets set. The more sessions you have, the sharper it gets.</p>
+        <p>Your dashboard updates on the next refresh: bills tracked, schedule built, focus set. Every session sharpens it.</p>
       </div>
     </div>
   </div>
@@ -823,8 +823,8 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 <section id="features">
   <div class="section-inner">
     <div class="section-label">What's Inside</div>
-    <h2 class="section-title">A tool that adapts to how you live</h2>
-    <p class="section-sub">A personal command center with tools that matter for real life — not project management theater.</p>
+    <h2 class="section-title">A command center for real life</h2>
+    <p class="section-sub">Tools for the life you have. No project-management theater.</p>
     <div class="feature-grid">
 
       <!-- ROW 1: Live Dashboard — full width hero -->
@@ -832,7 +832,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         <div class="mockup"><img src="ss-dashboard-full.png" alt="Live Dashboard — full command center with Ring, Focus 3, calendar, countdowns, and project cubes"></div>
         <div class="f-body">
           <h3>Live Dashboard</h3>
-          <p>A single HTML file with 17+ tiles — calendar, budget, bills, countdowns, journal, health tracker, and more. Runs in your browser, powered by your data.</p>
+          <p>One HTML file, 17 tiles — calendar, budget, bills, countdowns, journal, health, more. Runs in your browser on your data.</p>
         </div>
       </div>
 
@@ -843,14 +843,14 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
           <div class="mockup">
             <div class="db-focus3">
               <div class="db-fi"><input type="checkbox" checked disabled><span class="fn">1</span><span style="color:#94a3b8;text-decoration:line-through;">Ship feature cards for website</span></div>
-              <div class="db-fi"><input type="checkbox" disabled><span class="fn">2</span><span>Prep salary ask deck</span></div>
-              <div class="db-fi"><input type="checkbox" disabled><span class="fn">3</span><span>Review Olive's grade report</span></div>
+              <div class="db-fi"><input type="checkbox" disabled><span class="fn">2</span><span>Draft the Q3 planning doc</span></div>
+              <div class="db-fi"><input type="checkbox" disabled><span class="fn">3</span><span>Review the kids' grade reports</span></div>
             </div>
           </div>
         </div>
         <div class="f-body">
           <h3>Ring + Focus 3</h3>
-          <p>Your day mapped as colored arcs on a 24-hour clock, with three non-negotiable priorities front and center. See the plan. Know the focus.</p>
+          <p>Your day as colored arcs on a 24-hour clock, with today's three priorities underneath.</p>
         </div>
       </div>
 
@@ -933,7 +933,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         </div>
         <div class="f-body">
           <h3>Cubes</h3>
-          <p>Projects with a progress trail. Tasks, urgency, energy ratings, decisions logged, artifacts linked. From spark to done.</p>
+          <p>Projects with a trail: tasks, urgency, energy, decisions, linked artifacts. Spark to done.</p>
         </div>
       </div>
 
@@ -977,19 +977,19 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
       </div>
 
       <div class="f-card f-timeline">
-        <div class="mockup"><img src="ss-timecapsul-detail.png" alt="Monthly capsul detail — activity log, journal entries, health log, check-ins"></div>
+        <div class="mockup"><img src="ss-timecapsul-detail.png" alt="TimeCapsul detail — activity log, journal entries, health log, check-ins"></div>
         <div class="f-body">
           <h3>Timeline</h3>
-          <p>Everything your agent tracks — flagged, changed, learned. Full visibility, no black boxes.</p>
+          <p>Milestones by month, plus the TimeCapsul year view. What your agent tracks lives in plain files you can read.</p>
         </div>
       </div>
 
       <!-- ROW 5: Time Capsuls (tall, 5col) + 3 stacked cards (7col) -->
       <div class="f-card f-capsul">
-        <div class="mockup" style="flex:1;min-height:0;"><img src="ss-timecapsul-overview.png" alt="Time Capsul — monthly overview with AI summary, stats, and highlights reel" style="height:100%;object-fit:cover;object-position:top;"></div>
+        <div class="mockup" style="flex:1;min-height:0;"><img src="ss-timecapsul-overview.png" alt="Time Capsul — year-in-review with AI summary, stats, and highlights reel" style="height:100%;object-fit:cover;object-position:top;"></div>
         <div class="f-body">
           <h3>Time Capsuls</h3>
-          <p>Every month becomes a capsule — AI summaries, highlights, journal, health, check-ins. Look back and see how life evolved.</p>
+          <p>A year-in-review built from your milestones, goals, journal and check-ins.</p>
         </div>
       </div>
 
@@ -1029,7 +1029,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         </div>
         <div class="f-body">
           <h3>Local-First Privacy</h3>
-          <p>No cloud. No account. No database. Everything lives on your computer in plain files.</p>
+          <p>No cloud. No account. No database. Your life data lives on your computer in plain files — only optional live tiles (News, Weather, Stocks) call outside services.</p>
         </div>
       </div>
 
@@ -1054,7 +1054,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
         </div>
         <div class="f-body">
           <h3>Make It Yours</h3>
-          <p>Swap palettes, name your agent, change how it talks. Your system, your way.</p>
+          <p>Swap palettes, name your agent, change how it talks.</p>
         </div>
       </div>
 
@@ -1067,7 +1067,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
   <div class="section-inner">
     <div class="section-label">Start chatting. It handles the rest.</div>
     <h2 class="section-title">Set up &amp; helping in one conversation</h2>
-    <p class="section-sub">No coding. No configuration. Just chat — and it gets smarter every session.</p>
+    <p class="section-sub">No code, no config files. One conversation.</p>
     <div style="text-align:center;margin:-32px auto 40px;"><a href="#get" class="section-cta">Get it free →</a></div>
     <div class="steps-icons">
       <div class="step-dot"><div class="step-num s1">1</div></div>
@@ -1076,16 +1076,16 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
     </div>
     <div class="steps-copy">
       <div class="step-text">
-        <h3>Install the plugin</h3>
-        <p>Download one file. Double-click to install in Claude Desktop. No accounts, no setup wizards, no dependencies.</p>
+        <h3>Download the zip</h3>
+        <p>Drop it in a folder, point Cowork at it, and say "Unzip and set up my MyCapsul." No account, no installer.</p>
       </div>
       <div class="step-text">
         <h3>Have a conversation</h3>
-        <p>Tell your agent about your life — schedule, budget, goals, health. It builds your personal knowledge base as you chat.</p>
+        <p>Tell your agent about your life — schedule, budget, goals, health. It builds the knowledge base as you talk.</p>
       </div>
       <div class="step-text">
         <h3>Open your dashboard</h3>
-        <p>Your command center is ready. Pin it to a second monitor, set it as your homepage, or keep it a tab away.</p>
+        <p>Pin it to a second monitor, make it your homepage, or keep it a tab away.</p>
       </div>
     </div>
   </div>
@@ -1096,7 +1096,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
   <div class="section-inner">
     <div class="section-label">Built for Real People</div>
     <h2 class="section-title">AI shouldn't require a CS degree</h2>
-    <p class="section-sub">MyCapsul is for anyone who wants AI to actually help with their actual life — not just answer trivia questions.</p>
+    <p class="section-sub">For anyone who wants AI to help with their actual life, not answer trivia.</p>
     <div class="cs-inline">
       <div class="cs-item">
         <div class="cs-icon" style="background:rgba(0,126,255,0.1);color:var(--blue);">
@@ -1123,22 +1123,22 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
       <div class="who-card">
         <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg></div>
         <h3>The overwhelmed</h3>
-        <p>Too many tabs, too many deadlines, too many things slipping through the cracks. MyCapsul gives you external structure — visual systems, Focus 3, and an agent that remembers what you forget.</p>
+        <p>Too many tabs, too many deadlines, too much slipping through. External structure: a visual system, Focus 3, and an agent that remembers what you forget.</p>
       </div>
       <div class="who-card">
         <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
         <h3>The busy parent</h3>
-        <p>Custody schedules, school events, meal planning, bills — all in one place. Tell your agent once and it tracks everything from there.</p>
+        <p>Custody weeks, school events, meals, bills — one place. Say it once; it's tracked from there.</p>
       </div>
       <div class="who-card">
         <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
         <h3>The side hustler</h3>
-        <p>Day job plus projects plus life. Cubes track every initiative. Budget tiles show the real numbers. Your agent helps you juggle without dropping things.</p>
+        <p>Day job, projects, life. Cubes track the projects; budget tiles show the real numbers.</p>
       </div>
       <div class="who-card">
         <div class="who-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
         <h3>The AI-curious</h3>
-        <p>You've heard AI can help but don't know where to start. MyCapsul gives you a reason to chat with AI every day — and it gets more useful every time you do.</p>
+        <p>You've heard AI can help and don't know where to start. This is a reason to talk to it every day, and it gets more useful each time.</p>
       </div>
     </div>
   </div>
@@ -1149,10 +1149,10 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
   <div class="bottom-cta-inner">
     <div class="bottom-cta-card">
       <div class="cta-top">
-        <div class="cta-version" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="display:inline-flex;align-items:center;gap:6px;"><span class="ver-dot"></span> v1.5 <a href="docs/releases.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Release Notes</a></span><a href="docs/releases.html#update" style="background:var(--ember,#E67201);color:#fff;text-decoration:none;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.3px;text-transform:uppercase;">How to Update</a></div>
+        <div class="cta-version" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="display:inline-flex;align-items:center;gap:6px;"><span class="ver-dot"></span> v1.5.1 <a href="docs/releases.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Release Notes</a></span><a href="docs/releases.html#update" style="background:var(--ember,#E67201);color:#fff;text-decoration:none;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:.3px;text-transform:uppercase;">How to Update</a></div>
         <div class="cta-label">Download MyCapsul</div>
         <div class="cta-sublabel">Free to download. Free to use. Always.</div>
-        <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.0/mycapsul-v1.5.0.zip" class="btn-download" id="downloadBtn2" download>
+        <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.1/mycapsul-v1.5.1.zip" class="btn-download" id="downloadBtn2" download>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download .zip
         </a>
@@ -1160,7 +1160,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
       </div>
       <div class="cta-bottom">
         <div class="mail-label">Stay in the loop</div>
-        <div class="mail-sub">New features, widgets, and enhancements — straight to your inbox.</div>
+        <div class="mail-sub">New widgets and features, by email.</div>
         <form class="mail-form" name="signup-bottom" method="POST" data-netlify="true" action="/thanks.html" aria-label="Sign up for updates">
           <label for="email-bottom" class="sr-only">Email address</label>
           <input type="email" name="email" id="email-bottom" placeholder="Where should we send updates?" required autocomplete="email">
@@ -1172,9 +1172,9 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
 
     <div class="why-free">
       <h2>Why I built this</h2>
-      <p>MyCapsul started as a personal project. I was juggling too many things, dropping too many balls, and no productivity app actually fit the way my life works.</p>
-      <p>So I built an AI agent that knows my world and a dashboard that makes it visible. It changed how I manage my days, my money, my energy, my kids' schedules — everything.</p>
-      <p>I believe AI should be accessible to everyone, not just developers and power users. MyCapsul is my way of making that real. It's free because the goal isn't revenue — it's impact.</p>
+      <p>MyCapsul started as a personal project. I was dropping too many balls, and no productivity app fit the way my life works.</p>
+      <p>So I built an agent that knows my world and a dashboard that shows it. It changed how I run my days, my money, my energy, my kids' schedules.</p>
+      <p>AI should be usable by people who aren't developers. That's why this exists, and why it's free.</p>
       <div class="support-row">
         <p>If it helps you, and you want to support the work:</p>
         <a href="https://buymeacoffee.com/mcatoms" target="_blank" class="btn-coffee">☕ Buy Me a Coffee</a>
@@ -1223,7 +1223,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
   </div>
   <div class="footer-adhd">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-    <span><strong>Designed for the ADHD brain.</strong> Visual structure, external accountability, and an agent that remembers what you forget. Built by someone who gets it.</span>
+    <span><strong>Designed for the ADHD brain.</strong> Visual structure, external accountability, an agent that remembers what you forget. Built by someone who has one.</span>
   </div>
   <div class="footer-bottom">
     <span>Built by <a href="https://mcatoms.com" target="_blank" style="color:inherit;text-decoration:underline;text-underline-offset:2px;transition:color .2s;">McAtoms</a></span>
@@ -1277,7 +1277,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:2px solid var
   <h2>Contact</h2>
   <p>MyCapsul is built by McAtoms — a one-person studio making AI tools for real life.</p>
   <h3>Get in Touch</h3>
-  <p>For questions, feedback, bug reports, or just to say hi:<br><a href="mailto:mcatomsinc@gmail.com">mcatomsinc@gmail.com</a></p>
+  <p>Questions, feedback, bug reports:<br><a href="mailto:mcatomsinc@gmail.com">mcatomsinc@gmail.com</a></p>
   <h3>Support the Project</h3>
   <p>MyCapsul is free and always will be. If it helps, consider <a href="https://buymeacoffee.com/mcatoms" target="_blank">buying me a coffee</a>.</p>
 </div></div>
@@ -1561,10 +1561,10 @@ document.querySelectorAll('#paletteSwitcher .db-swatch').forEach(s=>{s.addEventL
     {start:'06:00',end:'07:00',cat:'personal',label:'AM Prep'},
     {start:'07:00',end:'08:00',cat:'family',label:'Kids Ready'},
     {start:'08:00',end:'08:30',cat:'break',label:'Commute'},
-    {start:'09:00',end:'10:30',cat:'work',label:'KlearTrust'},
+    {start:'09:00',end:'10:30',cat:'work',label:'Work'},
     {start:'10:30',end:'12:00',cat:'build',label:'MyCapsul'},
     {start:'12:00',end:'13:00',cat:'break',label:'Lunch'},
-    {start:'13:00',end:'15:00',cat:'work',label:'KlearTrust'},
+    {start:'13:00',end:'15:00',cat:'work',label:'Work'},
     {start:'15:00',end:'16:30',cat:'build',label:'Build'},
     {start:'16:30',end:'17:00',cat:'admin',label:'Budget'},
     {start:'17:00',end:'19:00',cat:'family',label:'Family'},

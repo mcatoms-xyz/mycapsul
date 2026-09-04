@@ -411,7 +411,7 @@ body {
 <div class="hero">
   <div class="hero-pill">Prompt Cookbook</div>
   <h1>Things You Can <span>Say</span></h1>
-  <p class="hero-sub">Your Capsul agent understands natural language. Here are real examples of things you can ask, organized by what you're trying to do. Mix, adapt, and make them your own.</p>
+  <p class="hero-sub">Things to say to your agent, grouped by what you're trying to do. Adapt freely.</p>
 </div>
 
 <!-- CATEGORY NAV -->
@@ -450,28 +450,28 @@ body {
     <div class="section-icon blue">🕐</div>
     <h2>Schedule & Time</h2>
   </div>
-  <p class="section-desc">Manage your calendar, daily plan, and the ring clock. Your agent reads your schedule module and can generate clock blocks, add events, and track what's coming up.</p>
+  <p class="section-desc">Calendar, daily plan, and the ring clock — all driven by your schedule module.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
       <div class="prompt-tag schedule">Daily Planning</div>
       <div class="prompt-say">"What does my day look like?"</div>
-      <div class="prompt-result"><strong>Agent reads your schedule</strong> and gives you a rundown of today's events, deadlines, and blocks. If a clock schedule has been generated, it'll reference that too.</div>
+      <div class="prompt-result"><strong>Agent reads your schedule</strong> and runs down today's events, deadlines, and blocks, including the clock schedule if one exists.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag schedule">Daily Planning</div>
       <div class="prompt-say">"Build my schedule for today"</div>
-      <div class="prompt-result"><strong>Generates clock blocks</strong> for the ring planner based on your schedule module — accounts for custody, recurring events, work patterns, and known deadlines.</div>
+      <div class="prompt-result"><strong>Generates clock blocks</strong> from your schedule module, accounting for custody, recurring events, work patterns, and deadlines.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag schedule">Events</div>
       <div class="prompt-say">"I have a dentist appointment Thursday at 2pm"</div>
-      <div class="prompt-result"><strong>Adds the event</strong> to your schedule module and pushes it to your calendar widget. Immediately — no waiting for session end.</div>
+      <div class="prompt-result"><strong>Adds the event</strong> to your schedule module and pushes it to your calendar widget right away; refresh the dashboard to see it.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag schedule">Events</div>
       <div class="prompt-say">"Remind me that rent is due on the 1st every month"</div>
-      <div class="prompt-result"><strong>Adds a recurring item</strong> to your schedule module. Your agent will surface it proactively in future sessions when the date approaches.</div>
+      <div class="prompt-result"><strong>Adds a recurring item</strong> to your schedule module. Your agent will raise it at the start of your next session when the date approaches (it can't run between sessions).</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag schedule">Custody</div>
@@ -481,7 +481,7 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag schedule">Countdowns</div>
       <div class="prompt-say">"Add a countdown for Mom's birthday on June 12"</div>
-      <div class="prompt-result"><strong>Creates a countdown</strong> in your Countdowns widget with the date and a day count. Shows up on your dashboard immediately after sync.</div>
+      <div class="prompt-result"><strong>Creates a countdown</strong> in your Countdowns widget with the date and a day count. Shows after sync.</div>
     </div>
   </div>
 </div>
@@ -492,13 +492,13 @@ body {
     <div class="section-icon go">💰</div>
     <h2>Money & Budget</h2>
   </div>
-  <p class="section-desc">Track spending, manage bills, update your balance, and keep your financial picture honest. Your agent can calculate daily budgets, flag upcoming bills, and log transactions.</p>
+  <p class="section-desc">Spending, bills, balance, and the daily budget that falls out of them.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
       <div class="prompt-tag money">Balance</div>
       <div class="prompt-say">"My checking balance is $2,340 as of today"</div>
-      <div class="prompt-result"><strong>Updates your budget</strong> with the new balance and recalculates your daily spending target based on income minus obligations through end of month.</div>
+      <div class="prompt-result"><strong>Updates your budget</strong> and recalculates your daily spending target (income minus obligations through month end).</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag money">Spending</div>
@@ -508,7 +508,7 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag money">Bills</div>
       <div class="prompt-say">"Add my electric bill — $85, due on the 15th"</div>
-      <div class="prompt-result"><strong>Adds the bill</strong> to your bills list with amount, due day, and category. It'll factor into your FRC (Financial Reality Check) widget automatically.</div>
+      <div class="prompt-result"><strong>Adds the bill</strong> to your bills list with amount, due day, and category, and folds it into the FRC (Financial Reality Check) widget.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag money">Bills</div>
@@ -518,12 +518,12 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag money">Subscriptions</div>
       <div class="prompt-say">"I cancelled my Hulu subscription"</div>
-      <div class="prompt-result"><strong>Marks the subscription as inactive.</strong> Removes it from your monthly obligations. Updates your finances module and FRC calculations.</div>
+      <div class="prompt-result"><strong>Marks the subscription inactive</strong> and drops it from monthly obligations, the finances module, and the FRC.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag money">Overview</div>
       <div class="prompt-say">"How am I doing on money this month?"</div>
-      <div class="prompt-result"><strong>Pulls your budget data</strong> — current balance, daily target, days left in month, bills upcoming, total obligations — and gives you the honest picture.</div>
+      <div class="prompt-result"><strong>Pulls your budget data</strong>: balance, daily target, days left, upcoming bills, total obligations.</div>
     </div>
   </div>
 </div>
@@ -534,7 +534,7 @@ body {
     <div class="section-icon purple">💪</div>
     <h2>Health & Wellness</h2>
   </div>
-  <p class="section-desc">Log health notes, track conditions and medications, and check in on energy and mood. Your agent keeps a running health record and can spot patterns over time.</p>
+  <p class="section-desc">Health notes, conditions, medications, energy and mood — a running record your agent can spot patterns in.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -550,12 +550,12 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag health">Check-in</div>
       <div class="prompt-say">"Let's do a check-in"</div>
-      <div class="prompt-result"><strong>Walks you through a daily check-in</strong> — mood (1-10), energy (1-10), wins, struggles, and what you want to focus on tomorrow. Saves to your check-in widget.</div>
+      <div class="prompt-result"><strong>Walks you through a daily check-in</strong>: mood (1-10), energy (1-10), wins, struggles, tomorrow's focus. Saved to the check-in widget.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag health">Medications</div>
       <div class="prompt-say">"I started taking magnesium 400mg at night"</div>
-      <div class="prompt-result"><strong>Updates your health baseline</strong> — adds the medication to your conditions/meds list so your agent always knows your current regimen.</div>
+      <div class="prompt-result"><strong>Updates your health baseline</strong> — the medication joins your conditions/meds list.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag health">Status</div>
@@ -565,7 +565,7 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag health">Patterns</div>
       <div class="prompt-say">"How has my energy been this week?"</div>
-      <div class="prompt-result"><strong>Reviews your check-in data</strong> and health logs to show energy trends. If there's a pattern (e.g., always low on Mondays), your agent will flag it.</div>
+      <div class="prompt-result"><strong>Reviews your check-in data</strong> and health logs for energy trends and flags patterns (always low on Mondays, say).</div>
     </div>
   </div>
 </div>
@@ -576,7 +576,7 @@ body {
     <div class="section-icon ember">📦</div>
     <h2>Projects & Cubes</h2>
   </div>
-  <p class="section-desc">Cubes are your project containers — each one has tasks, a log, and a lifecycle (spark → active → complete → archived). Use them for anything from home improvement to career goals.</p>
+  <p class="section-desc">Cubes are project containers: tasks, a log, and a lifecycle (spark → active → complete → archived).</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -597,12 +597,12 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag projects">Status</div>
       <div class="prompt-say">"What's the status on my active projects?"</div>
-      <div class="prompt-result"><strong>Lists all active cubes</strong> with their task counts (done/total), last log entry, and next pending task. Good for a quick project review.</div>
+      <div class="prompt-result"><strong>Lists all active cubes</strong> with task counts (done/total), last log entry, and next pending task.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag projects">Lifecycle</div>
       <div class="prompt-say">"Move my home renovation cube to active"</div>
-      <div class="prompt-result"><strong>Changes the cube state</strong> from spark to active. Active cubes are displayed more prominently on the dashboard.</div>
+      <div class="prompt-result"><strong>Changes the cube state</strong> from spark to active, which gives it more prominence on the dashboard.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag projects">Focus</div>
@@ -618,7 +618,7 @@ body {
     <div class="section-icon blue">🎯</div>
     <h2>Goals & Progress</h2>
   </div>
-  <p class="section-desc">Set and track yearly goals with four types: time-based (deadline), manual (percentage), financial (dollar target), or cube-linked (auto-tracks from project progress).</p>
+  <p class="section-desc">Yearly goals, four types: time-based (deadline), manual (percentage), financial (dollar target), cube-linked (tracks project progress).</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -650,7 +650,7 @@ body {
     <div class="section-icon sky">📝</div>
     <h2>Journal & Reflection</h2>
   </div>
-  <p class="section-desc">Write journal entries, tag them by theme, and build a personal record over time. Your agent stores these in your seed and can reference them in future conversations.</p>
+  <p class="section-desc">Journal entries, tagged by theme, stored in your seed where your agent can refer back to them.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -682,7 +682,7 @@ body {
     <div class="section-icon sky">🎨</div>
     <h2>Customize Your Dashboard</h2>
   </div>
-  <p class="section-desc">Change how your dashboard looks, rearrange widgets, hide what you don't need, and even ask your agent to build entirely new features for you.</p>
+  <p class="section-desc">Looks, layout, hiding widgets, and building new ones.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -693,27 +693,27 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag custom">Layout</div>
       <div class="prompt-say">"Hide the news widget and make the budget widget full-width"</div>
-      <div class="prompt-result"><strong>Updates widget visibility and sizing.</strong> News disappears, budget stretches across the full width. You can always unhide widgets later.</div>
+      <div class="prompt-result"><strong>Updates widget visibility and sizing.</strong> News hides, budget goes full width. Unhide any time.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Layout</div>
       <div class="prompt-say">"Move my Focus 3 to the top of the dashboard"</div>
-      <div class="prompt-result"><strong>Reorders your widget layout</strong> so Focus 3 appears first. Your agent adjusts the widget order array in localStorage.</div>
+      <div class="prompt-result"><strong>Reorders your widget layout</strong> so Focus 3 comes first.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Widgets</div>
       <div class="prompt-say">"I wish I had a widget that tracks my water intake"</div>
-      <div class="prompt-result"><strong>Your agent can build a custom widget</strong> — a new widget with its own data storage, rendering, and interaction. This is the co-builder magic: you describe what you want, your agent writes the code.</div>
+      <div class="prompt-result"><strong>Builds a custom widget</strong> with its own storage, rendering, and interaction. You describe it; your agent writes the code.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Widgets</div>
       <div class="prompt-say">"Install the running tracker widget"</div>
-      <div class="prompt-result"><strong>Loads a pre-built widget</strong> from the widgets folder. It registers in your dashboard, gets its own widget, and starts tracking immediately.</div>
+      <div class="prompt-result"><strong>Loads a pre-built widget</strong> from the widgets folder and registers it in your dashboard.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Agent</div>
       <div class="prompt-say">"Change your name to Jarvis"</div>
-      <div class="prompt-result"><strong>Updates the agent name</strong> in your CLAUDE.md and dashboard config. From now on, your agent responds as Jarvis and the dashboard reflects the new name.</div>
+      <div class="prompt-result"><strong>Updates the agent name</strong> in CLAUDE.md and the dashboard config. Jarvis it is.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Widgets</div>
@@ -724,7 +724,7 @@ body {
 
   <div class="callout tip">
     <div class="c-icon">💡</div>
-    <div class="c-text"><strong>The co-builder principle:</strong> You don't need to know how to code. Describe what you want in plain language — "I want a widget that shows how many days until summer" — and your agent will build it, explain what it did, and install it on your dashboard. If something breaks, it can roll it back.</div>
+    <div class="c-text"><strong>Co-building:</strong> no code required. Say "I want a widget that shows how many days until summer" and your agent builds it, explains what it did, and installs it. If it breaks, it can roll it back.</div>
   </div>
 </div>
 
@@ -734,7 +734,7 @@ body {
     <div class="section-icon red">🤖</div>
     <h2>Working With Your Agent</h2>
   </div>
-  <p class="section-desc">Meta-prompts for managing how your agent works, what it knows, and how sessions flow. These are about the system itself, not any specific life area.</p>
+  <p class="section-desc">Prompts about the system itself: how your agent works, what it knows, how sessions flow.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
@@ -750,12 +750,12 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag general">Knowledge</div>
       <div class="prompt-say">"What do you know about my finances?"</div>
-      <div class="prompt-result"><strong>Reads your finances module</strong> and gives you a summary. Great for checking what your agent has on file and whether anything needs updating.</div>
+      <div class="prompt-result"><strong>Reads your finances module</strong> and summarizes what's on file.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag general">Knowledge</div>
       <div class="prompt-say">"I got a new job at Acme Corp, starting April 1st, salary is $95k"</div>
-      <div class="prompt-result"><strong>Updates multiple modules immediately</strong> — career.md (new job), finances.md (new income), schedule.md (start date). This is the real-time knowledge capture in action.</div>
+      <div class="prompt-result"><strong>Updates multiple modules immediately</strong>: career.md (new job), finances.md (new income), schedule.md (start date).</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag general">Inbox</div>
@@ -765,13 +765,13 @@ body {
     <div class="prompt-card">
       <div class="prompt-tag general">Standing Orders</div>
       <div class="prompt-say">"Always remind me about bills 3 days before they're due"</div>
-      <div class="prompt-result"><strong>Adds a standing order</strong> to your CLAUDE.md. Your agent will follow this rule every session going forward — it becomes part of who your agent is.</div>
+      <div class="prompt-result"><strong>Adds a standing order</strong> to CLAUDE.md, followed at the start of every session from now on (it can't act between sessions).</div>
     </div>
   </div>
 
   <div class="callout note">
     <div class="c-icon">📌</div>
-    <div class="c-text"><strong>Your agent remembers between sessions.</strong> Everything you tell your agent gets saved to your seed modules. When a new session starts, your agent reads those files and picks up right where you left off. The more you use it, the more it knows. The more it knows, the more useful it gets.</div>
+    <div class="c-text"><strong>Your agent remembers between sessions.</strong> What you tell it goes into the seed modules; a new session starts by reading them. The more you use it, the more it knows.</div>
   </div>
 </div>
 
@@ -781,28 +781,28 @@ body {
     <div class="section-icon ember">⚡</div>
     <h2>Power Moves</h2>
   </div>
-  <p class="section-desc">Compound prompts that combine multiple features at once. These show the real potential of having an AI that knows your whole life context.</p>
+  <p class="section-desc">Compound prompts that hit several features at once.</p>
 
   <div class="prompt-grid">
     <div class="prompt-card">
       <div class="prompt-tag projects">Compound</div>
       <div class="prompt-say">"Build my day — check what's on the calendar, set my Focus 3 from active cubes, and tell me if any bills are due this week"</div>
-      <div class="prompt-result"><strong>Multi-step morning briefing.</strong> Your agent cross-references schedule, projects, and finances to give you a complete picture and a ready-to-go daily plan.</div>
+      <div class="prompt-result"><strong>Multi-step morning briefing.</strong> Cross-references schedule, projects, and finances into a daily plan.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag money">Compound</div>
       <div class="prompt-say">"I got paid today. Balance is $3,200. Mark rent and electric as paid."</div>
-      <div class="prompt-result"><strong>Batch financial update.</strong> Updates balance, marks two bills as paid, recalculates daily budget, logs everything. Three actions in one sentence.</div>
+      <div class="prompt-result"><strong>Batch financial update.</strong> Balance updated, two bills marked paid, daily budget recalculated, all logged. Three actions, one sentence.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag custom">Compound</div>
       <div class="prompt-say">"Create a meal planning widget that tracks what I'm eating this week with a simple list and a grocery counter"</div>
-      <div class="prompt-result"><strong>Custom widget build.</strong> Your agent designs, codes, and installs a brand new widget on your dashboard — purpose-built for exactly what you described.</div>
+      <div class="prompt-result"><strong>Custom widget build.</strong> Your agent designs, codes, and installs a new widget for exactly what you described.</div>
     </div>
     <div class="prompt-card">
       <div class="prompt-tag general">Compound</div>
       <div class="prompt-say">"End-of-week review — how did I do on my Focus 3 this week, what's my spending total, and what should I carry forward?"</div>
-      <div class="prompt-result"><strong>Weekly retrospective.</strong> Pulls focus history, transaction totals, and project progress to give you an honest review and next-week priorities.</div>
+      <div class="prompt-result"><strong>Weekly retrospective.</strong> Focus history, transaction totals, and project progress, reviewed, with next week's priorities.</div>
     </div>
   </div>
 </div>
@@ -822,7 +822,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.0 — April 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.1 — September 2026</p>
 </div>
 
 <script>

@@ -329,10 +329,41 @@ body {
 <div class="hero">
   <div class="hero-pill">Release Notes</div>
   <h1>What's <span>New</span></h1>
-  <p class="hero-sub">Changelog, updates, and where we're headed. See what shipped and what's coming next.</p>
+  <p class="hero-sub">What shipped, and what's next.</p>
 </div>
 
 <!-- RELEASES -->
+
+<!-- v1.5.1 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.5.1</h2>
+      <div class="release-date">September 3, 2026</div>
+    </div>
+    <div class="release-badge improvement">Improvement</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Docs made accurate</strong> — Every claim on the site, in the docs, and in the agent manuals was checked against the code. Privacy wording now says what actually leaves your machine (web fonts, optional live tiles); sync is documented as Chrome/Edge; agent updates are documented as refresh-to-see when the file is opened directly; TimeCapsul is documented as yearly. Full audit in <code>audits/2026-09-03</code>.
+    </li>
+    <li>
+      <strong>setup-capsul unified</strong> — The <code>/setup-capsul</code> command and the skill now describe one folder layout and one first-boot flow. The zip layout and how the agent builds your <code>MyCapsul/</code> folder from it are documented.
+    </li>
+    <li>
+      <strong>Push-channel hardening</strong> — Agent → dashboard command processing is more defensive about malformed commands.
+    </li>
+    <li>
+      <strong>Erase all</strong> — A full-reset path in Settings for starting over cleanly.
+    </li>
+    <li>
+      <strong>Versioned migrations</strong> — One-time data migrations are now versioned so upgrades apply exactly once.
+    </li>
+    <li>
+      <strong>Agent manual fixes</strong> — 7 palettes with correct defaults, wizard steps in the real order, the dead separate-schedule-file instruction replaced by the <code>ringSegments</code> push command, and a documented <code>tcAgent_YYYY</code> schema so your agent can actually feed TimeCapsul.
+    </li>
+  </ul>
+</div>
 
 <!-- v1.5.0 -->
 <div class="release-card">
@@ -345,16 +376,16 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Self-Maintenance Protocols</strong> — Your Capsul agent now runs a Monthly Pass on the 1st of every month (checks for drift in your tile layout, seed modules, sync status, and config) and a Quarterly Deep Audit on Jan/Apr/Jul/Oct 1st (a five-step pass that cross-references SKILL.md, widget registry, command surface, data model, and doc site). Findings get written to a new <code>audits/</code> directory so you have a paper trail.
+      <strong>Self-Maintenance Protocols</strong> — Your Capsul agent now runs a Monthly Pass at its first session on or after the 1st of every month (checks for drift in your tile layout, seed modules, sync status, and config) and a Quarterly Deep Audit on Jan/Apr/Jul/Oct 1st (a five-step pass that cross-references SKILL.md, widget registry, command surface, data model, and doc site). Findings are written to a new <code>audits/</code> directory.
     </li>
     <li>
-      <strong>Cornerstone instruction for scaffolded bots</strong> — Added a standing rule to the CLAUDE.md template: <em>every bot should periodically audit its own structure, registry, and references for drift.</em> Referenceable from any other bot-scaffolding work via <code>docs/cornerstone-self-maintenance.md</code>. If you build other agents on top of the MyCapsul pattern, they inherit the same discipline.
+      <strong>Cornerstone instruction for scaffolded bots</strong> — Added a standing rule to the CLAUDE.md template: <em>every bot should periodically audit its own structure, registry, and references for drift.</em> Reusable from any other bot-scaffolding work via <code>docs/cornerstone-self-maintenance.md</code>.
     </li>
     <li>
-      <strong>Widget bridge hardening</strong> — The <code>_wBridge</code> CSS injection path now defensively handles both string and array CSS formats from external widget files. Prevents a class of silent style-injection bugs where widget authors returned CSS as an array of strings. Array-to-string coercion is explicit now.
+      <strong>Widget bridge hardening</strong> — The <code>_wBridge</code> CSS injection path now defensively handles both string and array CSS formats from external widget files. Fixes silent style-injection bugs when a widget returned CSS as an array of strings.
     </li>
     <li>
-      <strong>Audit directory</strong> — New <code>audits/</code> folder ships with the plugin, documenting the naming convention (<code>YYYY-MM-audit.md</code> for monthly, <code>YYYY-QN-audit.md</code> for quarterly) and the never-delete rule. Your audit history is a feature, not a log to clear.
+      <strong>Audit directory</strong> — New <code>audits/</code> folder ships with the plugin, documenting the naming convention (<code>YYYY-MM-audit.md</code> for monthly, <code>YYYY-QN-audit.md</code> for quarterly) and the never-delete rule.
     </li>
     <li>
       <strong>Docs updated</strong> — All documentation pages bumped to v1.5.0. SKILL.md updated with the new Self-Maintenance Protocols section. CLAUDE.md template gets the Cornerstone block and extended proactive-monitoring checklist.
@@ -373,19 +404,19 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>External Widget Protocol</strong> — 12 of 17 core widgets now render from standalone <code>.js</code> files via a new bridge system (<code>_wBridge</code>). Each widget file is validated against its inline counterpart for data access parity, interactive handler wiring, and visual fidelity. This is the foundation for hot-swappable widget updates without touching the main dashboard HTML.
+      <strong>External Widget Protocol</strong> — 12 of 17 core widgets now render from standalone <code>.js</code> files via a new bridge system (<code>_wBridge</code>). Each file is validated against its inline counterpart for data access, handler wiring, and visual fidelity — groundwork for updating widgets without touching the dashboard HTML.
     </li>
     <li>
-      <strong>Core vs. Optional widget split</strong> — 8 core widgets (Ring, Focus 3, Capsul, Calendar, Countdowns, Journal, Goals, Timeline) are always visible. 9 optional widgets (Health, Check-in, Budget, Bills, Subscriptions, Quick Wins, Hobbies, Life Areas, News) start hidden and activate based on your onboarding answers. Less clutter on first boot, more relevant from day one.
+      <strong>Core vs. Optional widget split</strong> — 8 core widgets (Ring, Focus 3, Capsul, Calendar, Countdowns, Journal, Goals, Timeline) are always visible. 9 optional widgets (Health, Check-in, Budget, Bills, Subscriptions, Quick Wins, Hobbies, Life Areas, News) start hidden and activate based on your onboarding answers.
     </li>
     <li>
-      <strong>Onboarding-driven visibility</strong> — The setup wizard now controls which optional widgets appear. Track your budget? Budget and Bills light up. Care about health? Health and Check-in activate. Follow the news? News widget appears. You get exactly the dashboard you asked for.
+      <strong>Onboarding-driven visibility</strong> — The setup wizard now controls which optional widgets appear. Say you track a budget and Budget and Bills appear; say you care about health and Health and Check-in do.
     </li>
     <li>
-      <strong>Interactive widget upgrades</strong> — Focus 3 gets inline editing with toggle, edit, confirm, and delete. Journal gets a working entry composer. Goals gets milestone posting. Budget gets a transaction input row. Countdowns gets an add button. Every widget that was display-only now has working interaction when loaded externally.
+      <strong>Interactive widget upgrades</strong> — Focus 3 gets inline editing with toggle, edit, confirm, and delete. Journal gets a working entry composer. Goals gets milestone posting. Budget gets a transaction input row. Countdowns gets an add button. Every display-only widget now has working interaction when loaded externally.
     </li>
     <li>
-      <strong>Dual-mode rendering</strong> — External widget files detect whether they're running inside the full dashboard (with access to global helpers) or in standalone/preview mode. In standalone mode, widgets gracefully degrade to read-only displays instead of throwing errors.
+      <strong>Dual-mode rendering</strong> — External widget files detect whether they're running inside the full dashboard (with access to global helpers) or in standalone/preview mode. Standalone, they fall back to read-only instead of throwing.
     </li>
     <li>
       <strong>Docs updated</strong> — All documentation pages updated to v1.4.0. SKILL.md updated with new widget architecture details and core/optional split documentation.
@@ -404,16 +435,16 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Core Widgets Unification</strong> — All 17 built-in dashboard features are now powered by a unified CORE_WIDGETS registry. Single source of truth for widget definitions, titles, icons, render functions, and metadata. Cleaner architecture, faster loads, and a foundation for future extensibility.
+      <strong>Core Widgets Unification</strong> — All 17 built-in dashboard features are now powered by a unified CORE_WIDGETS registry. One source of truth for definitions, titles, icons, render functions, and metadata.
     </li>
     <li>
       <strong>Widget Framework v0.2 + 3 new add-on widgets</strong> — Stock Ticker (real-time prices via Yahoo Finance), Weather (OpenWeatherMap with 5-day forecast), and Daily Quote (curated motivational quotes with category filtering). All installable as .capsul-widget files.
     </li>
     <li>
-      <strong>New distribution format</strong> — MyCapsul now ships as a single zip file instead of a .plugin file. Download it, place it in your folder, point Cowork at it, and say "set up my MyCapsul." Everything is inside — the dashboard, agent skill, docs, seed templates, and add-on widgets.
+      <strong>New distribution format</strong> — MyCapsul now ships as a single zip file instead of a .plugin file. Download it, place it in your folder, point Cowork at it, and say "set up my MyCapsul." Dashboard, agent skill, docs, seed templates, and add-on widgets are all inside.
     </li>
     <li>
-      <strong>Two-tier widget architecture</strong> — Core widgets run as native JavaScript functions for maximum performance. Add-on widgets use JSON-defined .capsul-widget files that can be installed, shared, and community-built. Both types integrate seamlessly with the dashboard.
+      <strong>Two-tier widget architecture</strong> — Core widgets are native JavaScript functions. Add-ons are JSON <code>.capsul-widget</code> files that can be installed and shared.
     </li>
     <li>
       <strong>Tile → Widget taxonomy</strong> — All user-facing references to "tiles" are now "widgets" throughout the dashboard, documentation, and agent skill. The underlying data model is unchanged — no migration needed.
@@ -435,16 +466,16 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Zero-friction agent updates</strong> — Your agent's changes now appear on the dashboard automatically when you refresh the page. No more "Pull from Agent" button, no file handle setup. The dashboard loads agent commands via a script tag and also auto-polls every 5 seconds for live updates while the page is open.
+      <strong>Zero-friction agent updates</strong> — Your agent's changes now appear on the dashboard automatically when you refresh the page. No "Pull from Agent" button, no file handle setup. The dashboard loads agent commands via a script tag and also auto-polls every 5 seconds for live updates while the page is open.
     </li>
     <li>
       <strong>Legacy sync demoted</strong> — The File System Access API file handle (previously required to connect agent updates) is now optional and tucked under Advanced in settings. It still works for anyone who prefers it, but the default path requires zero setup.
     </li>
     <li>
-      <strong>Built-in version detection</strong> — The dashboard now carries a version meta tag. When you install a new plugin version, your agent can detect the mismatch and walk you through updating your dashboard HTML — no guesswork, no manual diffing. Your data stays untouched in the browser.
+      <strong>Built-in version detection</strong> — The dashboard now carries a version meta tag. When you install a new plugin version, your agent can detect the mismatch and walk you through updating your dashboard HTML . Browser data is untouched.
     </li>
     <li>
-      <strong>Plugin Update Protocol</strong> — Your agent now knows how to guide you through updating to a new version. Just say "I updated my plugin" and it handles the rest: checks your version, explains what changed, replaces the HTML, confirms the update. Fully manual and user-triggered — no wasted tokens on auto-checking.
+      <strong>Plugin Update Protocol</strong> — Your agent now knows how to guide you through updating to a new version. Say "I updated my plugin" and it checks your version, explains what changed, replaces the HTML, and confirms. User-triggered only — no auto-checking.
     </li>
     <li>
       <strong>Docs updated</strong> — FAQ and troubleshooting reflect the new sync architecture. All references updated from the old .json format to the new .js format.
@@ -463,16 +494,16 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Friendlier first boot experience</strong> — Your Capsul agent now greets you and introduces itself before asking any questions. On first launch, you'll see a welcome message with two clear options: start the setup wizard or view a demo dashboard (Brodie's Capsul) first. No more jumping straight into an interrogation.
+      <strong>Friendlier first boot experience</strong> — Your Capsul agent now greets you and introduces itself before asking any questions. First launch offers two options: start the setup wizard, or look at the demo dashboard (Brodie's Capsul) first.
     </li>
     <li>
-      <strong>HTML onboarding wizard is now the primary setup path</strong> — The 5-step in-browser wizard handles initial setup. Your agent picks up after you finish, acknowledges what you entered, and offers to fill in anything you skipped. The old agent-asks-questions approach is still available as a fallback if needed.
+      <strong>HTML onboarding wizard is now the primary setup path</strong> — The 5-step in-browser wizard handles initial setup. Your agent picks up where the wizard ends and offers to fill in anything skipped. The agent-asks-questions path remains as a fallback.
     </li>
     <li>
-      <strong>Faster first load</strong> — Reduced the skill file size by 36% by moving widget and customization reference docs to a lazy-loaded file. Your agent only reads those sections when you actually ask to build a widget or customize something.
+      <strong>Faster first load</strong> — Reduced the skill file size by 36% by moving widget and customization reference docs to a lazy-loaded file. Your agent reads those only when you ask to build or customize a widget.
     </li>
     <li>
-      <strong>Reminders stay in your Capsul</strong> — When you say "remind me to X," your agent now routes reminders through MyCapsul-native systems (dashboard inbox, schedule, Focus 3, session handoff) instead of external tools. This keeps reminders connected to your full life context.
+      <strong>Reminders stay in your Capsul</strong> — When you say "remind me to X," your agent now routes reminders through MyCapsul-native systems (dashboard inbox, schedule, Focus 3, session handoff) instead of external tools.
     </li>
   </ul>
 </div>
@@ -488,13 +519,13 @@ body {
   </div>
   <ul class="release-changes">
     <li>
-      <strong>Full personal dashboard with 17 built-in widgets</strong> — Ring planner, Focus 3, Budget, Cubes, Goals, Calendar, Health, Journal, and more. Everything you need to see your whole life at a glance.
+      <strong>Full personal dashboard with 17 built-in widgets</strong> — Ring planner, Focus 3, Budget, Cubes, Goals, Calendar, Health, Journal, and more.
     </li>
     <li>
       <strong>AI-maintained knowledge system with seed modules</strong> — Your agent builds and maintains a personal knowledge base (identity, schedule, finances, health, career, legal) that powers every conversation and dashboard update.
     </li>
     <li>
-      <strong>Widget creation and installation system</strong> — Build custom dashboard widgets in the .capsul-widget format. Install them with a single command. Share them with friends.
+      <strong>Widget creation and installation system</strong> — Build custom dashboard widgets in the .capsul-widget format. Install with one command. Share them.
     </li>
     <li>
       <strong>Dual-layer data persistence</strong> — localStorage + IndexedDB backup. Your dashboard data survives browser clears and unexpected restarts.
@@ -509,7 +540,7 @@ body {
       <strong>TimeCapsul year-in-review feature</strong> — At the end of the year, your agent compiles a curated year in review from your cubes, journal, and life events.
     </li>
     <li>
-      <strong>Full documentation suite</strong> — Getting started guide, user guide, prompt cookbook, FAQ, and release notes. Everything you need to know.
+      <strong>Full documentation suite</strong> — Getting started guide, user guide, prompt cookbook, FAQ, and release notes.
     </li>
   </ul>
 </div>
@@ -518,7 +549,7 @@ body {
 <div class="roadmap-section">
   <div class="roadmap-header">
     <h2>What's <span>Coming</span></h2>
-    <p>MyCapsul is actively evolving. Here's where we're headed — priorities shift based on what users actually need, so this list is a compass, not a contract.</p>
+    <p>Where this is headed. Priorities shift with what users need — a compass, not a contract.</p>
   </div>
 
   <div class="roadmap-lane">
@@ -526,12 +557,12 @@ body {
 
     <div class="roadmap-card">
       <h3>FinCapsul — Financial Intelligence Extension</h3>
-      <p>A dedicated financial analysis page that connects to your main dashboard. Paycheck cash flow analysis, automatic spending categorization, monthly trend tracking, and an eating-out modeler. Import your bank CSV and get real insight into where your money goes.</p>
+      <p>A dedicated financial analysis page that connects to your main dashboard. Paycheck cash flow analysis, automatic spending categorization, monthly trend tracking, and an eating-out modeler. Import a bank CSV and see where the money goes.</p>
     </div>
 
     <div class="roadmap-card">
       <h3>Widget Marketplace</h3>
-      <p>A centralized hub for discovering, sharing, and installing community-built widgets. Beyond the 3 new v1.3.0 add-ons (Stock Ticker, Weather, Daily Quote), we're building a marketplace where users can publish .capsul-widget files — meal planners, habit trackers, workout logs, and anything else you can imagine.</p>
+      <p>A centralized hub for discovering, sharing, and installing community-built widgets. Beyond the three v1.3.0 add-ons (Stock Ticker, Weather, Daily Quote), we're building a place for users to publish .capsul-widget files — meal planners, habit trackers, workout logs.</p>
     </div>
   </div>
 
@@ -540,17 +571,17 @@ body {
 
     <div class="roadmap-card">
       <h3>HealthCapsul — Wellness Intelligence Extension</h3>
-      <p>Energy and mood trend visualization, medication tracking, condition management, and ADHD-aware focus pattern analysis. Generates structured health summaries you can actually share with your doctor.</p>
+      <p>Energy and mood trend visualization, medication tracking, condition management, and ADHD-aware focus pattern analysis. Structured summaries you can hand to your doctor.</p>
     </div>
 
     <div class="roadmap-card">
       <h3>KidsCapsul — Family & School Hub Extension</h3>
-      <p>Custody calendar visualization, school event tracking, grade monitoring, and activity scheduling. Built for co-parents who need everything about their kids in one place.</p>
+      <p>Custody calendar visualization, school event tracking, grade monitoring, and activity scheduling. For co-parents.</p>
     </div>
 
     <div class="roadmap-card">
       <h3>Auto-Sync</h3>
-      <p>Automatic bidirectional sync between your dashboard and your AI agent using the File System Access API. No more clicking "Sync" — your dashboard and agent stay in lockstep in real time.</p>
+      <p>Automatic bidirectional sync between your dashboard and your AI agent using the File System Access API. No Sync button; dashboard and agent stay in step.</p>
     </div>
   </div>
 
@@ -559,17 +590,17 @@ body {
 
     <div class="roadmap-card">
       <h3>LegalCapsul — Legal & Document Tracker Extension</h3>
-      <p>Document timeline, incident logging, court date prep, obligation tracking, and a document repository index. For anyone managing legal matters who needs a clear, factual record.</p>
+      <p>Document timeline, incident logging, court date prep, obligation tracking, and a document repository index. A clear, factual record.</p>
     </div>
 
     <div class="roadmap-card">
       <h3>HustleCapsul — Career & Side Projects Extension</h3>
-      <p>Consulting pipeline tracking, side project portfolio, income stream breakdown, and professional development logging. For anyone building beyond their 9-to-5.</p>
+      <p>Consulting pipeline tracking, side project portfolio, income stream breakdown, and professional development logging.</p>
     </div>
 
     <div class="roadmap-card">
       <h3>Widget Marketplace</h3>
-      <p>A place to browse, share, and install community-built widgets. Build a tracker for anything — guitar practice, garden watering, book clubs — and share it as a .capsul-widget file that anyone can install.</p>
+      <p>A place to browse, share, and install community-built widgets. Build a tracker for anything and share it as a .capsul-widget file.</p>
     </div>
 
     <div class="roadmap-card">
@@ -579,7 +610,7 @@ body {
   </div>
 
   <div class="roadmap-note">
-    Capsul Extensions are standalone pages that share the MyCapsul design system and connect back to your main dashboard. Each one adds depth to a specific area of your life without cluttering your daily view.
+    Capsul Extensions are standalone pages in the MyCapsul design system, linked from the main dashboard. Each goes deep on one area without cluttering the daily view.
   </div>
 </div>
 
@@ -597,7 +628,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.0 — April 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.1 — September 2026</p>
 </div>
 
 <!-- UPDATE MODAL -->
@@ -605,19 +636,19 @@ body {
   <div class="update-modal">
     <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
     <h2>How to Update MyCapsul</h2>
-    <div class="version-pill">Latest: v1.5.0</div>
-    <p>Updating is quick and your data is safe — everything lives in your browser's storage, not in the HTML file. Here's the process:</p>
+    <div class="version-pill">Latest: v1.5.1</div>
+    <p>Your data lives in browser storage, not the HTML file, so updating is safe:</p>
     <ol class="update-steps">
-      <li><strong>Download the latest zip</strong> — Click the button below to get the newest <code>.zip</code> file. Or install the plugin directly in Cowork.</li>
-      <li><strong>Drop it in your MyCapsul folder</strong> — Move the downloaded <code>.zip</code> file into your MyCapsul folder (or <code>_inbox/</code>). This is how you feed updates to your Capsul agent.</li>
-      <li><strong>Tell your Capsul agent</strong> — Open a session and say: <strong>"Update my MyCapsul."</strong> Your agent will find the file, detect the version change, explain what's new, and update your dashboard HTML.</li>
+      <li><strong>Download the latest zip</strong> — use the button below, or install the plugin directly in Cowork.</li>
+      <li><strong>Drop it in your MyCapsul folder</strong> (or <code>_inbox/</code>).</li>
+      <li><strong>Tell your Capsul agent</strong> — say <strong>"Update my MyCapsul."</strong> It finds the file, detects the version change, explains what's new, and replaces your dashboard HTML.</li>
       <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
     </ol>
-    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.0/mycapsul-v1.5.0.zip" class="update-download-btn">
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.1/mycapsul-v1.5.1.zip" class="update-download-btn">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download v1.5.0
+      Download v1.5.1
     </a>
-    <p class="update-note">Your dashboard data (tiles, settings, seed modules, everything in localStorage) is completely untouched by this process. Only the HTML file gets replaced.</p>
+    <p class="update-note">Tiles, settings, seed modules, everything in localStorage: untouched. Only the HTML file is replaced.</p>
   </div>
 </div>
 
