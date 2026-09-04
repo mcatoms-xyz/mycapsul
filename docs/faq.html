@@ -355,12 +355,12 @@ body {
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What is TimeCapsul?</div>
-  <div class="faq-a"><strong>TimeCapsul</strong> is a year-in-review feature. Access it from the "View TimeCapsul" button on the Timeline widget. It builds a visual summary of your year: monthly highlights, goal progress, journal excerpts, finished projects. Your agent adds monthly summaries through the year by writing the <code>tcAgent_YYYY</code> key (documented in the agent skill).</div>
+  <div class="faq-a"><strong>TimeCapsul</strong> is your review, at two sizes. Pin a month on the Timeline widget and you get two buttons: <strong>Month</strong> opens that month as its own page; <strong>Year</strong> opens the year-in-review, one section per month. Both are built from your milestones, goal progress, journal excerpts and finished projects, plus the summary and highlights your agent writes for each month (the <code>tcAgent_YYYY</code> key, documented in the agent skill). Your agent writes last month's entry at the first session after the 1st — it doesn't run in the background.</div>
 </div>
 
 <div class="faq-item">
   <div class="faq-q" onclick="this.classList.toggle('open')"><span class="q-icon">▸</span> What are the sync files and how do they work?</div>
-  <div class="faq-a">Two files, both in <code>_inbox/</code>. <strong>capsul-sync.json</strong> (dashboard → agent) exports your dashboard state; you trigger it with "Sync Now" in Settings (automatic sync needs Chrome or Edge — other browsers download the file instead). <strong>capsul-agent-push.js</strong> (agent → dashboard) carries your agent's commands, which the dashboard loads on refresh.</div>
+  <div class="faq-a">Two files, both in <code>_inbox/</code>. <strong>capsul-sync.json</strong> (dashboard → agent) exports your dashboard state; the header sync pill triggers it. Automatic sync (the page writing the file itself) needs a desktop Chromium browser — Chrome, Edge, Brave or Arc. In any other browser the pill reads "↓ export": one tap downloads the file and your agent picks it up from Downloads at the start of the next session. <strong>capsul-agent-push.js</strong> (agent → dashboard) carries your agent's commands, which the dashboard loads on refresh.</div>
 </div>
 
 <div class="faq-item">
@@ -514,7 +514,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p>Still stuck? <a href="https://buymeacoffee.com/mcatoms?utm_source=mycapsul&amp;utm_medium=docs&amp;utm_campaign=faq">Reach out on Buy Me a Coffee</a> — or just ask your agent. It probably knows.</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.1 — September 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.2 — September 2026</p>
 </div>
 
 <script>

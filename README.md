@@ -27,7 +27,7 @@ Your life data stays on your local machine — no cloud, no accounts. (The page 
 2. Drop the zip in a folder on your computer — don't unzip it
 3. Open a Cowork session in Claude Desktop and select that folder
 4. Say "Unzip and set up my MyCapsul"
-5. Walk through the 5-step wizard that opens in your browser (Chrome or Edge for automatic sync)
+5. Walk through the 5-step wizard that opens in your browser (desktop Chrome, Edge, Brave or Arc for automatic sync; other browsers export with one tap)
 
 ## Links
 

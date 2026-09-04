@@ -334,6 +334,28 @@ body {
 
 <!-- RELEASES -->
 
+<!-- v1.5.2 -->
+<div class="release-card">
+  <div class="release-header">
+    <div class="release-info">
+      <h2>v1.5.2</h2>
+      <div class="release-date">September 4, 2026</div>
+    </div>
+    <div class="release-badge improvement">Improvement</div>
+  </div>
+  <ul class="release-changes">
+    <li>
+      <strong>Graceful sync fallback</strong> — Automatic sync needs the File System Access API, which only desktop Chromium browsers have. Everywhere else the header pill now reads <strong>↓ export</strong>: one tap downloads <code>capsul-sync.json</code>, a toast tells you where it went, the pill shows how long ago you exported, and your agent is taught to pick the file up from Downloads at the next session. Before this, Safari and Firefox got a "sync" button that silently downloaded the file and reported success.
+    </li>
+    <li>
+      <strong>Monthly TimeCapsul</strong> — Pin a month on the Timeline tile and choose <strong>Month</strong> (that month as its own page) or <strong>Year</strong> (the year-in-review, one section per month). Both are built by the same generator from your data plus your agent's monthly summary.
+    </li>
+    <li>
+      <strong>Browser support, stated plainly</strong> — "Chrome or Edge" became "desktop Chrome, Edge, Brave or Arc for automatic sync; other browsers view and export" across the site, docs and agent manuals. Mobile is view-only.
+    </li>
+  </ul>
+</div>
+
 <!-- v1.5.1 -->
 <div class="release-card">
   <div class="release-header">
@@ -628,7 +650,7 @@ body {
     <a href="about.html">About</a>
   </div>
   <p><a href="https://buymeacoffee.com/mcatoms">MyCapsul</a> by McAtoms</p>
-  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.1 — September 2026</p>
+  <p style="font-size:11px;color:var(--text-xdim);margin-top:8px;">v1.5.2 — September 2026</p>
 </div>
 
 <!-- UPDATE MODAL -->
@@ -636,7 +658,7 @@ body {
   <div class="update-modal">
     <button class="update-modal-close" onclick="document.getElementById('updateModal').classList.remove('open')" aria-label="Close">&times;</button>
     <h2>How to Update MyCapsul</h2>
-    <div class="version-pill">Latest: v1.5.1</div>
+    <div class="version-pill">Latest: v1.5.2</div>
     <p>Your data lives in browser storage, not the HTML file, so updating is safe:</p>
     <ol class="update-steps">
       <li><strong>Download the latest zip</strong> — use the button below, or install the plugin directly in Cowork.</li>
@@ -644,9 +666,9 @@ body {
       <li><strong>Tell your Capsul agent</strong> — say <strong>"Update my MyCapsul."</strong> It finds the file, detects the version change, explains what's new, and replaces your dashboard HTML.</li>
       <li><strong>Refresh your dashboard</strong> — Reload the page in your browser. Done.</li>
     </ol>
-    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.1/mycapsul-v1.5.1.zip" class="update-download-btn">
+    <a href="https://github.com/mcatoms-xyz/mycapsul/releases/download/v1.5.2/mycapsul-v1.5.2.zip" class="update-download-btn">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download v1.5.1
+      Download v1.5.2
     </a>
     <p class="update-note">Tiles, settings, seed modules, everything in localStorage: untouched. Only the HTML file is replaced.</p>
   </div>
